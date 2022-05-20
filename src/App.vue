@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+
+    <AdminHeader/>
+    <AdminMain/>
+    <FooterNavi/>
+
     <router-link :to="{name:'Home'}">Home</router-link>|
     <router-link :to="{name:'About'}">About</router-link>|
     <router-link :to="{name:'Search'}">Search</router-link>|
@@ -18,10 +23,16 @@
     </div>
     <common-footer></common-footer>
 
+
   </div>
 </template>
 
 <script>
+
+import AdminHeader from './components/Admin/Common/AdminHeader.vue'
+import AdminMain from './components/Admin/Common/AdminMain.vue'
+import FooterNavi from './components/Footer.vue'
+
 
 import NavBar from "./components/NavBar.vue";
 import VideoBanner from "./components/VideoBanner.vue";
@@ -29,17 +40,20 @@ import ProductSlider from "./components/ProductSlider.vue";
 import CommonFooter from "./components/CommonFooter.vue";
 import HomeSection from "./components/HomeSection.vue";
 
+
 export default {
   name: "App",
   components: {
+    AdminHeader,
+    AdminMain,
     NavBar,
     VideoBanner,
     ProductSlider,
     CommonFooter,
     HomeSection,
-  },
-};
-
+    FooterNavi
+  }
+}
 </script>
 
 <style>
@@ -60,3 +74,4 @@ h4 {
 }
 @import "~bootstrap/dist/css/bootstrap.css";
 </style>
+
