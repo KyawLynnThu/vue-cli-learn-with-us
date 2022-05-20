@@ -1,19 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <nav-bar></nav-bar>
+    <video-banner></video-banner>
+    <div class="inner">
+      <h4>TOP COURSES</h4>
+      <product-slider></product-slider>
+      <h4>FREE COURSES</h4>
+      <product-slider></product-slider>
+      <home-section></home-section>
+      <home-section></home-section>
+    </div>
+    <common-footer></common-footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from "./components/NavBar.vue";
+import VideoBanner from "./components/VideoBanner.vue";
+import ProductSlider from "./components/ProductSlider.vue";
+import CommonFooter from "./components/CommonFooter.vue";
+import HomeSection from "./components/HomeSection.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    NavBar,
+    VideoBanner,
+    ProductSlider,
+    CommonFooter,
+    HomeSection,
+  },
+};
 </script>
 
 <style>
@@ -21,8 +38,16 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+.inner {
+  width: 90%;
+  margin: 0 auto;
+}
+h4 {
+  text-align: left;
+  margin-top: 40px;
+  text-decoration: underline;
+}
+@import "~bootstrap/dist/css/bootstrap.css";
 </style>
