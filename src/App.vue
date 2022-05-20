@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <router-link :to="{name:'Home'}">Home</router-link>|
+    <router-link :to="{name:'About'}">About</router-link>|
+    <router-link :to="{name:'Search'}">Search</router-link>|
+    <router-link :to="{name:'Category'}">Category</router-link>|
+    <router-link :to="{name:'Detail'}">Detail</router-link>
+    <router-view></router-view>
     <nav-bar></nav-bar>
     <video-banner></video-banner>
     <div class="inner">
@@ -11,10 +17,12 @@
       <home-section></home-section>
     </div>
     <common-footer></common-footer>
+
   </div>
 </template>
 
 <script>
+
 import NavBar from "./components/NavBar.vue";
 import VideoBanner from "./components/VideoBanner.vue";
 import ProductSlider from "./components/ProductSlider.vue";
@@ -31,6 +39,7 @@ export default {
     HomeSection,
   },
 };
+
 </script>
 
 <style>
@@ -38,7 +47,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+
 }
 .inner {
   width: 90%;
