@@ -5,6 +5,8 @@ import AboutView from '../views/user/AboutView.vue';
 import SearchView from '../views/user/SearchView.vue';
 import CategoryView from '../views/user/CategoryView.vue';
 import CourseDetail from '../views/user/CourseDetail.vue';
+import LogInView from '../views/user/LogInView';
+import SignUpView from '../views/user/SignUpView';
 Vue.use(VueRouter);
 
 const routes = [
@@ -12,6 +14,16 @@ const routes = [
     path: "/",
     name: "Home",
     component:HomeView
+  },
+  {
+    path: "login",
+    name: "LogIn",
+    component:LogInView
+  },
+  {
+    path: "signup",
+    name: "SignUp",
+    component:SignUpView
   },
   {
     path: "about",

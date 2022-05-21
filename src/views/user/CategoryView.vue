@@ -1,18 +1,19 @@
 <template>
   <div class="container-fluid p-5">
-    <CategoryCard></CategoryCard>
-    <PagiNav></PagiNav>
+    <category-card></category-card>
+    <pagi-nav></pagi-nav>
   </div>
 </template>
 
 <script>
-import CategoryCard from '../../components/category/CategoryCard'
-import PagiNav from '../../components/PagiNav'
+import CategoryCard from '@/components/User/CategoryCard.vue'
+import PagiNav from '@/components/User/PagiNav.vue'
 
 export default {
   components: {
     CategoryCard,
-    PagiNav,  },
+    PagiNav
+      },
 
 }
 </script>

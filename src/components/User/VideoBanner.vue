@@ -12,7 +12,7 @@
 export default {
     data() {
         return {
-            videoSrc: require("../assets/video.mp4"),
+            videoSrc: require("@/assets/video.mp4"),
         }
     }
 }

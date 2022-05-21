@@ -10,18 +10,10 @@
     <router-link :to="{name:'Search'}">Search</router-link>|
     <router-link :to="{name:'Category'}">Category</router-link>|
     <router-link :to="{name:'Detail'}">Detail</router-link>
+    <router-link :to="{name:'LogIn'}">LogIn</router-link>|
+    <router-link :to="{name:'SignUp'}">SignUp</router-link>|
     <router-view></router-view>
-    <nav-bar></nav-bar>
-    <video-banner></video-banner>
-    <div class="inner">
-      <h4>TOP COURSES</h4>
-      <product-slider></product-slider>
-      <h4>FREE COURSES</h4>
-      <product-slider></product-slider>
-      <home-section></home-section>
-      <home-section></home-section>
-    </div>
-    <common-footer></common-footer>
+    
 
 
   </div>
@@ -29,28 +21,15 @@
 
 <script>
 
-import AdminHeader from './components/Admin/Common/AdminHeader.vue'
-import AdminMain from './components/Admin/Common/AdminMain.vue'
-import FooterNavi from './components/Footer.vue'
-
-
-import NavBar from "./components/NavBar.vue";
-import VideoBanner from "./components/VideoBanner.vue";
-import ProductSlider from "./components/ProductSlider.vue";
-import CommonFooter from "./components/CommonFooter.vue";
-import HomeSection from "./components/HomeSection.vue";
-
+import AdminHeader from '@/components/Admin/Common/AdminHeader.vue'
+import AdminMain from '@/components/Admin/Common/AdminMain.vue'
+import FooterNavi from '@/components/Footer.vue'
 
 export default {
   name: "App",
   components: {
     AdminHeader,
     AdminMain,
-    NavBar,
-    VideoBanner,
-    ProductSlider,
-    CommonFooter,
-    HomeSection,
     FooterNavi
   }
 }
