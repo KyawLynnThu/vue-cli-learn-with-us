@@ -12,7 +12,7 @@
         </div>
         <div class="col-12 col-md-4">
           <div class="p-md-0 pt-3 text-center">
-            <img src="../assets/logo.png" alt="" class="w-65">
+            <img src="@/assets/dog.jpg" alt="" class="w-65">
           </div>
         </div>
       </div>

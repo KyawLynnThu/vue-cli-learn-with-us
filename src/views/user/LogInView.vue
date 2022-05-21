@@ -2,7 +2,7 @@
   <div>
    <nav-bar/>
    <log-in/>
-   <common-foot/>
+   <common-footer/>
   </div>
 </template>
 

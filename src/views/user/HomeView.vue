@@ -4,7 +4,7 @@
    <video-banner/>
    <product-slider/>
    <home-section/>
-   <common-foot/>
+   <common-footer/>
   </div>
 </template>
 
@@ -18,7 +18,6 @@ import HomeSection from '@/components/User/HomeSection.vue'
 export default {
   components: {
     NavBar,
-    LogIn,
     CommonFooter,
     VideoBanner,
     ProductSlider,

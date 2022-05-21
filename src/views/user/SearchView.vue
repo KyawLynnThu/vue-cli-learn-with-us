@@ -8,9 +8,9 @@
 
 <script>
 
-import SearchCard from '../../components/search/SearchCard'
-import TotalCourse from '../../components/search/TotalCourse'
-import PagiNav from '../../components/PagiNav'
+import SearchCard from '@/components/User/SearchCard'
+import TotalCourse from '@/components/User/TotalCourse'
+import PagiNav from '@/components/User/PagiNav'
 export default {
   components: {
     SearchCard,

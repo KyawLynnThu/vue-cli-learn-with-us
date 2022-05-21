@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import UserProfile from "../UserProfile.vue";
+import UserProfile from "@/components/User/UserDashboard/UserProfile.vue";
 export default {
   components: {
     UserProfile,

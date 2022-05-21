@@ -1,12 +1,12 @@
 <template>
-  <div class="container-fluid ">
+    <div>
     <nav-bar/>
     <course-outline/>
     <write-review />
     <show-review />
     <related-courses/>
     <common-footer/>
-  </div>
+    </div>
 </template>
 
 <script>

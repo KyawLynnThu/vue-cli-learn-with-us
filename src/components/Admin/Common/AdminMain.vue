@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import AdminProfile from "../AdminProfile.vue";
+import AdminProfile from "@/components/Admin/AdminProfile.vue";
 export default {
   components: {
     AdminProfile,

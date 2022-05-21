@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomeView from '../views/user/HomeView.vue';
-import AboutView from '../views/user/AboutView.vue';
-import SearchView from '../views/user/SearchView.vue';
-import CategoryView from '../views/user/CategoryView.vue';
-import CourseDetail from '../views/user/CourseDetail.vue';
-import LogInView from '../views/user/LogInView';
-import SignUpView from '../views/user/SignUpView';
+import HomeView from '@/views/user/HomeView.vue';
+import AboutView from '@/views/user/AboutView.vue';
+import SearchView from '@/views/user/SearchView.vue';
+import CategoryView from '@/views/user/CategoryView.vue';
+import CourseDetail from '@/views/user/CourseDetail.vue';
+import LogInView from '@/views/user/LogInView';
+import SignUpView from '@/views/user/SignUpView';
 Vue.use(VueRouter);
 
 const routes = [

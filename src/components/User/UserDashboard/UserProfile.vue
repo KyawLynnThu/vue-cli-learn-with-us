@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import CommonProfile from "../CommonProfile.vue";
+import CommonProfile from "@/components/Common/CommonProfile.vue";
 
 export default {
   components: {

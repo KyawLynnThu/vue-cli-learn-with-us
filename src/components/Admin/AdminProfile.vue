@@ -1,12 +1,12 @@
 <template>
   <main role="main" class="col-md-9 ml-sm-auto pt-5 mb-5">
     <h3 class="my-3 pb-2 d-flex justify-content-center">Admin Profile</h3>
-    <common-profile>
+    <common-profile/>
   </main>
 </template>
 
 <script>
-import CommonProfile from '../CommonProfile.vue';
+import CommonProfile from '@/components/Common/CommonProfile.vue';
 
 export default {
   components: {
