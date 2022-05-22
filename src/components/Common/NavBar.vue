@@ -51,6 +51,12 @@ export default {
   border-color: #030303 !important;
   box-shadow: none !important;
 }
+.navbar {
+  margin-bottom: 0;
+}
+.dropdown-menu{
+  min-width: 6rem !important;
+}
 /*nav a.router-link-exact-active {
   color: #42b983 !important;
 }*/

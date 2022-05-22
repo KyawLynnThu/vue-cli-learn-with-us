@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
    <nav-bar/>
    <div class="container-fluid login">
    <log-in/>
@@ -25,6 +25,6 @@ export default {
 
 <style scoped>
 .login{
-  height: 77vh;
+  height: 90vh !important;
 }
 </style>

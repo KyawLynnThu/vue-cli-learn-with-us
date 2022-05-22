@@ -11,8 +11,8 @@
     <router-link :to="{name:'Detail'}">Detail</router-link>|
     <router-link :to="{name:'LogIn'}">LogIn</router-link>|
     <router-link :to="{name:'SignUp'}">SignUp</router-link>|-->
-    <!--<router-view></router-view>-->
-   <AdminDashboard></AdminDashboard>
+    <router-view />
+    <AdminDashboard></AdminDashboard>
     <!--<courses-view/>-->
   <!--<SubCategory></SubCategory>-->
   <!--<UserLists></UserLists>-->

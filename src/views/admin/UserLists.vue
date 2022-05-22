@@ -1,50 +1,33 @@
 <template>
-  <div>
-    <AdminHeader></AdminHeader>
-   <div class="container-fluid border-top border-dark admin-height">
-    <div class="row">
-      <nav class=" col-md-3 d-none d-md-block bg-light sideBar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item important">
-              <a href="#" class="nav-link text-white my-2 bg-secondary"
-                >Dashboard</a
-              >
-              <router-link :to="{name:'subCategory'}" class="nav-link text-white my-2 bg-secondary"
-                >Subcategories</router-link
-              >
-              <a href="#" class="nav-link text-white my-2 bg-secondary"
-                >Courses</a
-              >
-              <a href="#" class="nav-link text-white my-2 bg-secondary"
-                >User Link</a
-              >
-            </li>
-          </ul>
-        </div>
-      </nav>
-       <UserLists></UserLists>
+ <div>
+    <div class="wrapper d-flex align-items-stretch">
+      <admin-sidebar/>
+      <div id="content" class="p-4 p-md-5">
+        <admin-navi/>
+          <user-lists/>
+      </div>   
     </div>
-  </div>
-    
-   
-  </div>
+ </div>
 </template>
 
 <script>
+import AdminSidebar from '@/components/Common/AdminSidebar.vue'
+import "@/assets/css/style.css"
+import "@/assets/js/main.js"
+import AdminNavi from '@/components/Common/AdminNavi.vue'
+import UserLists from '@/components/Admin/UserLists.vue'
 
-import UserLists from '../../components/Admin/UserLists'
-
-import AdminHeader from '../../components/Admin/Common/AdminHeader'
 export default {
   components: {
-    
-    UserLists,
-   AdminHeader },
-
-}
+    AdminSidebar,
+    AdminNavi,
+    UserLists
+    },
+};
 </script>
 
-<style>
+<style scoped>
+
+
 
 </style>

@@ -25,6 +25,6 @@ export default {
 
 <style scoped>
 .signup{
-height: 77vh;
+  height: 90vh !important;
 }
 </style>
