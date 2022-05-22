@@ -50,7 +50,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item dropdown mx-3">
-        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle text-dark mr-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -64,35 +64,61 @@
           </div>
         </div>
       </nav>
-       
+       <!--<CreateCourses></CreateCourses>-->
+       <!--<UpdateCourse></UpdateCourse>-->
        <CoursesList></CoursesList>
+       <!--<UserLists></UserLists>-->
+       <!--<AdminProfile></AdminProfile>-->
+       <!--<CreateSubcategories></CreateSubcategories>-->
+       <!--<SubcategoriesLists></SubcategoriesLists>-->
+       <!--<UpdateSubcategory></UpdateSubcategory>-->
+
+       
     </div>
-    
-  </div>
-  <footer class="text-center text-white" style="background-color: #f1f1f1;">
+    <!--<footer class="text-center text-white" style="background-color: #f1f1f1; width:100%">
       <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
         <a class="text-dark" href="">LearnWithUs.com</a>
       </div>
-    </footer>
+    </footer>-->
+  </div>
+  <!--<CommonFooter></CommonFooter>-->
  </div>
 </template>
 
 <script>
 
+//import UpdateSubcategory from '../../components/Admin/Categories/UpdateSubcategory'
+//import SubcategoriesLists from '../../components/Admin/Categories/SubcategoriesLists'
+//import CreateSubcategories from '../../components/Admin/Categories/CreateSubcategories'
+//import AdminProfile from '../../components/Admin/AdminProfile'
+//import UserLists from '../../components/Admin/UserLists'
+//import UpdateCourse from '../../components/Admin/Courses/UpdateCourse'
+//import CreateCourses from '../../components/Admin/Courses/CreateCourses'
 import CoursesList from '../../components/Admin/Courses/CoursesList'
+//import CommonFooter from '@/components/Common/CommonFooter.vue'
 import "@/assets/css/style.css"
 import "@/assets/js/main.js"
 
 export default {
   components: {
-    
-    CoursesList,},
+    //UpdateSubcategory,
+    //SubcategoriesLists,
+    //CreateSubcategories,
+    //AdminProfile,
+    //UserLists,
+    //UpdateCourse,
+    //CreateCourses,
+    //CommonFooter,
+    CoursesList,
+    },
 };
 </script>
 
-<style>
-
+<style scoped>
+.dropdown-menu{
+  min-width: 6rem !important;
+}
 
 
 </style>

@@ -30,7 +30,7 @@
         <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <div class="dropdown-menu admin-dropdown mr-5" aria-labelledby="navbarDropdownMenuLink">
           <router-link :to="{name:'Category'}" class="dropdown-item px-2 " href="#">Profile</router-link>
           <router-link :to="{name:'Category'}" class="dropdown-item px-2 " href="#">Logout</router-link>
           
@@ -47,7 +47,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .dropdown-menu{
   min-width: 6rem !important;
 }

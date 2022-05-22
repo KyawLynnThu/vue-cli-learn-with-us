@@ -1,5 +1,5 @@
 <template>
-  <main role="main" class="col-md-12 ml-sm-auto pt-5 px-4 mb-5">
+  <main role="main" class="col-md-12 ml-sm-auto pt-5 mb-5">
     <div class="d-flex flex-wrap flex-md-nowrap">
       <button class="btn btn-primary">Add</button>
     </div>
@@ -25,8 +25,8 @@
           <td>Mark</td>
           <td>Otto</td>
           <td>
-            <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
-            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+            <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
           </td>
         </tr>
         <tr>
@@ -36,8 +36,8 @@
           <td>Mark</td>
           <td>Otto</td>
           <td>
-            <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
-            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+            <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
           </td>
         </tr>
         <tr>
@@ -47,14 +47,16 @@
           <td>Mark</td>
           <td>Otto</td>
           <td>
-            <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
-            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+            <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
           </td>
         </tr>
       </tbody>
     </table>
     </div>
+    
   </main>
+
 </template>
 
 <script>
@@ -64,8 +66,11 @@ export default {
 </script>
 
 <style>
-.icon{
-  height: 20px;
-  width: 20px;
+
+.fa-pen{
+  color: blue;
+}
+.fa-trash{
+  color: red;
 }
 </style>

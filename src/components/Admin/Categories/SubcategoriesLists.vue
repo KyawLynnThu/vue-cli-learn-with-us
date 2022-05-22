@@ -21,8 +21,8 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>
-            <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
-            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+            <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
             </td>
           </tr>
           <tr>
@@ -30,8 +30,8 @@
             <td>Jacob</td>
             <td>Thornton</td>
             <td>
-            <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
-            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+            <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
             </td>
           </tr>
           <tr>
@@ -39,8 +39,8 @@
             <td>Larry the Bird</td>
             <td>Larry the Bird</td>
             <td>
-             <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
-              <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+             <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
             </td>
           </tr>
         </tbody>
@@ -56,8 +56,10 @@ export default {
 </script>
 
 <style scoped>
-.icon{
-  height: 20px;
-  width: 20px;
+.fa-pen{
+  color: blue;
+}
+.fa-trash{
+  color: red;
 }
 </style>

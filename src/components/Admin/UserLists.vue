@@ -23,7 +23,7 @@
             <td>balblabla@gmail.com</td>
             <td>Otto</td>
             <td>
-            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
             </td>
           </tr>
           <tr>
@@ -32,7 +32,7 @@
             <td>Thornton</td>
             <td>Otto</td>
             <td>
-            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
             </td>
           </tr>
           <tr>
@@ -41,7 +41,7 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>
-            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
+            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
             </td>
           </tr>
         </tbody>
@@ -57,8 +57,7 @@ export default {
 </script>
 
 <style>
-.icon{
-  height: 20px;
-  width: 20px;
+.fa-trash{
+  color: red;
 }
 </style>
