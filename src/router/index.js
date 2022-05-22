@@ -7,6 +7,10 @@ import CategoryView from '@/views/user/CategoryView.vue';
 import CourseDetail from '@/views/user/CourseDetail.vue';
 import LogInView from '@/views/user/LogInView';
 import SignUpView from '@/views/user/SignUpView';
+import AdminDashboard from '@/views/admin/AdminDashboard';
+import SubCategory from '@/views/admin/SubCategory'
+import Courses from '@/views/admin/CoursesView'
+import UserLists from '@/views/admin/UserLists'
 Vue.use(VueRouter);
 
 const routes = [
@@ -44,6 +48,27 @@ const routes = [
     path: "detail",
     name: "Detail",
     component:CourseDetail
+  },
+  //Admin
+  {
+    path: "adminDashboard",
+    name: "adminDashboard",
+    component:AdminDashboard
+  },
+  {
+    path: "subCategory",
+    name: "subCategory",
+    component:SubCategory
+  },
+  {
+    path: "courses",
+    name: "Courses",
+    component:Courses
+  },
+  {
+    path: "userLists",
+    name: "userLists",
+    component:UserLists
   }
 ]
 

@@ -4,22 +4,28 @@
     <AdminMain/>
     <FooterNavi/>-->
 
-    <router-link :to="{name:'Home'}">Home</router-link>|
-    <router-link :to="{name:'About'}">About</router-link>|
+    <!--<router-link :to="{name:'Home'}">Home</router-link>|
+    
     <router-link :to="{name:'Search'}">Search</router-link>|
     <router-link :to="{name:'Category'}">Category</router-link>|
-    <router-link :to="{name:'Detail'}">Detail</router-link>
+    <router-link :to="{name:'Detail'}">Detail</router-link>|
     <router-link :to="{name:'LogIn'}">LogIn</router-link>|
-    <router-link :to="{name:'SignUp'}">SignUp</router-link>|
-    <router-view></router-view>
-   
-
-
+    <router-link :to="{name:'SignUp'}">SignUp</router-link>|-->
+    <!--<router-view></router-view>-->
+   <AdminDashboard></AdminDashboard>
+    <!--<courses-view/>-->
+  <!--<SubCategory></SubCategory>-->
+  <!--<UserLists></UserLists>-->
   </div>
 </template>
 
 <script>
-//
+//import UserLists from './views/admin/UserLists'
+//import SubCategory from './views/admin/SubCategory'
+import AdminDashboard from './views/admin/AdminDashboard'
+//import CoursesView from './views/admin/CoursesView.vue'
+
+
 //import AdminHeader from '@/components/Admin/Common/AdminHeader.vue'
 //import AdminMain from '@/components/Admin/Common/AdminMain.vue'
 //import FooterNavi from '@/components/Common/Footer.vue'
@@ -27,6 +33,11 @@
 export default {
   name: "App",
   components: {
+    //UserLists,
+    //SubCategory,
+    AdminDashboard,
+    
+    //CoursesView,
     //AdminHeader,
     //AdminMain,
     //FooterNavi
@@ -50,6 +61,8 @@ h4 {
   margin-top: 40px;
   text-decoration: underline;
 }
+
 @import "~bootstrap/dist/css/bootstrap.css";
 </style>
+
 

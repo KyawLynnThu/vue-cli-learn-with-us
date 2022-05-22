@@ -19,8 +19,14 @@
     </div>
     <div class="col-md-5 pr-md-5 mt-4 mt-md-0">
       <h2>Course Outline</h2>
-      <button class="bg-dark text-white p-3 mb-1 d-block w-100 text-left">CHAPTER 1</button>
-      <button class="bg-dark text-white p-3 mb-1 d-block w-100 text-left">CHAPTER 2</button>
+      <button class="course-btn bg-secondary text-white p-3 mb-1 d-block w-100 text-left">
+        CHAPTER 1 
+        <img src="@/assets/lock.svg" alt="" class="lock float-right text-white">
+      </button>
+    <button class="course-btn bg-secondary text-white p-3 mb-1 d-block w-100 text-left">
+        CHAPTER 2 
+        <img src="@/assets/lock.svg" alt="" class="lock float-right text-white">
+      </button>
     </div>
   </div>
 </template>
@@ -34,5 +40,12 @@ export default {
 <style scoped>
 .vd-price{
   font-size: 20px;
+}
+.lock{
+  width:20px ;
+  height: 20px;
+}
+.course-btn{
+  border-style: none;
 }
 </style>

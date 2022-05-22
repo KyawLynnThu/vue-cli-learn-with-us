@@ -1,7 +1,9 @@
 <template>
   <div>
    <nav-bar/>
-   <sign-up/>
+   <div class="container-fluid signup">
+    <sign-up/>
+   </div>
    <common-footer/>
   </div>
 </template>
@@ -21,6 +23,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.signup{
+height: 77vh;
+}
 </style>

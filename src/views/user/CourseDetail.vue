@@ -1,12 +1,17 @@
 <template>
-    <div>
-    <nav-bar/>
+<div>
+  <nav-bar/>
+<div class="container-fluid">
+    
     <course-outline/>
     <write-review />
     <show-review />
     <related-courses/>
-    <common-footer/>
+   
     </div>
+     <common-footer/>
+</div>
+    
 </template>
 
 <script>

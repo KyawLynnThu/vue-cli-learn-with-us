@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 col-12 m-auto "> 
+  
+    <div class="row ">
+      <div class="col-lg-4 col-md-6 mx-auto mt-5 pt-5 col-12"> 
         <h2 class="text-center m-3">LOG IN</h2>
         <form class="bg-light p-4">
           <div class="form-group">
@@ -17,7 +17,7 @@
           <a class="text-decoration-none text-dark">Forgot Password?</a>
         </form>
       </div>
-    </div>
+    
   </div>
   
 </template>
@@ -34,4 +34,5 @@ export default {
   border-color: #030303 !important;
   box-shadow: none !important;
 }
+
 </style>

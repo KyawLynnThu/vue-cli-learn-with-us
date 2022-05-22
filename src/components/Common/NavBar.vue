@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <h2><a class="navbar-brands ml-3 text-dark font-weight-bold" href="#" style="text-decoration: none;">Learn With Us</a></h2>
+    <h2><router-link class="navbar-brands ml-3 text-dark font-weight-bold" :to="{name:'Home'}" style="text-decoration: none;">LearnWithUs</router-link></h2>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,24 +8,26 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active mx-3">
-        <a class="nav-link" href="#">Home</a>
+        <router-link class="nav-link" :to="{name:'About'}">About</router-link>
       </li>
       <li class="nav-item dropdown mx-3">
         <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">PHP</a>
-          <a class="dropdown-item" href="#">Ruby</a>
-          <a class="dropdown-item" href="#">Java</a>
+          <router-link :to="{name:'Category'}" class="dropdown-item" href="#">PHP</router-link>
+          <router-link :to="{name:'Category'}" class="dropdown-item" href="#">Ruby</router-link>
+          <router-link :to="{name:'Category'}" class="dropdown-item" href="#">Java</router-link>
         </div>
       </li>
     </ul>
     <form class="form-inline my-2 mx-3 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+      <router-link :to="{name:'Search'}" class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></router-link>
     </form>
-    <div class="nav-item dropdown my-2 my-lg-0 mx-3">
+    <router-link :to="{name:'LogIn'}" class="btn btn-outline-dark my-2 my-sm-0 mx-3">LOG IN</router-link>
+    <router-link :to="{name:'SignUp'}" class="btn btn-secondary my-2 my-sm-0 mr-3">SIGN UP</router-link>
+    <!--<div class="nav-item dropdown my-2 my-lg-0 mx-3">
         <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0">
           User One
         </a>
@@ -33,7 +35,7 @@
           <a class="dropdown-item" href="#">Profile</a>
           <a class="dropdown-item" href="#">Log Out</a>
         </div>
-      </div>
+      </div>-->
   </div>
 </nav>
 </template>
@@ -44,5 +46,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.form-control:focus {
+  border-color: #030303 !important;
+  box-shadow: none !important;
+}
+/*nav a.router-link-exact-active {
+  color: #42b983 !important;
+}*/
 </style>

@@ -1,7 +1,9 @@
 <template>
-  <div class="container-fluid border-top border-dark">
+  <div>
+    <AdminHeader></AdminHeader>
+    <div class="container-fluid border-top border-dark admin-height">
     <div class="row">
-      <nav class="col-md-3 d-none d-md-block bg-light sideBar">
+      <nav class=" col-md-3 d-none d-md-block bg-light sideBar">
         <div class="sidebar-sticky">
           <ul class="nav flex-column">
             <li class="nav-item important">
@@ -21,38 +23,28 @@
           </ul>
         </div>
       </nav>
-      
+       <SubcategoriesLists></SubcategoriesLists>
     </div>
+  </div>
+    
+  
   </div>
 </template>
 
 <script>
 
+import SubcategoriesLists from '../../components/Admin/Categories/SubcategoriesLists'
+
+import AdminHeader from '../../components/Admin/Common/AdminHeader'
 export default {
   components: {
     
-  },
-  name: "AdminMain",
-};
+    SubcategoriesLists,
+     AdminHeader },
+
+}
 </script>
 
-<style scoped>
-/*.sideBar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  padding: 0;
-  box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
-}
+<style>
 
-.sidebar-sticky {
-  position: sticky;
-  top: 48px;
-  height: calc(100vh - 48px);
-  padding-top: 0.5rem;
-  overflow-x: hidden;
-  overflow-y: auto;
-}*/
 </style>

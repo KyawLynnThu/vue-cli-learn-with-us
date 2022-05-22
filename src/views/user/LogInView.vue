@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="">
    <nav-bar/>
+   <div class="container-fluid login">
    <log-in/>
+   </div>
    <common-footer/>
   </div>
 </template>
@@ -21,6 +23,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.login{
+  height: 77vh;
+}
 </style>

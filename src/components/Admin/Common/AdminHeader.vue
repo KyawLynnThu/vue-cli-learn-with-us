@@ -16,8 +16,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+      <ul class="navbar-nav ml-auto ">
+        <!--<li class="nav-item">
           <div class="dropdown">
             <button class="dropbtn">Admin</button>
             <div class="dropdown-content">
@@ -25,7 +25,17 @@
               <a href="#">Logout</a>
             </div>
           </div>
-        </li>
+        </li>-->
+      <li class="nav-item dropdown mx-5">
+        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <router-link :to="{name:'Category'}" class="dropdown-item px-2 " href="#">Profile</router-link>
+          <router-link :to="{name:'Category'}" class="dropdown-item px-2 " href="#">Logout</router-link>
+          
+        </div>
+      </li>
       </ul>
     </div>
   </nav>
@@ -38,7 +48,10 @@ export default {
 </script>
 
 <style>
-.dropbtn {
+.dropdown-menu{
+  min-width: 6rem !important;
+}
+/*.dropbtn {
   padding: 16px;
   border: none;
   cursor: pointer;
@@ -74,5 +87,5 @@ export default {
 
 .dropdown:hover .dropbtn {
   background-color: #f1f1f1;
-}
+}*/
 </style>

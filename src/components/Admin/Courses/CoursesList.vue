@@ -1,5 +1,5 @@
 <template>
-  <main role="main" class="col-md-9 ml-sm-auto pt-5 px-4 mb-5">
+  <main role="main" class="col-md-12 ml-sm-auto pt-5 px-4 mb-5">
     <div class="d-flex flex-wrap flex-md-nowrap">
       <button class="btn btn-outline-secondary">Add</button>
     </div>

@@ -6,3 +6,11 @@
       </div>
     </footer>
 </template>
+<style scoped>
+footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #ccc;
+  position: relative;
+}
+</style>

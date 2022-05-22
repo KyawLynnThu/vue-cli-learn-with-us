@@ -1,6 +1,6 @@
 <template>
   <div class="row mb-3">
-    <div class="col-12 mb-3" v-for="j in [1,2,3,4,5]" :key="j">
+    <div class="col-12  mb-3" v-for="j in [1,2,3,4,5]" :key="j">
       <div class="card mb-3 shadow bg-white rounded" >
         <div class="row no-gutters">
           <div class="col-md-4">

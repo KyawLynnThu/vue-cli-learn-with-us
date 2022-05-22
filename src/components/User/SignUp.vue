@@ -1,7 +1,6 @@
 <template>
-  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-4 col-12 m-auto "> 
+      <div class="col-lg-4 col-md-6 col-12 mx-auto mt-5 "> 
         <h2 class="text-center m-3 text-uppercase">Sign Up</h2>
         <form class="bg-light p-4">
           <div class="form-group">
@@ -25,7 +24,7 @@
         </form>
       </div>
     </div>
-  </div>
+  
   
 </template>
 
