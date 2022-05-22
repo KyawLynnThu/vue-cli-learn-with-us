@@ -1,13 +1,13 @@
 <template>
   <main role="main" class="col-md-12 ml-sm-auto pt-5 px-4 mb-5">
     <div class="d-flex flex-wrap flex-md-nowrap">
-      <button class="btn btn-outline-secondary">Add</button>
+      <button class="btn btn-primary">Add</button>
     </div>
 
     <h2 class="my-4">Course Lists</h2>
     <div class="table-responsive">
       <table class="table table-hover text-center">
-      <thead class="bg-secondary">
+      <thead class="bg-primary">
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Course Name</th>
@@ -25,8 +25,8 @@
           <td>Mark</td>
           <td>Otto</td>
           <td>
-            <button class="btn btn-sm btn-outline-secondary mr-2">Edit</button>
-            <button class="btn btn-sm btn-outline-secondary">Delete</button>
+            <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
+            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
           </td>
         </tr>
         <tr>
@@ -36,8 +36,8 @@
           <td>Mark</td>
           <td>Otto</td>
           <td>
-            <button class="btn btn-sm btn-outline-secondary mr-2">Edit</button>
-            <button class="btn btn-sm btn-outline-secondary">Delete</button>
+            <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
+            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
           </td>
         </tr>
         <tr>
@@ -47,8 +47,8 @@
           <td>Mark</td>
           <td>Otto</td>
           <td>
-            <button class="btn btn-sm btn-outline-secondary mr-2">Edit</button>
-            <button class="btn btn-sm btn-outline-secondary">Delete</button>
+            <a href="" class="icon"><img src="@/assets/edit.svg" alt=""></a>
+            <a href="" class="icon"><img src="@/assets/delete.svg" alt=""></a>
           </td>
         </tr>
       </tbody>
@@ -64,5 +64,8 @@ export default {
 </script>
 
 <style>
-
+.icon{
+  height: 20px;
+  width: 20px;
+}
 </style>

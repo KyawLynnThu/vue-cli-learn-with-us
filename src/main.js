@@ -5,14 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import jQuery from 'jquery';
 //import popper from 'popper.js'
  window.jQuery = jQuery;
-//window.$ = window.jQuery = jQuery;
 import 'bootstrap';
 
-import router from "./router"
+//import router from "./router"
 
 Vue.config.productionTip = false
 
 new Vue({
-  router,
+  //router,
   render: h => h(App),
 }).$mount('#app')
