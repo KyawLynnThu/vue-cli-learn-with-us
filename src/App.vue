@@ -12,7 +12,7 @@
     <router-link :to="{name:'LogIn'}">LogIn</router-link>|
     <router-link :to="{name:'SignUp'}">SignUp</router-link>|-->
     <router-view />
-    <AdminDashboard></AdminDashboard>
+    <!-- <AdminDashboard></AdminDashboard> -->
     <!--<courses-view/>-->
   <!--<SubCategory></SubCategory>-->
   <!--<UserLists></UserLists>-->
@@ -22,7 +22,7 @@
 <script>
 //import UserLists from './views/admin/UserLists'
 //import SubCategory from './views/admin/SubCategory'
-import AdminDashboard from './views/admin/AdminDashboard'
+// import AdminDashboard from './views/admin/AdminDashboard'
 //import CoursesView from './views/admin/CoursesView.vue'
 
 
@@ -35,7 +35,7 @@ export default {
   components: {
     //UserLists,
     //SubCategory,
-    AdminDashboard,
+    // AdminDashboard,
     
     //CoursesView,
     //AdminHeader,
