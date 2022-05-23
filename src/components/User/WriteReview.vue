@@ -6,18 +6,17 @@
           <p><label for="">Review</label></p>
           <textarea name="" id="" cols="50" rows="6" class="w-100"></textarea>
         </div>
-        <div class="text-md-right"><button type="submit" class="btn btn-dark mb-3 mr-3">Submit</button></div>
+        <div class="text-md-right">
+          <button type="submit" class="btn btn-dark mb-3 mr-3">Submit</button>
+        </div>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style scoped>
 </style>

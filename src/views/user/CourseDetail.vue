@@ -1,28 +1,23 @@
 <template>
-<div>
-  <nav-bar/>
-<div class="container-fluid">
-    
-    <course-outline/>
-    <write-review />
-    <show-review />
-    <related-courses/>
-   
+  <div>
+    <nav-bar />
+    <div class="container-fluid">
+      <course-outline />
+      <write-review />
+      <show-review />
+      <related-courses />
     </div>
-     <common-footer/>
-</div>
-    
+    <common-footer />
+  </div>
 </template>
 
 <script>
-import CourseOutline from '@/components/User/CourseOutline.vue'
-import WriteReview from '@/components/User/WriteReview.vue'
-import ShowReview from '@/components/User/ShowReview.vue'
-import RelatedCourses from '@/components/User/RelatedCourses.vue'
-import NavBar from '@/components/Common/NavBar.vue'
-import CommonFooter from '@/components/Common/CommonFooter.vue'
-
-
+import CourseOutline from "@/components/User/CourseOutline.vue";
+import WriteReview from "@/components/User/WriteReview.vue";
+import ShowReview from "@/components/User/ShowReview.vue";
+import RelatedCourses from "@/components/User/RelatedCourses.vue";
+import NavBar from "@/components/Common/NavBar.vue";
+import CommonFooter from "@/components/Common/CommonFooter.vue";
 
 export default {
   components: {
@@ -31,11 +26,10 @@ export default {
     ShowReview,
     RelatedCourses,
     NavBar,
-    CommonFooter
-    },
-}
+    CommonFooter,
+  },
+};
 </script>
 
 <style scoped>
-
 </style>

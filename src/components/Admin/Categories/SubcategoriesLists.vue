@@ -1,7 +1,9 @@
 <template>
   <main role="main" class="col-md-12 ml-sm-auto pt-5 px-4 mb-5">
     <div class="d-flex flex-wrap flex-md-nowrap">
-      <button class="btn btn-primary">Add</button>
+      <router-link :to="{ name: 'createCategory' }" class="btn btn-primary">
+        <i class="fas fa-plus-square"></i> &nbsp; Add
+      </router-link>
     </div>
 
     <h2 class="my-4">Category Lists</h2>
@@ -21,8 +23,15 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>
-            <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
-            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
+              <router-link
+                :to="{ name: 'updateCategory' }"
+                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
+              >
+                <i class="fas fa-pen"></i>
+              </router-link>
+              <button class="btn btn-danger">
+                <i class="fas fa-trash"></i>
+              </button>
             </td>
           </tr>
           <tr>
@@ -30,8 +39,15 @@
             <td>Jacob</td>
             <td>Thornton</td>
             <td>
-            <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
-            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
+              <router-link
+                :to="{ name: 'updateCategory' }"
+                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
+              >
+                <i class="fas fa-pen"></i>
+              </router-link>
+              <button class="btn btn-danger">
+                <i class="fas fa-trash"></i>
+              </button>
             </td>
           </tr>
           <tr>
@@ -39,8 +55,15 @@
             <td>Larry the Bird</td>
             <td>Larry the Bird</td>
             <td>
-             <button class="btn btn-outline-secondary mr-md-2  mr-0 mb-sm-0 mb-2"><i class="fas fa-pen "></i></button>
-            <button class="btn btn-outline-secondary"><i class="fas fa-trash "></i></button>
+              <router-link
+                :to="{ name: 'updateCategory' }"
+                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
+              >
+                <i class="fas fa-pen"></i>
+              </router-link>
+              <button class="btn btn-danger">
+                <i class="fas fa-trash"></i>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -56,10 +79,4 @@ export default {
 </script>
 
 <style scoped>
-.fa-pen{
-  color: blue;
-}
-.fa-trash{
-  color: red;
-}
 </style>

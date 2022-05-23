@@ -34,8 +34,5 @@ export default {
 };
 </script>
 
-<style>
-/*main {
-  width: 80%;
-}*/
+<style scoped>
 </style>

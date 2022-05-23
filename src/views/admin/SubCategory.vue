@@ -1,33 +1,28 @@
 <template>
- <div>
+  <div>
     <div class="wrapper d-flex align-items-stretch">
-      <admin-sidebar/>
+      <admin-sidebar />
       <div id="content" class="p-4 p-md-5">
-        <admin-navi/>
-          <subcategories-lists/>
-      </div>   
+        <admin-navi />
+        <subcategories-lists />
+      </div>
     </div>
- </div>
+  </div>
 </template>
 
 <script>
-import AdminSidebar from '@/components/Common/AdminSidebar.vue'
-import "@/assets/css/style.css"
-import "@/assets/js/main.js"
-import AdminNavi from '@/components/Common/AdminNavi.vue'
-import SubcategoriesLists from '@/components/Admin/Categories/SubcategoriesLists.vue'
+import AdminSidebar from "@/components/Common/AdminSidebar.vue";
+import AdminNavi from "@/components/Common/AdminNavi.vue";
+import SubcategoriesLists from "@/components/Admin/Categories/SubcategoriesLists.vue";
 
 export default {
   components: {
     AdminSidebar,
     AdminNavi,
-    SubcategoriesLists
-    },
+    SubcategoriesLists,
+  },
 };
 </script>
 
 <style scoped>
-
-
-
 </style>

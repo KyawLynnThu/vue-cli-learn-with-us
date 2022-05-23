@@ -4,7 +4,7 @@
       <admin-sidebar />
       <div id="content" class="p-4 p-md-5">
         <admin-navi />
-        <courses-list />
+        <update-subcategory />
       </div>
     </div>
   </div>
@@ -13,13 +13,13 @@
 <script>
 import AdminSidebar from "@/components/Common/AdminSidebar.vue";
 import AdminNavi from "@/components/Common/AdminNavi.vue";
-import CoursesList from "@/components/Admin/Courses/CoursesList.vue";
+import UpdateSubcategory from "@/components/Admin/Categories/UpdateSubcategory.vue";
 
 export default {
   components: {
     AdminSidebar,
     AdminNavi,
-    CoursesList,
+    UpdateSubcategory,
   },
 };
 </script>

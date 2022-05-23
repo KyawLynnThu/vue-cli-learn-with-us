@@ -1,30 +1,29 @@
 <template>
   <div>
-   <nav-bar/>
-   <div class="container-fluid login">
-   <log-in/>
-   </div>
-   <common-footer/>
+    <nav-bar />
+    <div class="container-fluid login">
+      <log-in />
+    </div>
+    <common-footer />
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/Common/NavBar.vue'
-import LogIn from '@/components/User/LogIn.vue'
-import CommonFooter from '@/components/Common/CommonFooter.vue'
+import NavBar from "@/components/Common/NavBar.vue";
+import LogIn from "@/components/User/LogIn.vue";
+import CommonFooter from "@/components/Common/CommonFooter.vue";
 
 export default {
   components: {
     NavBar,
     LogIn,
-    CommonFooter,   
-  }
-
-}
+    CommonFooter,
+  },
+};
 </script>
 
 <style scoped>
-.login{
+.login {
   height: 90vh !important;
 }
 </style>
