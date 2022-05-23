@@ -31,7 +31,7 @@
 <script>
 export default {
   name: "CreateSub",
-};
+}
 </script>
 
 <style scoped>

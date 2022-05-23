@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import CourseOutline from "@/components/User/CourseOutline.vue";
-import WriteReview from "@/components/User/WriteReview.vue";
-import ShowReview from "@/components/User/ShowReview.vue";
-import RelatedCourses from "@/components/User/RelatedCourses.vue";
-import NavBar from "@/components/Common/NavBar.vue";
-import CommonFooter from "@/components/Common/CommonFooter.vue";
+import CourseOutline from "@/components/User/CourseOutline"
+import WriteReview from "@/components/User/WriteReview"
+import ShowReview from "@/components/User/ShowReview"
+import RelatedCourses from "@/components/User/RelatedCourses"
+import NavBar from "@/components/Common/NavBar"
+import CommonFooter from "@/components/Common/CommonFooter"
 
 export default {
   components: {
@@ -28,7 +28,7 @@ export default {
     NavBar,
     CommonFooter,
   },
-};
+}
 </script>
 
 <style scoped>

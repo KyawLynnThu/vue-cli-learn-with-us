@@ -50,7 +50,7 @@
 <script>
 export default {
   name: "UserCourses",
-};
+}
 </script>
 
 <style scoped>

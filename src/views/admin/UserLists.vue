@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import AdminSidebar from "@/components/Common/AdminSidebar.vue";
-import AdminNavi from "@/components/Common/AdminNavi.vue";
-import UserLists from "@/components/Admin/UserLists.vue";
+import AdminSidebar from "@/components/Common/AdminSidebar"
+import AdminNavi from "@/components/Common/AdminNavi"
+import UserLists from "@/components/Admin/UserLists"
 
 export default {
   components: {
@@ -21,7 +21,7 @@ export default {
     AdminNavi,
     UserLists,
   },
-};
+}
 </script>
 
 <style scoped>

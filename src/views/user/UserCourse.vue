@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import UserSidebar from '@/components/Common/UserSidebar.vue';
-import UserNavi from '@/components/Common/UserNavi.vue';
-import UserCourses from '@/components/User/UserDashboard/UserCourses.vue';
+import UserSidebar from '@/components/Common/UserSidebar'
+import UserNavi from '@/components/Common/UserNavi'
+import UserCourses from '@/components/User/UserDashboard/UserCourses'
 
 export default {
   components: {
@@ -21,7 +21,7 @@ export default {
     UserNavi,
     UserCourses
   },
-};
+}
 </script>
 
 <style scoped>

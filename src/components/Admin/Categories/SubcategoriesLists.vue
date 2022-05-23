@@ -75,7 +75,7 @@
 <script>
 export default {
   name: "SubLists",
-};
+}
 </script>
 
 <style scoped>

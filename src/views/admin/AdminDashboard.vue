@@ -10,15 +10,15 @@
 </template>
 
 <script>
-import AdminSidebar from "@/components/Common/AdminSidebar.vue";
-import AdminNavi from "@/components/Common/AdminNavi.vue";
+import AdminSidebar from "@/components/Common/AdminSidebar"
+import AdminNavi from "@/components/Common/AdminNavi"
 
 export default {
   components: {
     AdminSidebar,
     AdminNavi,
   },
-};
+}
 </script>
 
 <style scoped>

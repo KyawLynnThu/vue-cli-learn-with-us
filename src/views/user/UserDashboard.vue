@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import UserSidebar from "@/components/Common/UserSidebar.vue";
-import UserNavi from "@/components/Common/UserNavi.vue";
-import CommonProfile from "@/components/Common/CommonProfile.vue";
+import UserSidebar from "@/components/Common/UserSidebar"
+import UserNavi from "@/components/Common/UserNavi"
+import CommonProfile from "@/components/Common/CommonProfile"
 
 export default {
   components: {
@@ -24,7 +24,7 @@ export default {
     UserNavi,
     CommonProfile,
   },
-};
+}
 </script>
 
 <style scoped>

@@ -74,7 +74,7 @@
 <script>
 export default {
   name: "CoursesList",
-};
+}
 </script>
 
 <style scoped>

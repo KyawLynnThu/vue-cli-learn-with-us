@@ -114,9 +114,9 @@
 </template>
 
 <script>
-import VueSlickCarousel from "vue-slick-carousel";
-import "vue-slick-carousel/dist/vue-slick-carousel.css";
-import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import VueSlickCarousel from "vue-slick-carousel"
+import "vue-slick-carousel/dist/vue-slick-carousel.css"
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css"
 export default {
   components: {
     VueSlickCarousel,
@@ -165,7 +165,7 @@ export default {
       }
     },
   },
-};
+}
 </script>
 
 <style scoped>
@@ -173,13 +173,5 @@ export default {
   width: 90%;
   margin: 0 auto;
   margin-top: 40px;
-}
-.slick-prev,
-.slick-next {
-  color: #000000 !important;
-}
-.slick-prev:before,
-.slick-next:before {
-  color: #000000 !important;
 }
 </style>

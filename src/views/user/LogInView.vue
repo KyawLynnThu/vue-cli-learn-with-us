@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import NavBar from "@/components/Common/NavBar.vue";
-import LogIn from "@/components/User/LogIn.vue";
-import CommonFooter from "@/components/Common/CommonFooter.vue";
+import NavBar from "@/components/Common/NavBar"
+import LogIn from "@/components/User/LogIn"
+import CommonFooter from "@/components/Common/CommonFooter"
 
 export default {
   components: {
@@ -19,7 +19,7 @@ export default {
     LogIn,
     CommonFooter,
   },
-};
+}
 </script>
 
 <style scoped>

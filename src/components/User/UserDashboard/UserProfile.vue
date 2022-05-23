@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import CommonProfile from "@/components/Common/CommonProfile.vue";
+import CommonProfile from "@/components/Common/CommonProfile.vue"
 
 export default {
   components: {
     CommonProfile,
   },
   name: "UserProfile",
-};
+}
 </script>
 
 <style>

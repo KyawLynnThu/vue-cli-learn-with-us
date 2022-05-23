@@ -25,7 +25,7 @@
 <script>
 export default {
   name: "CommonProfile",
-};
+}
 </script>
 
 <style scoped>

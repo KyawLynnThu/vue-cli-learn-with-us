@@ -13,7 +13,7 @@ export default {
     CommonProfile,
   },
   name: "AdminProfile",
-};
+}
 </script>
 
 <style scoped>

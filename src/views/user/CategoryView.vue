@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import CategoryCard from "@/components/User/CategoryCard.vue";
-import PagiNav from "@/components/User/PagiNav.vue";
-import NavBar from "@/components/Common/NavBar.vue";
-import CommonFooter from "@/components/Common/CommonFooter.vue";
+import CategoryCard from "@/components/User/CategoryCard"
+import PagiNav from "@/components/User/PagiNav"
+import NavBar from "@/components/Common/NavBar"
+import CommonFooter from "@/components/Common/CommonFooter"
 
 export default {
   components: {
@@ -22,7 +22,7 @@ export default {
     NavBar,
     CommonFooter,
   },
-};
+}
 </script>
 
 <style>

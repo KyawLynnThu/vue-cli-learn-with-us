@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import PagiNav from "@/components/User/PagiNav";
-import TotalCourse from "@/components/User/TotalCourse.vue";
-import SearchCard from "@/components/User/SearchCard.vue";
-import NavBar from "@/components/Common/NavBar.vue";
-import CommonFooter from "@/components/Common/CommonFooter.vue";
+import PagiNav from "@/components/User/PagiNav"
+import TotalCourse from "@/components/User/TotalCourse"
+import SearchCard from "@/components/User/SearchCard"
+import NavBar from "@/components/Common/NavBar"
+import CommonFooter from "@/components/Common/CommonFooter"
 export default {
   components: {
     PagiNav,
@@ -24,7 +24,7 @@ export default {
     NavBar,
     CommonFooter,
   },
-};
+}
 </script>
 
 <style>

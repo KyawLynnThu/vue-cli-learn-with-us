@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import NavBar from "@/components/Common/NavBar.vue";
-import AboutUs from "@/components/User/AboutUs.vue";
-import ContactUs from "@/components/User/ContactUs.vue";
-import OurService from "@/components/User/OurService.vue";
-import UserSayCard from "@/components/User/UserSayCard.vue";
-import CommonFooter from "@/components/Common/CommonFooter.vue";
+import NavBar from "@/components/Common/NavBar"
+import AboutUs from "@/components/User/AboutUs"
+import ContactUs from "@/components/User/ContactUs"
+import OurService from "@/components/User/OurService"
+import UserSayCard from "@/components/User/UserSayCard"
+import CommonFooter from "@/components/Common/CommonFooter"
 
 export default {
   components: {
@@ -39,7 +39,7 @@ export default {
     CommonFooter,
     ContactUs,
   },
-};
+}
 </script>
 
 <style>

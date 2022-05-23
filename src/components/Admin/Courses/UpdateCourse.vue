@@ -82,7 +82,7 @@
 <script>
 export default {
   name: "UpdateCourses",
-};
+}
 </script>
 
 <style scoped>

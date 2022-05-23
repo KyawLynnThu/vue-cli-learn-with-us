@@ -29,7 +29,7 @@
 <script>
 export default {
   name: "PwSetting",
-};
+}
 </script>
 
 <style scoped>
