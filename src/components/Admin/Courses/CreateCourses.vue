@@ -71,7 +71,7 @@
             />
           </div>
           <div class="form-group mx-5">
-            <button class="btn btn-primary">Create</button>
+            <router-link :to="{name: 'confirmCourse'}" class="btn btn-primary">Create</router-link>
           </div>
         </form>
       </div>

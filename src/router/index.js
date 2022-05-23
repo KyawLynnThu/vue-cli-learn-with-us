@@ -19,6 +19,7 @@ import CreateCategoryView from '@/views/admin/CreateCategoryView';
 import UpdateCategoryView from '@/views/admin/UpdateCategoryView';
 import CreateCourseView from '@/views/admin/CreateCourseView';
 import UpdateCourseView from '@/views/admin/UpdateCourseView';
+import ConfirmCourseView from '@/views/admin/ConfirmCourseView';
 import NotFound from '@/views/NotFound.vue';
 Vue.use(VueRouter);
 
@@ -118,6 +119,11 @@ const routes = [
     path: "/updatecourse",
     name: "updateCourse",
     component: UpdateCourseView
+  },
+  {
+    path: "/confirmcourse",
+    name: "confirmCourse",
+    component: ConfirmCourseView
   },
   {
     path: "*",

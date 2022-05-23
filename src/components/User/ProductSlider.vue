@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VueSlickCarousel v-bind="settings" ref="carousel" class="slide clearfix">
+    <VueSlickCarousel v-bind="setting" ref="carousel" class="slide clearfix">
       <div class="col">
         <div class="card">
           <img
@@ -123,14 +123,47 @@ export default {
   },
   data() {
     return {
-      settings: {
+      setting1: {
         focusOnSelect: true,
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
         speed: 500,
       },
+      setting2: {
+        focusOnSelect: true,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        speed: 500,
+      },
+      setting3: {
+        focusOnSelect: true,
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        speed: 500,
+      },
+      windowWidth: window.innerWidth,
     };
+  },
+  mounted() {
+    window.onresize = () => {
+      this.windowWidth = window.screen.width;
+    };
+  },
+  computed: {
+    setting() {
+      if (this.windowWidth >= 768) {
+        //console.log(this.windowWidth)
+        return this.setting1;
+      }
+      if (this.windowWidth >= 576) {
+        return this.setting2;
+      } else {
+        return this.setting3;
+      }
+    },
   },
 };
 </script>
