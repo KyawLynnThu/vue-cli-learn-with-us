@@ -5,14 +5,15 @@
       <form class="bg-light p-4">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" required />
+          <input v-model="checkUser.email" type="email" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="">Password</label>
-          <input type="password" class="form-control" required />
+          <input v-model="checkUser.password" type="password" class="form-control" required />
         </div>
         <div class="mb-3 mt-3">
           <button
+            @click="login"
             type="submit"
             class="
               login-btn
@@ -47,9 +48,38 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "LogIn",
-};
+  data () {
+    return {
+      userLilsts: [],
+      checkUser : {
+        email: '',
+        password: ''
+      },
+      message:''
+    }
+  },
+  methods:{
+    get() {
+      axios.get('http://localhost:3000/userLilsts')
+      .then(response => {
+        this.userLilsts = response.data
+      });
+    },
+    login(){
+      if(this.checkUser.email != this.userLists.email && this.checkUser.password != this.userLists.password){
+        this.$router.push('/signUp')
+      }else{
+        this.$router.push('/')
+      }
+    }
+  },
+  created() {
+    this.get();
+  }
+}
 </script>
 
 <style scoped>

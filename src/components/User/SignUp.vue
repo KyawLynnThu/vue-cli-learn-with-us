@@ -5,22 +5,23 @@
       <form class="bg-light p-4">
         <div class="form-group">
           <label for="name">Username</label>
-          <input type="text" class="form-control" required />
+          <input v-model="newUser.name" type="text" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" required />
+          <input v-model="newUser.email" type="email" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="">Password</label>
-          <input type="password" class="form-control" required />
+          <input v-model="newUser.password" type="password" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="">Confirm Password</label>
-          <input type="password" class="form-control" required />
+          <input v-model="newUser.password" type="password" class="form-control" required />
         </div>
         <div class="mb-3 mt-3">
           <router-link
+            @click="addNew"
             :to="{ name: 'confirmSignup' }"
             type="submit"
             class="btn btn-dark btn-block text-uppercase font-weight-bold"
@@ -47,9 +48,40 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "SignUp",
-};
+  data () {
+    return {
+      userLilsts: [],
+      newUser : {
+        name: '',
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods:{
+    get() {
+      axios.get('http://localhost:3000/userLilsts')
+      .then(response => {
+        this.userLilsts = response.data
+      });
+    },
+    addNew() {
+      axios.post('http://localhost:3000/userLilsts', this.newUser)
+      .then(response => {
+        this.userLilsts = response.data;
+        this.newUser = {name:'', email:'', password:''};
+        console.log(this.userLilsts);
+      })
+    }
+  },
+  created() {
+    this.get();
+  }
+  
+}
 </script>
 
 <style scoped>
