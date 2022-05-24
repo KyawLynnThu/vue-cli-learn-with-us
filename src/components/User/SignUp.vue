@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row confirm">
     <div class="col-lg-4 col-md-6 col-12 mx-auto">
       <h2 class="text-center m-3 text-uppercase">Sign Up</h2>
       <form class="bg-light p-4">
@@ -56,5 +56,8 @@ export default {
 .form-control:focus {
   border-color: #030303 !important;
   box-shadow: none !important;
+}
+.confirm {
+  margin-top: 35px;
 }
 </style>

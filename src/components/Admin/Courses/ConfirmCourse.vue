@@ -53,7 +53,7 @@
           </div>
           <div class="form-group mx-5">
             <label for="video">Video</label>
-            <video autoplay preload="auto">
+            <video autoplay muted controls preload="auto">
               <source src="@/assets/video.mp4" type="video/mp4" />
             </video>
           </div>
@@ -76,7 +76,7 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

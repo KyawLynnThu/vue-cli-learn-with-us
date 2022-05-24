@@ -2,7 +2,7 @@
   <div>
     <VueSlickCarousel v-bind="setting" ref="carousel" class="slide clearfix">
       <div class="col">
-        <div class="card">
+        <div class="card shadow">
           <img
             class="card-img-top"
             src="https://picsum.photos/600/300/?image=24"
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card">
+        <div class="card shadow">
           <img
             class="card-img-top"
             src="https://picsum.photos/600/300/?image=25"
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card">
+        <div class="card shadow">
           <img
             class="card-img-top"
             src="https://picsum.photos/600/300/?image=26"
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card">
+        <div class="card shadow">
           <img
             class="card-img-top"
             src="https://picsum.photos/600/300/?image=27"
@@ -74,7 +74,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card">
+        <div class="card shadow">
           <img
             class="card-img-top"
             src="https://picsum.photos/600/300/?image=28"
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card">
+        <div class="card shadow">
           <img
             class="card-img-top"
             src="https://picsum.photos/600/300/?image=29"
@@ -114,9 +114,9 @@
 </template>
 
 <script>
-import VueSlickCarousel from "vue-slick-carousel"
-import "vue-slick-carousel/dist/vue-slick-carousel.css"
-import "vue-slick-carousel/dist/vue-slick-carousel-theme.css"
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 export default {
   components: {
     VueSlickCarousel,
@@ -156,15 +156,14 @@ export default {
     setting() {
       if (this.windowWidth >= 768) {
         return this.setting1;
-      }
-      else if (this.windowWidth >= 640) {
+      } else if (this.windowWidth >= 640) {
         return this.setting2;
       } else {
         return this.setting3;
       }
     },
   },
-}
+};
 </script>
 
 <style scoped>

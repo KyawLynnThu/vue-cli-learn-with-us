@@ -3,9 +3,7 @@
     <nav-bar />
     <video-banner />
     <h3>Top Courses</h3>
-    <product-slider />
-    <h3>Free Courses</h3>
-    <product-slider />
+    <product-slider></product-slider>
     <home-section />
     <home-section />
     <common-footer />
