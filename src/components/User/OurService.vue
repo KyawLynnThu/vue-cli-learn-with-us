@@ -1,11 +1,11 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <h2 class="text-center m-5 font-weight-bold">Our Services</h2>
+      <h2 class="text-center mx-5 mt-5 mb-4 font-weight-bold">Our Services</h2>
     </div>
     <div class="col-12 col-md-6 m-auto">
       <ul>
-        <li class="m-2">24-hour Excellent customer services</li>
+        <li class="mx-2 mt-3">24-hour Excellent customer services</li>
         <li class="m-2">Free Course (Beginner Level)</li>
         <li class="m-2">Paid Course (Intermediate and Advanced Level</li>
         <li class="m-2">Upload new courses everyday.</li>

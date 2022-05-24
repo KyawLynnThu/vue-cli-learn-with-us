@@ -1,5 +1,5 @@
 <template>
-  <div class="row mt-3 pl-md-5">
+  <div class="row mt-4 pl-md-5">
     <div class="col-md-7">
       <div>
         <iframe
@@ -13,7 +13,7 @@
         >
         </iframe>
       </div>
-      <h5 class="mt-3">Title</h5>
+      <h5 class="mt-3 mb-3">Title</h5>
       <p>Description</p>
       <p class="">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sapiente

@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-lg-4 col-md-6 col-12 mx-auto mt-5">
+    <div class="col-lg-4 col-md-6 col-12 mx-auto ">
       <h2 class="text-center m-3 text-uppercase">Sign Up</h2>
       <form class="bg-light p-4">
         <div class="form-group">
@@ -19,18 +19,22 @@
           <label for="">Confirm Password</label>
           <input type="password" class="form-control" required />
         </div>
-        <button
+        <div class="mb-3 mt-3">
+          <button
           type="submit"
           class="btn btn-dark btn-block text-uppercase font-weight-bold"
         >
           Register
         </button>
-        <button
+        </div>
+        <div >
+          <button
           type="submit"
           class="btn btn-outline-dark btn-block text-uppercase font-weight-bold"
         >
           log in
         </button>
+        </div>
       </form>
     </div>
   </div>

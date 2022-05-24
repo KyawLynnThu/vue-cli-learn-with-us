@@ -11,13 +11,16 @@
           <label for="">Password</label>
           <input type="password" class="form-control" required />
         </div>
-        <button
+       <div class="mb-3 mt-3">
+          <button
           type="submit"
-          class="btn btn-dark btn-block text-uppercase font-weight-bold"
+          class="login-btn btn btn-dark btn-block text-uppercase font-weight-bold "
         >
           log in
         </button>
-        <button
+       </div>
+        <div class="mb-3">
+          <button
           type="submit"
           class="
             btn btn-outline-dark btn-block
@@ -28,7 +31,10 @@
         >
           Register
         </button>
-        <a class="text-decoration-none text-dark">Forgot Password?</a>
+        </div>
+        <div class="text-center mt-1">
+          <a class="text-decoration-none text-dark">Forgot Password?</a>
+        </div>
       </form>
     </div>
   </div>
@@ -45,4 +51,7 @@ export default {
   border-color: #030303 !important;
   box-shadow: none !important;
 }
+/*.login-btn{
+  margin-top: 16px;
+}*/
 </style>

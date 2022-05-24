@@ -14,13 +14,13 @@
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </div>
-    <div class="col-12 col-md-6 mt-3 mt-md-0">
+    <div class="col-12 col-md-6 mt-3 mt-md-0 ">
       <p class="">
-        <span><i class="fas fa-map-marker-alt"></i></span>&nbsp; No.(56), Mya
+        <span><i class="fas fa-map-marker-alt pr-3"></i></span> No.(56), Mya
         Thidar Street, Pyay Road, Kamyut Township, Yangon
       </p>
       <div class="mb-2">
-        <span><i class="fas fa-phone-alt"></i></span>&nbsp;
+        <span><i class="fas fa-phone-alt pr-3"></i></span>
         <a
           href="tel:+(+95)9258369147"
           class="mb-5 text-decoration-none text-dark"
@@ -28,20 +28,20 @@
         </a>
       </div>
       <div>
-        <span><i class="fas fa-envelope"></i></span>&nbsp;
+        <span><i class="fas fa-envelope pr-3"></i></span>
         <a
           href="mailto:yourname@domain.com"
-          class="text-decoration-none text-dark"
+          class="text-decoration-none text-dark "
         >
-          learnwithus@gmail.com</a
-        >
+         learnwithus@gmail.com
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

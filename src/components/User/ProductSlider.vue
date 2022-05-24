@@ -155,10 +155,9 @@ export default {
   computed: {
     setting() {
       if (this.windowWidth >= 768) {
-        //console.log(this.windowWidth)
         return this.setting1;
       }
-      if (this.windowWidth >= 576) {
+      else if (this.windowWidth >= 640) {
         return this.setting2;
       } else {
         return this.setting3;

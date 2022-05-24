@@ -17,8 +17,8 @@
             <input type="text" class="form-control" id="courseName" required />
           </div>
           <div class="text-center mt-4">
-            <button class="btn btn-danger col-md-4 mr-2 mb-2">Change</button>
-            <button class="btn btn-primary col-md-4 mb-2">Cancel</button>
+            <button class="btn btn-primary col-md-4 mr-2 mb-2">Change</button>
+            <button class="btn btn-danger col-md-4 mb-2">Cancel</button>
           </div>
         </form>
       </div>

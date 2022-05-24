@@ -1,16 +1,20 @@
 <template>
   <div class="row mt-5 pl-md-5">
     <div class="col-md-7">
-      <h2>Reviews</h2>
+      <h2 class="mb-3">Reviews</h2>
       <div class="row">
-        <div class="col-md-12 col-sm-4" v-for="i in [1, 2, 3]" :key="i">
+        <div class="col-12" v-for="i in [1, 2, 3]" :key="i">
           <div class="card mb-3 bg-light">
-            <div class="row no-gutters">
-              <div class="col-md-2 text-center">
-                <img src="@/assets/dog.jpg" alt="" class="w-75 h-75 mt-4" />
+            <div class="row no-gutters p-0">
+              <div class="col-2 text-left pt-3 pl-3">
+                <img
+                  src="@/assets/dog.jpg"
+                  class="rounded-circle review-cmt-img"
+                  alt=""
+                />
               </div>
-              <div class="col-md-10 p-2">
-                <div class="card-body px-0 ml-sm-3 ml-5 ml-md-0">
+              <div class="col-10">
+                <div class="card-body px-md-0 px-sm-0 px-xs-5">
                   <h5 class="card-title font-weight-bolder mb-4">Username</h5>
                   <p class="card-text pr-3">
                     Should have more pratical stuff than theory part , with each
@@ -28,8 +32,14 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>
+.review-cmt-img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
 </style>
