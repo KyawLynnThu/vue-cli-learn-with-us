@@ -23,8 +23,8 @@ export default {
 
 <style scoped>
 .about-cmt-img {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border: 1px solid black;
   border-radius: 50%;
 }
