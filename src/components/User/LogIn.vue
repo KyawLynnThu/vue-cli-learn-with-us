@@ -11,26 +11,32 @@
           <label for="">Password</label>
           <input type="password" class="form-control" required />
         </div>
-       <div class="mb-3 mt-3">
+        <div class="mb-3 mt-3">
           <button
-          type="submit"
-          class="login-btn btn btn-dark btn-block text-uppercase font-weight-bold "
-        >
-          log in
-        </button>
-       </div>
+            type="submit"
+            class="
+              login-btn
+              btn btn-dark btn-block
+              text-uppercase
+              font-weight-bold
+            "
+          >
+            log in
+          </button>
+        </div>
         <div class="mb-3">
-          <button
-          type="submit"
-          class="
-            btn btn-outline-dark btn-block
-            text-uppercase
-            mb-3
-            font-weight-bold
-          "
-        >
-          Register
-        </button>
+          <router-link
+            :to="{ name: 'SignUp' }"
+            type="submit"
+            class="
+              btn btn-outline-dark btn-block
+              text-uppercase
+              mb-3
+              font-weight-bold
+            "
+          >
+            Register
+          </router-link>
         </div>
         <div class="text-center mt-1">
           <a class="text-decoration-none text-dark">Forgot Password?</a>
@@ -43,7 +49,7 @@
 <script>
 export default {
   name: "LogIn",
-}
+};
 </script>
 
 <style scoped>

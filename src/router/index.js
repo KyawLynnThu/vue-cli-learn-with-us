@@ -10,6 +10,7 @@ import SignUpView from '@/views/user/SignUpView'
 import UserDashboard from '@/views/user/UserDashboard'
 import PasswordSetting from '@/views/user/PasswordSetting'
 import UserCourse from '@/views/user/UserCourse'
+import ConfirmSignupView from '@/views/user/ConfirmSignupView'
 import AdminDashboard from '@/views/admin/AdminDashboard'
 import SubCategory from '@/views/admin/SubCategory'
 import CoursesView from '@/views/admin/CoursesView'
@@ -124,6 +125,11 @@ const routes = [
     path: "/confirmcourse",
     name: "confirmCourse",
     component: ConfirmCourseView
+  },
+  {
+    path: "/confirmsignup",
+    name: "confirmSignup",
+    component: ConfirmSignupView
   },
   {
     path: "*",

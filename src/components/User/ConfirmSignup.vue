@@ -5,32 +5,32 @@
       <form class="bg-light p-4">
         <div class="form-group">
           <label for="name">Username</label>
-          <input type="text" class="form-control" required />
+          <h6>Example Username</h6>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" required />
+          <h6>Example123@gmail.com</h6>
         </div>
         <div class="form-group">
           <label for="">Password</label>
-          <input type="password" class="form-control" required />
+          <h6>agsd#rrte132343</h6>
         </div>
         <div class="form-group">
           <label for="">Confirm Password</label>
-          <input type="password" class="form-control" required />
+          <h6>agsd#rrte132343</h6>
         </div>
-        <div class="mb-3 mt-3">
+        <div class="mb-3 mt-4">
           <router-link
-            :to="{ name: 'confirmSignup' }"
+            :to="{ name: 'LogIn' }"
             type="submit"
             class="btn btn-dark btn-block text-uppercase font-weight-bold"
           >
-            Register
+            CONFIRM
           </router-link>
         </div>
         <div>
           <router-link
-            :to="{ name: 'LogIn' }"
+            :to="{ name: 'SignUp' }"
             type="submit"
             class="
               btn btn-outline-dark btn-block
@@ -38,7 +38,7 @@
               font-weight-bold
             "
           >
-            log in
+            BACK
           </router-link>
         </div>
       </form>
@@ -56,5 +56,13 @@ export default {
 .form-control:focus {
   border-color: #030303 !important;
   box-shadow: none !important;
+}
+label {
+  font-weight: bold;
+  display: block;
+}
+h6 {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 </style>
