@@ -21,6 +21,11 @@
           ><span class="fa fa-user"></span> Users</router-link
         >
       </li>
+      <li>
+        <router-link :to="{ name: 'userUpload' }"
+          ><span class="fas fa-upload"></span> Users Upload</router-link
+        >
+      </li>
     </ul>
   </nav>
 </template>

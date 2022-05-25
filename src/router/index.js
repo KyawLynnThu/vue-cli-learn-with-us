@@ -21,6 +21,7 @@ import UpdateCategoryView from '@/views/admin/UpdateCategoryView'
 import CreateCourseView from '@/views/admin/CreateCourseView'
 import UpdateCourseView from '@/views/admin/UpdateCourseView'
 import ConfirmCourseView from '@/views/admin/ConfirmCourseView'
+import UserUpload from '@/views/admin/UserUpload'
 import NotFound from '@/views/NotFound'
 Vue.use(VueRouter);
 
@@ -130,6 +131,11 @@ const routes = [
     path: "/confirmsignup",
     name: "confirmSignup",
     component: ConfirmSignupView
+  },
+  {
+    path: "/userupload",
+    name: "userUpload",
+    component: UserUpload
   },
   {
     path: "*",

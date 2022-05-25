@@ -5,7 +5,7 @@
         <h3 class="card-title my-3 pb-2 d-flex justify-content-center">
           Create Subcategory
         </h3>
-        <form @submit.prevent="create(category)">
+        <form>
           <div class="form-group row">
             <label for="subcatName" class="col-md-4 col-sm-5 col-form-label"
               >Enter Subcategory Name</label
@@ -19,8 +19,8 @@
               />
             </div>
           </div>
-          <div class="text-center">
-            <button class="btn btn-primary" type="submit">Create</button>
+          <div class="text-center" @click="create">
+            <button class="btn btn-primary">Create</button>
           </div>
         </form>
       </div>
@@ -32,11 +32,20 @@
 import axios from 'axios'
 export default {
   name: "CreateSub",
+  data() {
+    return {
+      categories: {},
+      category: {
+        name: '',
+      }
+    }
+  },
   methods: {
-    create(category){
-      axios.post('http://localhost:8000/api/categories',category)
-      .then((response)=>{
-        
+    create(){
+      axios.post('http://localhost:8000/api/categories', this.category)
+      .then(response => {
+        this.categories = response.data
+        this.$router.push('/subcategory');
       })
     }
   }
