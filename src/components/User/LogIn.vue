@@ -5,14 +5,15 @@
       <form class="bg-light p-4">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" required />
+          <input v-model="loginData.email" type="email" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="">Password</label>
-          <input type="password" class="form-control" required />
+          <input v-model="loginData.password" type="password" class="form-control" required />
         </div>
         <div class="mb-3 mt-3">
           <button
+            @click="login"
             type="submit"
             class="
               login-btn
@@ -47,8 +48,27 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "LogIn",
+  data(){
+    return{
+      loginData:{
+        email:'',
+        password:''
+      }
+    }
+  },
+  methods:{
+    login(){
+      axios.post('http://127.0.0.1:8000/api/user/login', this.login)
+        .then(res=>{
+          let token=res.data.user.api_token;
+          localStorage.setItem('token',token);
+          this.$router.push('/');
+        })
+    }
+  }
 };
 </script>
 
