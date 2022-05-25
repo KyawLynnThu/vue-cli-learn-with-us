@@ -5,7 +5,6 @@
         <i class="fas fa-plus-square"></i> &nbsp; Add
       </router-link>
     </div>
-
     <h2 class="my-4">Category Lists</h2>
     <div class="table-responsive">
       <table class="table table-hover text-center">
@@ -18,9 +17,9 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
+          <tr v-for="category in categories" :key="category.id">
+            <th scope="row">{{ category.id }}</th>
+            <td>{{ category.name }}</td>
             <td>Otto</td>
             <td>
               <router-link
@@ -29,39 +28,7 @@
               >
                 <i class="fas fa-pen"></i>
               </router-link>
-              <button class="btn btn-danger">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>
-              <router-link
-                :to="{ name: 'updateCategory' }"
-                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
-              >
-                <i class="fas fa-pen"></i>
-              </router-link>
-              <button class="btn btn-danger">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Larry the Bird</td>
-            <td>
-              <router-link
-                :to="{ name: 'updateCategory' }"
-                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
-              >
-                <i class="fas fa-pen"></i>
-              </router-link>
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" @click="destroy(category.id)">
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -73,8 +40,31 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "SubLists",
+  data () {
+    return {
+      categories: {},
+    }
+  },
+  mounted () {
+    axios
+      .get('http://localhost:8000/api/categories')
+      .then(response => {
+        this.categories = response.data
+      })
+      .catch(error => console.log(error));
+  },
+  methods: {
+    destroy(id){
+      axios
+        .delete(`http://localhost:8000/api/categories/${id}`)
+        .then(response=> { 
+          this.categories = response.data
+        });
+    }
+  }
 }
 </script>
 
