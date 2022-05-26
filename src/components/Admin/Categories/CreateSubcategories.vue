@@ -5,33 +5,66 @@
         <h3 class="card-title my-3 pb-2 d-flex justify-content-center">
           Create Subcategory
         </h3>
-        <form>
-          <div class="form-group row">
-            <label for="subcatName" class="col-md-4 col-sm-5 col-form-label"
-              >Enter Subcategory Name</label
+        <ValidationObserver v-slot="{ handleSubmit }">
+          <form @submit.prevent="handleSubmit(onSubmit)">
+            <ValidationProvider
+              name="SubCategory name"
+              rules="required|alpha"
+              v-slot="{ errors }"
             >
-            <div class="col-md-8 col-sm-7">
-              <input
-                type="text"
-                class="form-control"
-                id="subcatName"
-                required
-              />
+              <div class="form-group row">
+                <label for="subcatName" class="col-md-4 col-sm-5 col-form-label"
+                  >Enter Subcategory Name</label
+                >
+                <div class="col-md-8 col-sm-7">
+                  <input
+                    v-model="name"
+                    type="text"
+                    class="form-control"
+                    id="subcatName"
+                  />
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
+              </div>
+            </ValidationProvider>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Create</button>
             </div>
-          </div>
-          <div class="text-center">
-            <button class="btn btn-primary">Create</button>
-          </div>
-        </form>
+          </form>
+        </ValidationObserver>
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+import { required, alpha } from "vee-validate/dist/rules";
+extend("required", {
+  ...required,
+  message: (field) => field + ` can't blank`,
+});
+extend("alpha", {
+  ...alpha,
+  message: (field) => field + ` may only contain alphabetic characters`,
+});
 export default {
   name: "CreateSub",
-}
+  components: {
+    ValidationProvider,
+    ValidationObserver,
+  },
+  data() {
+    return {
+      name: "",
+    };
+  },
+  methods: {
+    onSubmit() {
+      alert("success");
+    },
+  },
+};
 </script>
 
 <style scoped>
