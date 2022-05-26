@@ -1,28 +1,35 @@
 <template>
-  <div class="container-fluid ">
-    <CourseOutline></CourseOutline>
-    <WriteReview></WriteReview>
-    <ShowReview></ShowReview>
-    <RelatedCourses></RelatedCourses>
+  <div>
+    <nav-bar />
+    <div class="container-fluid">
+      <course-outline />
+      <write-review />
+      <show-review />
+      <related-courses />
+    </div>
+    <common-footer />
   </div>
 </template>
 
 <script>
+import CourseOutline from "@/components/User/CourseOutline"
+import WriteReview from "@/components/User/WriteReview"
+import ShowReview from "@/components/User/ShowReview"
+import RelatedCourses from "@/components/User/RelatedCourses"
+import NavBar from "@/components/Common/NavBar"
+import CommonFooter from "@/components/Common/CommonFooter"
 
-import RelatedCourses from '../../components/detail/RelatedCourses'
-import ShowReview from '../../components/detail/ShowReview'
-import WriteReview from '../../components/detail/WriteReview'
-import CourseOutline from '../../components/detail/CourseOutline'
 export default {
   components: {
-    RelatedCourses,
-    ShowReview,
+    CourseOutline,
     WriteReview,
-     CourseOutline },
-
+    ShowReview,
+    RelatedCourses,
+    NavBar,
+    CommonFooter,
+  },
 }
 </script>
 
 <style scoped>
-
 </style>

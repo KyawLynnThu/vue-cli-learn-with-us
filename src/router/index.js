@@ -1,37 +1,140 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import HomeView from '../views/user/HomeView.vue';
-import AboutView from '../views/user/AboutView.vue';
-import SearchView from '../views/user/SearchView.vue';
-import CategoryView from '../views/user/CategoryView.vue';
-import CourseDetail from '../views/user/CourseDetail.vue';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import HomeView from '@/views/user/HomeView'
+import AboutView from '@/views/user/AboutView'
+import SearchView from '@/views/user/SearchView'
+import CategoryView from '@/views/user/CategoryView'
+import CourseDetail from '@/views/user/CourseDetail'
+import LogInView from '@/views/user/LogInView'
+import SignUpView from '@/views/user/SignUpView'
+import UserDashboard from '@/views/user/UserDashboard'
+import PasswordSetting from '@/views/user/PasswordSetting'
+import UserCourse from '@/views/user/UserCourse'
+import ConfirmSignupView from '@/views/user/ConfirmSignupView'
+import AdminDashboard from '@/views/admin/AdminDashboard'
+import SubCategory from '@/views/admin/SubCategory'
+import CoursesView from '@/views/admin/CoursesView'
+import UserLists from '@/views/admin/UserLists'
+import AdminProfileView from '@/views/admin/AdminProfileView'
+import CreateCategoryView from '@/views/admin/CreateCategoryView'
+import UpdateCategoryView from '@/views/admin/UpdateCategoryView'
+import CreateCourseView from '@/views/admin/CreateCourseView'
+import UpdateCourseView from '@/views/admin/UpdateCourseView'
+import ConfirmCourseView from '@/views/admin/ConfirmCourseView'
+import NotFound from '@/views/NotFound'
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component:HomeView
+    component: HomeView
   },
   {
-    path: "about",
+    path: "/login",
+    name: "LogIn",
+    component: LogInView
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: SignUpView
+  },
+  {
+    path: "/about",
     name: "About",
-    component:AboutView
+    component: AboutView
   },
   {
-    path: "search",
+    path: "/search",
     name: "Search",
-    component:SearchView
+    component: SearchView
   },
   {
-    path: "category",
+    path: "/category",
     name: "Category",
-    component:CategoryView
+    component: CategoryView
   },
   {
-    path: "detail",
+    path: "/detail",
     name: "Detail",
-    component:CourseDetail
+    component: CourseDetail
+  },
+  {
+    path: "/userdashboard",
+    name: "userDashboard",
+    component: UserDashboard
+  },
+  {
+    path: "/passwordsetting",
+    name: "passwordSetting",
+    component: PasswordSetting
+  },
+  {
+    path: "/usercourse",
+    name: "userCourse",
+    component: UserCourse
+  },
+  //Admin
+  {
+    path: "/admindashboard",
+    name: "AdminDashboard",
+    component: AdminDashboard
+  },
+  {
+    path: "/subcategory",
+    name: "subCategory",
+    component: SubCategory
+  },
+  {
+    path: "/courses",
+    name: "Courses",
+    component: CoursesView
+  },
+  {
+    path: "/userlists",
+    name: "userLists",
+    component: UserLists
+  },
+  {
+    path: "/adminprofile",
+    name: "adminProfile",
+    component: AdminProfileView
+  },
+  {
+    path: "/createcategory",
+    name: "createCategory",
+    component: CreateCategoryView
+  },
+  {
+    path: "/updatecategory",
+    name: "updateCategory",
+    component: UpdateCategoryView
+  },
+  {
+    path: "/createcourse",
+    name: "createCourse",
+    component: CreateCourseView
+  },
+  {
+    path: "/updatecourse",
+    name: "updateCourse",
+    component: UpdateCourseView
+  },
+  {
+    path: "/confirmcourse",
+    name: "confirmCourse",
+    component: ConfirmCourseView
+  },
+  {
+    path: "/confirmsignup",
+    name: "confirmSignup",
+    component: ConfirmSignupView
+  },
+  {
+    path: "*",
+    name: "notFound",
+    component: NotFound
   }
 ]
 

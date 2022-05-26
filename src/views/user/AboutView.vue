@@ -1,28 +1,46 @@
 <template>
-  <div class="container">
-    <AboutUs></AboutUs>
-    <ContactUs></ContactUs>
-    <OurService></OurService>
-    <UserSay></UserSay>
+  <div>
+    <nav-bar />
+    <div class="container">
+      <about-us />
+      <contact-us />
+      <our-service />
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-center m-5 font-weight-bold">What our users say</h2>
+        </div>
+        <div
+          class="col-lg-3 col-sm-6 col-12"
+          v-for="j in [1, 2, 3, 4]"
+          :key="j"
+        >
+          <user-say-card />
+        </div>
+      </div>
+    </div>
+    <common-footer />
   </div>
 </template>
 
 <script>
-import UserSay from '../../components/about/UserSay/UserSay'
-import OurService from '../../components/about/OurService'
-import ContactUs from '../../components/about/ContactUs'
-import AboutUs from '../../components/about/AboutUs'
+import NavBar from "@/components/Common/NavBar"
+import AboutUs from "@/components/User/AboutUs"
+import ContactUs from "@/components/User/ContactUs"
+import OurService from "@/components/User/OurService"
+import UserSayCard from "@/components/User/UserSayCard"
+import CommonFooter from "@/components/Common/CommonFooter"
 
 export default {
   components: {
-    UserSay,
+    NavBar,
+    AboutUs,
     OurService,
+    UserSayCard,
+    CommonFooter,
     ContactUs,
-    AboutUs, },
-
+  },
 }
 </script>
 
 <style>
-
 </style>

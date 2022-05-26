@@ -1,24 +1,39 @@
 <template>
   <div>
-   <LogIn></LogIn>
-   <SignUp></SignUp>
+    <nav-bar />
+    <video-banner />
+    <h3>Top Courses</h3>
+    <product-slider></product-slider>
+    <home-section />
+    <home-section />
+    <common-footer />
   </div>
 </template>
 
 <script>
+import NavBar from "@/components/Common/NavBar"
+import CommonFooter from "@/components/Common/CommonFooter"
+import VideoBanner from "@/components/User/VideoBanner"
+import ProductSlider from "@/components/User/ProductSlider"
+import HomeSection from "@/components/User/HomeSection"
 
-
-import SignUp from '../../components/SignUp'
-import LogIn from '../../components/LogIn'
 export default {
   components: {
-    SignUp,
-    LogIn,
-  }
-
+    NavBar,
+    CommonFooter,
+    VideoBanner,
+    ProductSlider,
+    HomeSection,
+  },
 }
 </script>
 
-<style>
-
+<style scoped>
+h3 {
+  text-align: left;
+  text-decoration: underline;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
 </style>

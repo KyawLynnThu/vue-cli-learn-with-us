@@ -1,29 +1,29 @@
 <template>
   <div>
     <nav-bar />
-    <div class="container-fluid pt-5 px-5">
-      <category-card />
-      <pagi-nav />
+    <div class="container-fluid login">
+      <log-in />
     </div>
     <common-footer />
   </div>
 </template>
 
 <script>
-import CategoryCard from "@/components/User/CategoryCard"
-import PagiNav from "@/components/User/PagiNav"
 import NavBar from "@/components/Common/NavBar"
+import LogIn from "@/components/User/LogIn"
 import CommonFooter from "@/components/Common/CommonFooter"
 
 export default {
   components: {
-    CategoryCard,
-    PagiNav,
     NavBar,
+    LogIn,
     CommonFooter,
   },
 }
 </script>
 
-<style>
+<style scoped>
+.login {
+  height: 90vh !important;
+}
 </style>
