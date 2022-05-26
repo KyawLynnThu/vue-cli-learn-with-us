@@ -33,7 +33,7 @@
         <div class = "form-group">
           <label for ="">Confirm Password</label>
           <input
-            v-model = "registerData.password_comfirm"
+            v-model = "registerData.password_confirm"
             type = "password"
             class = "form-control"
             required
@@ -77,7 +77,7 @@ export default {
         name: "",
         email: "",
         password: "",
-        password_comfirm: "",
+        password_confirm: "",
       },
     };
   },

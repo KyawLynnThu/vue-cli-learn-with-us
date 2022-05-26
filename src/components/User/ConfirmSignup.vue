@@ -17,7 +17,7 @@
         </div>
         <div class = "form-group">
           <label for = "">Confirm Password</label>
-          <h6>{{ confirmData.password_comfirm }}</h6>
+          <h6>{{ confirmData.password_confirm }}</h6>
         </div>
         <div class = "mb-3 mt-4">
           <router-link
