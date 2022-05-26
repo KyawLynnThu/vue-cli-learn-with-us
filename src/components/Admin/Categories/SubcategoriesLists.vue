@@ -1,11 +1,12 @@
 <template>
-  <main role="main" class="col-md-12 ml-sm-auto pt-5 px-4 mb-5">
+  <main role="main" class="col-md-12 ml-sm-auto pt-4 px-4 mb-5">
     <div class="d-flex flex-wrap flex-md-nowrap">
-      <router-link :to="{ name: 'createCategory' }" class="btn btn-primary">
-        <i class="fas fa-plus-square"></i> &nbsp; Add
-      </router-link>
+      <h2 class="my-4">Category Lists</h2>
     </div>
-    <h2 class="my-4">Category Lists</h2>
+    <router-link :to="{ name: 'createCategory' }" class="btn btn-primary mb-4">
+      <i class="fas fa-plus-square"></i> &nbsp; Add
+    </router-link>
+
     <div class="table-responsive">
       <table class="table table-hover text-center">
         <thead class="bg-primary">
@@ -26,7 +27,10 @@
               >
                 <i class="fas fa-pen"></i>
               </router-link>
-              <button class="btn btn-danger" @click="deleteCat(category.id)">
+              <button
+                class="btn btn-danger"
+                @click.prevent="deleteCat(category.id)"
+              >
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -38,15 +42,15 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "SubLists",
   computed: mapGetters(["getCategories"]),
-  methods: mapActions(['getCat','deleteCat']),
+  methods: mapActions(["getCat", "deleteCat"]),
   mounted() {
     this.getCat();
-  }
-}
+  },
+};
 </script>
 
 <style scoped>

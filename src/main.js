@@ -7,6 +7,10 @@ window.jQuery = jQuery;
 import 'bootstrap';
 import router from "./router"
 import store from "./store"
+import Chartkick from 'vue-chartkick'
+import Chart from 'chart.js/auto'
+
+Vue.use(Chartkick.use(Chart));
 
 Vue.config.productionTip = false
 

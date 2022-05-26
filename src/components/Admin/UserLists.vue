@@ -1,11 +1,11 @@
 <template>
-  <main role="main" class="col-md-12 ml-sm-auto pt-5 px-4 mb-5">
+  <main role="main" class="col-md-12 ml-sm-auto pt-4 px-4 mb-5">
     <div class="d-flex flex-wrap flex-md-nowrap">
-      <a href="" class="btn btn-primary">
-        <i class="fas fa-download"></i> &nbsp; Download
-      </a>
+      <h2 class="my-4">User Lists</h2>
     </div>
-    <h2 class="my-4">User Lists</h2>
+    <a href="" class="btn btn-primary mb-4">
+      <i class="fas fa-download"></i> &nbsp; Download
+    </a>
     <div class="table-responsive">
       <table class="table table-hover text-center">
         <thead class="bg-primary">
@@ -60,7 +60,7 @@
 <script>
 export default {
   name: "UserLists",
-}
+};
 </script>
 
 <style scoped>

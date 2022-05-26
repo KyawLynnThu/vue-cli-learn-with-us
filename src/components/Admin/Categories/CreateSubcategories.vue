@@ -11,15 +11,13 @@
               >Enter Subcategory Name</label
             >
             <div class="col-md-8 col-sm-7">
-              <input
-                type="text"
-                class="form-control"
-                v-model="category.name"
-              />
+              <input type="text" class="form-control" v-model="category.name" />
             </div>
           </div>
-          <div class="text-center" @click="createCat()">
-            <button class="btn btn-primary">Create</button>
+          <div class="text-center">
+            <button class="btn btn-primary" @click.prevent="createCat()">
+              Create
+            </button>
           </div>
         </form>
       </div>
@@ -28,29 +26,37 @@
 </template>
 
 <script>
-import axios from 'axios'
-import store from '@/store'
+import axios from "axios";
+import store from "@/store";
 export default {
   name: "CreateSub",
   data() {
     return {
       category: {
-        name: '',
-      }
-    }
+        name: "",
+      },
+    };
   },
   methods: {
-      createCat(){
-        axios.post('http://localhost:8000/api/categories', this.category)
-        .then( response => {
-          let category =response.data;
-          store.commit('storeCategory', category);
-          this.$router.push({ name: 'subCategory' });
-          // this.$router.push({ path: '/' });
-        })    
-    }
-  }
-}
+    async createCat() {
+      console.log("hello", this.category.name);
+      axios
+        .post("http://localhost:8000/api/categories/", {
+          name: this.category.name,
+        })
+        .then((response) => {
+          console.log(response.data);
+          let category = response.data;
+          store.commit("storeCategory", category);
+          // this.$router.push({ name: 'subCategory' });
+          this.$router.push({ path: "/subCategory" });
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>

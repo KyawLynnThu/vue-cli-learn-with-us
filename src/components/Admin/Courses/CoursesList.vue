@@ -1,12 +1,12 @@
 <template>
-  <main role="main" class="col-md-12 ml-sm-auto pt-5 mb-5">
+  <main role="main" class="col-md-12 ml-sm-auto pt-4 mb-5">
     <div class="d-flex flex-wrap flex-md-nowrap">
-      <router-link :to="{ name: 'createCourse' }" class="btn btn-primary">
-        <i class="fas fa-plus-square"></i> &nbsp; Add
-      </router-link>
+      <h2 class="my-4">Course Lists</h2>
     </div>
+    <router-link :to="{ name: 'createCourse' }" class="btn btn-primary mb-4">
+      <i class="fas fa-plus-square"></i> &nbsp; Add
+    </router-link>
 
-    <h2 class="my-4">Course Lists</h2>
     <div class="table-responsive">
       <table class="table table-hover text-center">
         <thead class="bg-primary">
@@ -27,7 +27,10 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>
-              <router-link :to="{ name: 'updateCourse' }" class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2">
+              <router-link
+                :to="{ name: 'updateCourse' }"
+                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
+              >
                 <i class="fas fa-pen"></i>
               </router-link>
               <button class="btn btn-danger">
@@ -42,7 +45,10 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>
-              <router-link :to="{ name: 'updateCourse' }" class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2">
+              <router-link
+                :to="{ name: 'updateCourse' }"
+                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
+              >
                 <i class="fas fa-pen"></i>
               </router-link>
               <button class="btn btn-danger">
@@ -57,7 +63,10 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>
-              <router-link :to="{ name: 'updateCourse' }" class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2">
+              <router-link
+                :to="{ name: 'updateCourse' }"
+                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
+              >
                 <i class="fas fa-pen"></i>
               </router-link>
               <button class="btn btn-danger">
@@ -74,7 +83,7 @@
 <script>
 export default {
   name: "CoursesList",
-}
+};
 </script>
 
 <style scoped>
