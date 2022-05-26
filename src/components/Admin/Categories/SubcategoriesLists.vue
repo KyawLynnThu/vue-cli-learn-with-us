@@ -12,15 +12,13 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Subcategory Name</th>
-            <th scope="col">Courses</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr v-for="category in categories" :key="category.id">
+          <tr v-for="category in getCategories" :key="category.id">
             <th scope="row">{{ category.id }}</th>
             <td>{{ category.name }}</td>
-            <td>Otto</td>
             <td>
               <router-link
                 :to="{ name: 'updateCategory' }"
@@ -28,7 +26,7 @@
               >
                 <i class="fas fa-pen"></i>
               </router-link>
-              <button class="btn btn-danger" @click="destroy(category.id)">
+              <button class="btn btn-danger" @click="deleteCat(category.id)">
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -40,30 +38,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: "SubLists",
-  data () {
-    return {
-      categories: {},
-    }
-  },
-  mounted () {
-    axios
-      .get('http://localhost:8000/api/categories')
-      .then(response => {
-        this.categories = response.data
-      })
-      .catch(error => console.log(error));
-  },
-  methods: {
-    destroy(id){
-      axios
-        .delete(`http://localhost:8000/api/categories/${id}`)
-        .then(response=> { 
-          this.categories = response.data
-        });
-    }
+  computed: mapGetters(["getCategories"]),
+  methods: mapActions(['getCat','deleteCat']),
+  mounted() {
+    this.getCat();
   }
 }
 </script>

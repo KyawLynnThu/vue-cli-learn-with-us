@@ -14,12 +14,11 @@
               <input
                 type="text"
                 class="form-control"
-                id="subcatName"
                 v-model="category.name"
               />
             </div>
           </div>
-          <div class="text-center" @click="create">
+          <div class="text-center" @click="createCat()">
             <button class="btn btn-primary">Create</button>
           </div>
         </form>
@@ -30,23 +29,25 @@
 
 <script>
 import axios from 'axios'
+import store from '@/store'
 export default {
   name: "CreateSub",
   data() {
     return {
-      categories: {},
       category: {
         name: '',
       }
     }
   },
   methods: {
-    create(){
-      axios.post('http://localhost:8000/api/categories', this.category)
-      .then(response => {
-        this.categories = response.data
-        this.$router.push('/subcategory');
-      })
+      createCat(){
+        axios.post('http://localhost:8000/api/categories', this.category)
+        .then( response => {
+          let category =response.data;
+          store.commit('storeCategory', category);
+          this.$router.push({ name: 'subCategory' });
+          // this.$router.push({ path: '/' });
+        })    
     }
   }
 }
