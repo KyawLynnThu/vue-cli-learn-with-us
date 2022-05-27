@@ -5,8 +5,8 @@
         <h3 class="card-title my-3 pb-2 d-flex justify-content-center">
           Create Subcategory
         </h3>
-        <ValidationObserver v-slot="{ handleSubmit }">
-          <form @submit.prevent="handleSubmit(onSubmit)">
+        <ValidationObserver v-slot="{ }" ref="form">
+          <form @submit.prevent="onSubmit">
             <ValidationProvider
               name="SubCategory name"
               rules="required|alpha"
@@ -22,8 +22,12 @@
                     type="text"
                     class="form-control"
                     id="subcatName"
+                    name="name"
+                    :class="{ 'is-invalid': submitted   }"
                   />
-                  <span class="text-danger">{{ errors[0] }}</span>
+                   <div v-if="submitted " class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
                 </div>
               </div>
             </ValidationProvider>
@@ -57,13 +61,24 @@ export default {
   data() {
     return {
       name: "",
+      submitted:false
     };
   },
   methods: {
-    onSubmit() {
-      alert("success");
-    },
-  },
+     onSubmit() {
+      this.submitted = true;
+       
+    this.$refs.form.validate().then(success=>{
+      //if (!success) {
+      //  this.$refs.form.setErrors(errors);
+      //  return;
+      //}
+      if(success){
+        this.$router.push({ name: 'subCategory' }); 
+      }
+    });
+    }
+  }
 };
 </script>
 

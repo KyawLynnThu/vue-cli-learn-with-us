@@ -3,11 +3,11 @@
     <h3 class="my-3 pb-2 d-flex justify-content-center">Password Setting</h3>
     <div class="card bg-light col-lg-7 mx-auto">
       <div class="card-body">
-        <ValidationObserver v-slot="{ handleSubmit }">
-          <form @submit.prevent="handleSubmit(onSubmit)">
+        <ValidationObserver v-slot="{ }" ref="form">
+          <form @submit.prevent="onSubmit">
             <ValidationProvider
-              name="Password"
-              rules="required|min:8|regex"
+              name="oldPassword"
+              rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
               ref="password"
               v-slot="{ errors }"
             >
@@ -17,27 +17,34 @@
                   type="password"
                   v-model="oldPassword"
                   class="form-control"
-                  id="courseName"
+                  id="oldpassword"
+                  :class="{ 'is-invalid': submitted }"
                 />
-                <span class="text-danger">{{ errors[0] }}</span>
+                <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
             <ValidationProvider
               name="Password"
-              rules="required|min:8"
+              rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
               vid="password"
               v-slot="{ errors }"
+              
             >
               <div class="form-group mx-5">
-                <label for="courseName">Enter New Password</label>
+                <label for="">Enter New Password</label>
                 <input
                   type="password"
                   v-model="password"
                   class="form-control"
-                  id="courseName"
+                  id="newpassword"
+                  :class="{ 'is-invalid': submitted }"
                 />
-                <span class="text-danger">{{ errors[0] }}</span>
+               <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
@@ -45,6 +52,8 @@
               name="Re-Type Password"
               rules="required|confirmed:password"
               v-slot="{ errors }"
+             
+              
             >
               <div class="form-group mx-5">
                 <label for="confirmPassword">Re-type New Password</label>
@@ -52,9 +61,12 @@
                   type="password"
                   v-model="confirmPassword"
                   class="form-control"
-                  id="courseName"
+                  id="retypepassword"
+                   :class="{ 'is-invalid': submitted }"
                 />
-                <span class="text-danger">{{ errors[0] }}</span>
+                <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
@@ -85,13 +97,7 @@ extend("min", {
 });
 extend("regex", {
   ...regex,
-  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character`,
-  validate: (value) => {
-    var strongRegex = new RegExp(
-      "(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
-    );
-    return strongRegex.test(value);
-  },
+  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character`
 });
 extend("confirmed", {
   ...confirmed,
@@ -108,13 +114,19 @@ export default {
       oldPassword: "",
       password: "",
       confirmPassword: "",
+      submitted:false
     };
   },
 
   methods: {
     onSubmit() {
-      alert("success");
-    },
+      this.submitted = true;
+    this.$refs.form.validate().then(success=>{
+      if(success){
+        alert("success")
+      }
+    });
+    }
   },
 };
 </script>

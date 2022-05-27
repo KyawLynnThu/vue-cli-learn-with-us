@@ -5,11 +5,11 @@
         <h3 class="card-title my-3 pb-2 d-flex justify-content-center">
           Create Course
         </h3>
-        <ValidationObserver v-slot="{ handleSubmit }">
-          <form @submit.prevent="handleSubmit(onSubmit)">
+        <ValidationObserver v-slot="{}" ref="form">
+          <form @submit.prevent="onSubmit">
             <ValidationProvider
               name="Name"
-              rules="required|alpha|max:50"
+              rules="required|alpha"
               v-slot="{ errors }"
             >
               <div class="form-group mx-5">
@@ -19,8 +19,11 @@
                   v-model="name"
                   class="form-control"
                   id="courseName"
+                  :class="{ 'is-invalid': submitted }"
                 />
-                <span class="text-danger">{{ errors[0] }}</span>
+                <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
@@ -35,8 +38,11 @@
                   type="file"
                   @change="validate"
                   class="form-control-file"
+                  :class="{ 'is-invalid': submitted }"
                 />
-                <span class="text-danger">{{ errors[0] }}</span>
+                <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
@@ -51,18 +57,21 @@
                   class="form-control"
                   v-model="category"
                   id="chooseSubcategory"
+                  :class="{ 'is-invalid': submitted }"
                 >
                   <option>php</option>
                   <option>js</option>
                   <option>html</option>
                 </select>
-                <span class="text-danger">{{ errors[0] }}</span>
+               <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
             <ValidationProvider
               name="Short_Description"
-              rules="required|short_desc_max:100"
+              rules="required|short_desc__max:100"
               v-slot="{ errors }"
             >
               <div class="form-group mx-5">
@@ -72,8 +81,11 @@
                   id="shortDescription"
                   rows="2"
                   v-model="shortDesc"
+                  :class="{ 'is-invalid': submitted }"
                 ></textarea>
-                <span class="text-danger">{{ errors[0] }}</span>
+               <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
@@ -89,14 +101,17 @@
                   id="description"
                   rows="3"
                   v-model="description"
+                  :class="{ 'is-invalid': submitted }"
                 ></textarea>
-                <span class="text-danger">{{ errors[0] }}</span>
+                <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
             <ValidationProvider
               name="Instructor"
-              rules="required|instructr_max:50"
+              rules="required"
               v-slot="{ errors }"
             >
               <div class="form-group mx-5">
@@ -106,8 +121,11 @@
                   class="form-control"
                   id="instructorName"
                   v-model="instructor"
+                  :class="{ 'is-invalid': submitted }"
                 />
-                <span class="text-danger">{{ errors[0] }}</span>
+                <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
@@ -123,8 +141,11 @@
                   v-model="price"
                   class="form-control"
                   id="price"
+                  :class="{ 'is-invalid': submitted }"
                 />
-                <span class="text-danger">{{ errors[0] }}</span>
+               <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
 
@@ -139,17 +160,18 @@
                   type="file"
                   @change="validate"
                   class="form-control-file"
+                  :class="{ 'is-invalid': submitted }"
                 />
-                <span class="text-danger">{{ errors[0] }}</span>
+                <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </ValidationProvider>
             <div class="form-group mx-5">
-              <!--<button type="submit" class="btn btn-dark btn-block text-uppercase font-weight-bold">Register</button>-->
-              <router-link
-                :to="{ name: 'confirmCourse' }"
+              <button
                 class="btn btn-primary"
-                >Create</router-link
-              >
+                >Create</button>
+              
             </div>
           </form>
         </ValidationObserver>
@@ -181,10 +203,7 @@ extend("alpha", {
   ...alpha,
    message: (field) => field + ` may only contain alphabetic characters`,
 }),
-extend("instructr_max", {
-  ...max,
-  message: "Instructor must not be more than 50 characters.",
-});
+
 extend("short_desc__max", {
   ...max,
   message: "Instructor must not be more than 100 characters.",
@@ -193,6 +212,7 @@ extend("desc_max", {
   ...max,
   message: "Instructor must not be more than 200 characters.",
 });
+
 extend("numeric", {
   ...numeric,
   message: (field) => field + " must be numberic.",
@@ -241,14 +261,20 @@ export default {
       instructor: "",
       price: "",
       imageFile: "",
+      submitted:false
     };
   },
 
   methods: {
-    onSubmit() {
-      alert("success");
-    },
-  },
+     onSubmit() {
+      this.submitted = true;
+    this.$refs.form.validate().then(success=>{
+      if(success){
+        this.$router.push({ name: 'confirmCourse' }); 
+      }
+    });
+    }
+  }
 };
 </script>
 

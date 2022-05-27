@@ -2,17 +2,19 @@
   <div class="row">
     <div class="col-lg-4 col-md-6 mx-auto mt-5 pt-5 col-12">
       <h2 class="text-center m-3">LOG IN</h2>
-      <ValidationObserver v-slot="{ handleSubmit }">
-        <form @submit.prevent="handleSubmit(onSubmit)" class="bg-light p-4">
+      <ValidationObserver v-slot="{}" ref="form">
+        <form @submit.prevent="onSubmit" class="bg-light p-4">
           <ValidationProvider
             name="Email"
             rules="required|email"
             v-slot="{ errors }"
           >
-            <div class="form-group">
+          <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" v-model="email" class="form-control" />
-              <span class="text-danger">{{ errors[0] }}</span>
+              <input  v-model="email" class="form-control" :class="{ 'is-invalid': submitted }" />
+             <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
             </div>
           </ValidationProvider>
           <ValidationProvider
@@ -20,13 +22,18 @@
             rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
             vid="password"
             v-slot="{ errors }"
+            
           >
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" v-model="password" class="form-control" />
-              <span class="text-danger">{{ errors[0] }}</span>
+              <input type="password" v-model="password" class="form-control" :class="{ 'is-invalid': submitted }"/>
+              <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
             </div>
           </ValidationProvider>
+
+
           <div class="mb-3 mt-3">
             <button
               type="submit"
@@ -94,13 +101,19 @@ export default {
     return {
       email: "",
       password: "",
+      submitted: false
     };
   },
-  methods: {
+   methods: {
     onSubmit() {
-      alert("success");
-    },
-  },
+      this.submitted = true;
+    this.$refs.form.validate().then(success=>{
+      if(success){
+        alert("success")
+      }
+    });
+    }
+  }
 };
 </script>
 
