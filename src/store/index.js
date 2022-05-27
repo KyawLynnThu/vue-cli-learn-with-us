@@ -21,20 +21,20 @@ export default new Vuex.Store({
             state.categories.unshift(category);
         },
         removeCategory(state, removeId) {
-            state.categories = state.categories.filter(category=>{
+            state.categories = state.categories.filter(category => {
                 return category.id != removeId
             })
         }
     },
     actions: {
-        async getCat({commit}){
+        async getCat({ commit }) {
             let res = await axios.get('http://localhost:8000/api/categories');
             let categories = res.data;
             commit('showCategory', categories);
         },
-        async deleteCat({commit}, removeId){
+        async deleteCat({ commit }, removeId) {
             await axios.delete(`http://localhost:8000/api/categories/${removeId}`);
-            commit('removeCategory',removeId);
+            commit('removeCategory', removeId);
         },
     },
 })

@@ -108,7 +108,7 @@ const routes = [
     component: CreateCategoryView
   },
   {
-    path: "/updatecategory",
+    path: "/updatecategory/:id",
     name: "updateCategory",
     component: UpdateCategoryView
   },

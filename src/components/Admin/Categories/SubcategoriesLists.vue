@@ -22,7 +22,7 @@
             <td>{{ category.name }}</td>
             <td>
               <router-link
-                :to="{ name: 'updateCategory' }"
+                :to="`/updatecategory/${category.id}`"
                 class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
               >
                 <i class="fas fa-pen"></i>
