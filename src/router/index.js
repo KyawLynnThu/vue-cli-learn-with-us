@@ -22,6 +22,7 @@ import CreateCourseView from '@/views/admin/CreateCourseView'
 import UpdateCourseView from '@/views/admin/UpdateCourseView'
 import ConfirmCourseView from '@/views/admin/ConfirmCourseView'
 import UserUpload from '@/views/admin/UserUpload'
+import AdminPasswordSetting from '@/views/admin/AdminPasswordSetting'
 import NotFound from '@/views/NotFound'
 Vue.use(VueRouter);
 
@@ -136,6 +137,11 @@ const routes = [
     path: "/userupload",
     name: "userUpload",
     component: UserUpload
+  },
+  {
+    path: "/adminpasswordsetting",
+    name: "adminPasswordSetting",
+    component: AdminPasswordSetting
   },
   {
     path: "*",
