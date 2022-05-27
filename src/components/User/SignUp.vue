@@ -101,7 +101,6 @@ import {
   min,
   confirmed,
   regex,
-  alpha,
 } from "vee-validate/dist/rules";
 extend("required", {
   ...required,

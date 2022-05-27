@@ -43,7 +43,7 @@
 
 <script>
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import { required, alpha } from "vee-validate/dist/rules";
+import { required } from "vee-validate/dist/rules";
 extend("required", {
   ...required,
   message: (field) => field + ` can't blank`,

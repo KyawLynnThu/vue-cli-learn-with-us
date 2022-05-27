@@ -29,7 +29,7 @@
 
             <ValidationProvider
               name="Your Image"
-              rules="required|image|mimes:['image/jpeg','image/jpg']|size:2000"
+              rules="required|mimes:['image/jpeg','image/jpg','image/png']|size:2000"
               v-slot="{ errors, validate }"
             >
               <div class="form-group mx-5">
@@ -186,13 +186,12 @@ import {
   required,
   confirmed,
   regex,
-  alpha,
   max,
   mimes,
   numeric,
   size,
   ext,
-  image,
+  
 } from "vee-validate/dist/rules";
 
 extend("required", {
@@ -223,7 +222,7 @@ extend("confirmed", {
 });
 extend("mimes", {
   ...mimes,
-  message: "Your image must be JPG or JPEG format",
+  message: "Your image must be JPG or JPEG or PNG format",
 });
 extend("size", {
   ...size,
@@ -237,10 +236,7 @@ extend("ext", {
   ...ext,
   message: (field) => field + "  must be mp4 format",
 });
-extend("image", {
-  ...image,
-  message: (field) => field + " must be an image",
-});
+
 
 export default {
   name: "CreateCourse",

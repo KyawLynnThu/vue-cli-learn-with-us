@@ -13,6 +13,7 @@
 import AdminSidebar from "@/components/Common/AdminSidebar"
 import AdminNavi from "@/components/Common/AdminNavi"
 
+
 export default {
   components: {
     AdminSidebar,
