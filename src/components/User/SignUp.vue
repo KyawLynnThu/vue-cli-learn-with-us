@@ -6,12 +6,12 @@
         <form @submit.prevent="onSubmit" class="bg-light p-4">
           <ValidationProvider
             name="User name"
-            rules="required|alpha"
+            rules="required"
             v-slot="{ errors }"
           >
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" v-model="name" name='name' id="name" class="form-control" :class="{ 'is-invalid': submitted }" />
+              <input type="text" v-model="name" name='name' id="name" class="form-control" :class="{ 'is-invalid': submitted }" :state="errors[0] ? false : null"/>
                  <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
@@ -25,7 +25,7 @@
           >
             <div class="form-group">
               <label for="email">Email</label>
-              <input  v-model="email" class="form-control" :class="{ 'is-invalid': submitted }" />
+              <input  v-model="email" class="form-control" :state="errors[0] ? false : null" :class="{ 'is-invalid': submitted }" />
              <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
@@ -40,7 +40,7 @@
           >
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" v-model="password" class="form-control" :class="{ 'is-invalid': submitted && errors }"/>
+              <input type="password" :state="errors[0] ? false : null" v-model="password" class="form-control" :class="{ 'is-invalid': submitted && errors }"/>
               <div v-if="submitted " class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
@@ -59,6 +59,7 @@
                 v-model="confirmPassword"
                 class="form-control"
                 :class="{ 'is-invalid': submitted }"
+                :state="errors[0] ? false : null"
               />
               <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
@@ -106,10 +107,7 @@ extend("required", {
   ...required,
   message: (field) => field + ` can't blank`,
 }),
-extend("alpha", {
-  ...alpha,
-  message: (field) => field + ` may only contain alphabetic characters`,
-}),
+
 extend("email", {
   ...email,
   message: "Email format is invalid",
@@ -151,8 +149,7 @@ export default {
   methods: {
     onSubmit() {
       this.submitted = true;
-      
-    this.$refs.form.validate().then(success=>{
+      this.$refs.form.validate().then(success=>{
       if(success){
         this.$router.push({ name: 'confirmSignup' }); 
       }

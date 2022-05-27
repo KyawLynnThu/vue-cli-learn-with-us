@@ -9,7 +9,7 @@
           <form @submit.prevent="onSubmit">
             <ValidationProvider
               name="Name"
-              rules="required|alpha"
+              rules="required"
               v-slot="{ errors }"
             >
               <div class="form-group mx-5">
@@ -198,10 +198,6 @@ import {
 extend("required", {
   ...required,
   message: (field) => field + ` is required`,
-}),
-extend("alpha", {
-  ...alpha,
-   message: (field) => field + ` may only contain alphabetic characters`,
 }),
 
 extend("short_desc__max", {

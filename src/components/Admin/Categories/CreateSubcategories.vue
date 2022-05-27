@@ -9,7 +9,7 @@
           <form @submit.prevent="onSubmit">
             <ValidationProvider
               name="SubCategory name"
-              rules="required|alpha"
+              rules="required"
               v-slot="{ errors }"
             >
               <div class="form-group row">
@@ -48,10 +48,7 @@ extend("required", {
   ...required,
   message: (field) => field + ` can't blank`,
 });
-extend("alpha", {
-  ...alpha,
-  message: (field) => field + ` may only contain alphabetic characters`,
-});
+
 export default {
   name: "CreateSub",
   components: {
