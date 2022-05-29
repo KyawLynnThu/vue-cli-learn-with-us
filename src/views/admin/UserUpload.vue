@@ -4,7 +4,7 @@
       <admin-sidebar />
       <div id="content" class="p-4 p-md-5">
         <admin-navi />
-        <chart-graph />
+        <upload-user-file />
       </div>
     </div>
   </div>
@@ -13,13 +13,13 @@
 <script>
 import AdminSidebar from "@/components/Common/AdminSidebar"
 import AdminNavi from "@/components/Common/AdminNavi"
-import ChartGraph from "@/components/Admin/ChartGraph"
+import UploadUserFile from '@/components/Admin/UploadUserFile.vue'
 
 export default {
   components: {
     AdminSidebar,
     AdminNavi,
-    ChartGraph
+    UploadUserFile,
   },
 }
 </script>

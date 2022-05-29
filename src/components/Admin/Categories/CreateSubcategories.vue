@@ -11,16 +11,13 @@
               >Enter Subcategory Name</label
             >
             <div class="col-md-8 col-sm-7">
-              <input
-                type="text"
-                class="form-control"
-                id="subcatName"
-                required
-              />
+              <input type="text" class="form-control" v-model="category.name" />
             </div>
           </div>
           <div class="text-center">
-            <button class="btn btn-primary">Create</button>
+            <button class="btn btn-primary" @click.prevent="createCat()">
+              Create
+            </button>
           </div>
         </form>
       </div>
@@ -29,9 +26,37 @@
 </template>
 
 <script>
+import axios from "axios";
+import store from "@/store";
 export default {
   name: "CreateSub",
-}
+  data() {
+    return {
+      category: {
+        name: "",
+      },
+    };
+  },
+  methods: {
+    async createCat() {
+      console.log("hello", this.category.name);
+      axios
+        .post("http://127.0.0.1:8000/api/categories/", {
+          name: this.category.name,
+        })
+        .then((response) => {
+          console.log(response.data);
+          let category = response.data;
+          store.commit("storeCategory", category);
+          // this.$router.push({ name: 'subCategory' });
+          this.$router.push({ path: "/subCategory" });
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>

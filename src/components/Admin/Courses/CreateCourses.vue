@@ -8,7 +8,7 @@
         <form>
           <div class="form-group mx-5">
             <label for="courseName">Course Name</label>
-            <input type="text" class="form-control" id="courseName" required />
+            <input type="text" class="form-control"/>
           </div>
           <div class="form-group mx-5">
             <label for="cover">Course Cover</label>
@@ -16,16 +16,12 @@
               type="file"
               accept="image/*"
               class="form-control-file"
-              id="cover"
-              required
             />
           </div>
           <div class="form-group mx-5">
             <label for="chooseSubcategory">Choose Subcategory</label>
-            <select class="form-control" id="chooseSubcategory">
-              <option>php</option>
-              <option>js</option>
-              <option>html</option>
+            <select class="form-control">
+              <option v-for="category in getCategories" :key="category.id">{{ category.name }}</option>
             </select>
           </div>
           <div class="form-group mx-5">
@@ -52,12 +48,11 @@
               type="text"
               class="form-control"
               id="instructorName"
-              required
             />
           </div>
           <div class="form-group mx-5">
             <label for="price">Price</label>
-            <input type="text" class="form-control" id="price" required />
+            <input type="text" class="form-control" id="price" />
           </div>
           <div class="form-group mx-5">
             <label for="video">Video</label>
@@ -67,7 +62,6 @@
               class="form-control-file"
               id="video"
               multiple
-              required
             />
           </div>
           <div class="form-group mx-5">
@@ -80,9 +74,16 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "CreateCourses",
+  computed: mapGetters(["getCategories"]),
+  methods: mapActions(["getCat"]),
+  mounted() {
+    this.getCat();
+  },
 }
+
 </script>
 
 <style scoped>
