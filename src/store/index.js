@@ -7,10 +7,14 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         categories: [],
+        courses: []
     },
     getters: {
         getCategories(state) {
             return state.categories;
+        },
+        getCourses(state) {
+            return state.courses;
         }
     },
     mutations: {
@@ -24,7 +28,15 @@ export default new Vuex.Store({
             state.categories = state.categories.filter(category => {
                 return category.id != removeId
             })
-        }
+        },
+        showCourses(state, courses) {
+            state.courses = courses;
+        },
+        removeCourse(state, removeId) {
+            state.courses = state.courses.filter(course => {
+                return course.id != removeId
+            })
+        },
     },
     actions: {
         async getCat({ commit }) {
@@ -35,6 +47,15 @@ export default new Vuex.Store({
         async deleteCat({ commit }, removeId) {
             await axios.delete(`http://localhost:8000/api/categories/${removeId}`);
             commit('removeCategory', removeId);
+        },
+        async getCourse({ commit }) {
+            let res = await axios.get('http://localhost:8000/api/course/get_all');
+            let courses = res.data;
+            commit('showCourses', courses);
+        },
+        async deleteCourse({ commit }, removeId) {
+            await axios.delete(`http://localhost:8000/api/course/delete/${removeId}`);
+            commit('removeCourse', removeId);
         },
     },
 })

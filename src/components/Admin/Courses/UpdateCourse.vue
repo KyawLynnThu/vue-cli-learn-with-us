@@ -8,7 +8,7 @@
         <form>
           <div class="form-group mx-5">
             <label for="courseName">Course Name</label>
-            <input type="text" class="form-control" id="courseName" required />
+            <input type="text" class="form-control" v-model="course.name" required />
           </div>
           <div class="form-group mx-5">
             <label for="cover">Course Cover</label>
@@ -80,8 +80,23 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "UpdateCourses",
+  data() {
+    return {
+      course: {
+        name: "",
+      },
+    };
+  },
+  mounted() {
+    axios
+      .get(`http://localhost:8000/api/course/show/${this.$route.params.id}`)
+      .then((response) => {
+        this.course = response.data;
+      });
+  },
 }
 </script>
 

@@ -119,7 +119,7 @@ const routes = [
     component: CreateCourseView
   },
   {
-    path: "/updatecourse",
+    path: "/updatecourse/:id",
     name: "updateCourse",
     component: UpdateCourseView
   },

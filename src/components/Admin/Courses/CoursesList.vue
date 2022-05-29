@@ -20,56 +20,21 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Otto</td>
+          <tr v-for="course in getCourses" :key="course.id">
+            <th scope="row">{{ course.id }}</th>
+            <td>{{ course.name }}</td>
+            <td>{{ course.category_id }}</td>
+            <td>{{ course.instructor }}</td>
+            <td>{{ course.price }}</td>
             <td>
               <router-link
-                :to="{ name: 'updateCourse' }"
+                :to="`/updatecourse/${course.id}`"
                 class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
               >
                 <i class="fas fa-pen"></i>
               </router-link>
-              <button class="btn btn-danger">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>
-              <router-link
-                :to="{ name: 'updateCourse' }"
-                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
-              >
-                <i class="fas fa-pen"></i>
-              </router-link>
-              <button class="btn btn-danger">
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Larry the Bird</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>
-              <router-link
-                :to="{ name: 'updateCourse' }"
-                class="btn btn-primary mr-md-2 mr-0 mb-sm-0 mb-2"
-              >
-                <i class="fas fa-pen"></i>
-              </router-link>
-              <button class="btn btn-danger">
+              <button class="btn btn-danger"
+              @click.prevent="deleteCourse(course.id)">
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -81,8 +46,14 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "CoursesList",
+  computed: mapGetters(["getCourses"]),
+  methods: mapActions(["getCourse","deleteCourse"]),
+  mounted() {
+    this.getCourse();
+  },
 };
 </script>
 

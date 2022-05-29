@@ -41,7 +41,7 @@ export default {
     async createCat() {
       console.log("hello", this.category.name);
       axios
-        .post("http://localhost:8000/api/categories/", {
+        .post("http://127.0.0.1:8000/api/categories/", {
           name: this.category.name,
         })
         .then((response) => {
