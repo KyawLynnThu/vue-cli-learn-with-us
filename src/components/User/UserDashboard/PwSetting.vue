@@ -6,15 +6,33 @@
         <form>
           <div class="form-group mx-5">
             <label for="courseName">Enter Old Password</label>
-            <input type="text" class="form-control" id="courseName" required />
+            <input
+              v-model="userChangePwData.oldPw"
+              type="text"
+              class="form-control"
+              id="courseName"
+              required
+            />
           </div>
           <div class="form-group mx-5">
             <label for="courseName">Enter New Password</label>
-            <input type="text" class="form-control" id="courseName" required />
+            <input
+              v-model="userChangePwData.newPw"
+              type="text"
+              class="form-control"
+              id="courseName"
+              required
+            />
           </div>
           <div class="form-group mx-5">
             <label for="courseName">Re-type New Password</label>
-            <input type="text" class="form-control" id="courseName" required />
+            <input
+              v-model="userChangePwData.reNewPw"
+              type="text"
+              class="form-control"
+              id="courseName"
+              required
+            />
           </div>
           <div class="text-center mt-4">
             <button class="btn btn-primary col-md-4 mr-2 mb-2">Change</button>
@@ -27,9 +45,27 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "PwSetting",
-}
+  data() {
+    return {
+      userChangePwData: {
+        oldPw: "",
+        newPw: "",
+        reNewPw: "",
+      },
+    };
+  },
+  create() {
+    axios.post("user/change/password", this.userChangePwData).then((res) => {
+      console.log(res.data);
+      this.$router.push({
+        path: "/login",
+      });
+    });
+  },
+};
 </script>
 
 <style scoped>

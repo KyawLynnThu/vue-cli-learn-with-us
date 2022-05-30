@@ -7,15 +7,15 @@
       <form class="text-center">
         <div class="form-group mx-5">
           <label for="courseName">Name</label>
-          <h6>Example Name</h6>
+          <h6>{{user.name}}</h6>
         </div>
         <div class="form-group mx-5">
           <label for="courseName">Gmail</label>
-          <h6>example@gmail.com</h6>
+          <h6>{{user.email}}</h6>
         </div>
         <div class="form-group mx-5">
           <label for="courseName">Password</label>
-          <h6>#srdfs$2131343</h6>
+          <h6>{{user.password}}</h6>
         </div>
       </form>
     </div>
@@ -23,8 +23,22 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "CommonProfile",
+  data(){
+    return{
+      token:'',
+      user:''
+    }
+  },
+  created(){
+    axios.get('user/show/{this.user.id}')
+    .then(res=>{
+        this.user=res.data.data;
+        console.log(this.user);
+    })
+  }
 }
 </script>
 

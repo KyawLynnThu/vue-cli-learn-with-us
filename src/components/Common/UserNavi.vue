@@ -86,7 +86,7 @@
           User One &nbsp;&nbsp;
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a @click="logOut" class="dropdown-item" href="#">Log Out</a>
         </div>
       </div>
     </div>
@@ -94,7 +94,15 @@
 </template>
 
 <script>
-export default {}
+export default {
+  
+  methods:{
+    logOut(){
+    localStorage.clear();
+    }
+  }
+  
+}
 </script>
 
 <style scoped>
