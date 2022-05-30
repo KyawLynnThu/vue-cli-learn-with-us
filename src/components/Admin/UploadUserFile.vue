@@ -6,14 +6,32 @@
           Upload User Lists
         </h3>
         <div class="card-body">
-          <form class="text-center">
+          <ValidationObserver v-slot="{ }" ref="form">
+          <form class="text-center" @submit.prevent="onSubmit">
+            <ValidationProvider
+            name="File"
+             rules="required|ext:pdf,xlxs"
+            v-slot="{ errors,validate }"
+          >
             <div class="upload-container col-lg-12 col-md-12 col-sm-12">
-              <input type="file" id="file_upload" multiple />
+              <input
+                  type="file"
+                 @change="validate"
+                  class="form-control-file"
+                  :class="{ 'is-invalid': submitted }"
+                />
+                <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
             </div>
+             </ValidationProvider>
+
             <div class="text-center mt-4">
-              <button class="btn btn-primary">Upload</button>
+              <button class="btn btn-primary" type="submit">Upload</button>
             </div>
           </form>
+           </ValidationObserver>
+
         </div>
       </div>
     </div>
@@ -21,8 +39,43 @@
 </template>
 
 <script>
+import { ValidationProvider, ValidationObserver, extend} from "vee-validate";
+import {
+  required,
+  ext,
+} from "vee-validate/dist/rules";
+
+extend("required", {
+  ...required,
+  message: (field) => field + ` is required`,
+})
+extend("ext", {
+  ...ext,
+  message: (field) => field + ` must be excel or pdf format`
+})
 export default {
   name: "UploadUserFile",
+  components: {
+    ValidationProvider,
+    ValidationObserver,
+  },
+  data(){
+    return{
+        uploadFile:"",
+        submitted:false
+    }
+  },
+   methods: {
+     onSubmit() {
+      this.submitted = true;
+    this.$refs.form.validate().then(success=>{
+      if(success){
+        //this.$router.push({ name: 'confirmCourse' }); 
+        alert("success")
+      }
+    });
+    }
+  }
 };
 </script>
 
@@ -45,3 +98,4 @@ export default {
   background: #ddd;
 }
 </style>
+
