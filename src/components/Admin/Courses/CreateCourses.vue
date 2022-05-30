@@ -5,6 +5,7 @@
         <h3 class="card-title my-3 pb-2 d-flex justify-content-center">
           Create Course
         </h3>
+        
         <ValidationObserver v-slot="{}" ref="form">
           <form @submit.prevent="onSubmit">
             <ValidationProvider
@@ -59,9 +60,7 @@
                   id="chooseSubcategory"
                   :class="{ 'is-invalid': submitted }"
                 >
-                  <option>php</option>
-                  <option>js</option>
-                  <option>html</option>
+                  <option v-for="category in getCategories" :key="category.id">{{ category.name }}</option>
                 </select>
                <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
@@ -193,6 +192,7 @@ import {
   ext,
   
 } from "vee-validate/dist/rules";
+import { mapGetters, mapActions } from "vuex";
 
 extend("required", {
   ...required,
@@ -256,8 +256,12 @@ export default {
       submitted:false
     };
   },
-
+  mounted() {
+    this.getCat();
+  },
+  computed: mapGetters(["getCategories"]),
   methods: {
+     ...mapActions(["getCat"]),
      onSubmit() {
       this.submitted = true;
     this.$refs.form.validate().then(success=>{

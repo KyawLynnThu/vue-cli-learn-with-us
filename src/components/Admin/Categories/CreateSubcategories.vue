@@ -6,7 +6,7 @@
           Create Subcategory
         </h3>
         <ValidationObserver v-slot="{ }" ref="form">
-          <form @submit.prevent="onSubmit">
+          <form @submit.prevent="createCat()">
             <ValidationProvider
               name="SubCategory name"
               rules="required"
@@ -18,11 +18,9 @@
                 >
                 <div class="col-md-8 col-sm-7">
                   <input
-                    v-model="name"
+                    v-model="category.name"
                     type="text"
                     class="form-control"
-                    id="subcatName"
-                    name="name"
                     :class="{ 'is-invalid': submitted   }"
                   />
                    <div v-if="submitted " class="invalid-feedback">
@@ -44,6 +42,8 @@
 <script>
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 import { required } from "vee-validate/dist/rules";
+import axios from "axios";
+import store from "@/store";
 extend("required", {
   ...required,
   message: (field) => field + ` can't blank`,
@@ -58,25 +58,38 @@ export default {
   data() {
     return {
       name: "",
-      submitted:false
+      submitted:false,
+      category: {
+        name: "",
+      },
     };
   },
   methods: {
-     onSubmit() {
+     createCat() {
       this.submitted = true;
-       
-    this.$refs.form.validate().then(success=>{
-      //if (!success) {
-      //  this.$refs.form.setErrors(errors);
-      //  return;
-      //}
+      
+      async createCat() {
+      console.log("hello", this.category.name);
+      this.$refs.form.validate().then(success=>{
       if(success){
-        this.$router.push({ name: 'subCategory' }); 
-      }
-    });
-    }
+          axios
+            .post("http://127.0.0.1:8000/api/categories/", {
+              name: this.category.name,
+            })
+            .then((response) => {
+              console.log(response.data);
+              let category = response.data;
+              store.commit("storeCategory", category);
+              // this.$router.push({ name: 'subCategory' });
+              this.$router.push({ path: "/subCategory" });
+            })
+            .catch((error) => {
+              console.log(error.response);
+            });
+    },
+  },
   }
-};
+
 </script>
 
 <style scoped>
