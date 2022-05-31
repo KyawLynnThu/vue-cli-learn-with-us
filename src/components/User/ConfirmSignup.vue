@@ -2,7 +2,7 @@
   <div class = "row confirm">
     <div class = "col-lg-4 col-md-6 col-12 mx-auto">
       <h2 class = "text-center m-3 text-uppercase">Sign Up</h2>
-      <form class = "bg-light p-4">
+      <form @submit.prevent="confirm" class = "bg-light p-4">
         <div class = "form-group">
           <label for = "name">Username</label>
           <h6>{{ confirmData.name }}</h6>
@@ -21,8 +21,6 @@
         </div>
         <div class = "mb-3 mt-4">
           <router-link
-            @click = "confirm"
-            :to = "{ name: 'LogIn' }"
             type = "submit"
             class = "btn btn-dark btn-block text-uppercase font-weight-bold"
           >
@@ -31,7 +29,6 @@
         </div>
         <div>
           <router-link
-            @click = "confirm"
             :to = "{ name: 'SignUp' }"
             type = "submit"
             class = "
@@ -58,20 +55,17 @@ export default {
     };
   },
   create() {
-    let res = axios.get("http://127.0.0.1:8000/api/register/confirm", {
-      headers: {
-        Authorizaton: "Bearer" + localStorage.getItem("token"),
-      },
-    });
+    let res = axios.get("register/confirm");
     console.log(res);
     this.confirmData = res.data;
   },
   methods: {
     confirm() {
       axios
-        .post("http://127.0.0.1:8000/api/register/confirm", this.confirmData)
+        .post("register/confirm", this.confirmData)
         .then(res => {
           console.log(res.data);
+          this.$router.push({ path: '/login' })
         })
         .catch(error => {
           console.log(error);

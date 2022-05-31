@@ -56,7 +56,7 @@ const routes = [
     component: CategoryView
   },
   {
-    path: "/detail",
+    path: "/detail/:id",
     name: "Detail",
     component: CourseDetail
   },

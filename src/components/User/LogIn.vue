@@ -2,7 +2,7 @@
   <div class = "row">
     <div class = "col-lg-4 col-md-6 mx-auto mt-5 pt-5 col-12">
       <h2 class = "text-center m-3">LOG IN</h2>
-      <form class = "bg-light p-4">
+      <form class = "bg-light p-4" @submit.prevent="login">
         <div class = "form-group">
           <label for = "email">Email</label>
           <input
@@ -23,7 +23,6 @@
         </div>
         <div class = "mb-3 mt-3">
           <button
-            @click = "login"
             type = "submit"
             class = "
               login-btn
@@ -38,7 +37,6 @@
         <div class = "mb-3">
           <router-link
             :to = "{ name: 'SignUp' }"
-            type = "submit"
             class = "
               btn btn-outline-dark btn-block
               text-uppercase
@@ -71,10 +69,14 @@ export default {
   },
   methods: {
     login() {
-      axios.post("http://127.0.0.1:8000/api/user/login", this.login)
+      axios.post("user/login", this.loginData)
         .then(res => {
-          let token = res.data.user.api_token;
-          localStorage.setItem("loginToken", token);
+          let token = res.data.data.token;
+          let id=res.data.data.id;
+          console.log(res);          
+          localStorage.setItem("token", token);
+          localStorage.setItem("id",id);
+          this.$router.push('/')
         });
     },
   },

@@ -13,33 +13,11 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>balblabla@gmail.com</td>
-            <td>Otto</td>
-            <td>
-              <button class="btn btn-danger">
-                <i class="fas fa-user-alt-slash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Otto</td>
-            <td>
-              <button class="btn btn-danger">
-                <i class="fas fa-user-alt-slash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Mark</td>
-            <td>Otto</td>
+          <tr v-for="userLists in userList" :key="userLists.key">
+            <th scope="row">{{ userLists.id }}</th>
+            <td>{{ userLists.name }}</td>
+            <td>{{ userLists.email }}</td>
+            <td>{{ userLists.courses }}</td>
             <td>
               <button class="btn btn-danger">
                 <i class="fas fa-user-alt-slash"></i>
@@ -49,13 +27,43 @@
         </tbody>
       </table>
     </div>
+    <button @click="exportExcel" class="btn btn-primary">Export Excel</button>
+    <button @click="importExcel" class="btn btn-primary">Import Excel</button>
   </main>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "UserLists",
-}
+  data() {
+    return {
+      userList: "",
+    };
+  },
+  created() {
+    axios
+      .get("user/list")
+      .then((res) => {
+        this.userList = res.data.data;
+        console.log(this.userList);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  methods: {
+    exportExcel() {
+      axios.get('/user/export')
+      .then(res=>{
+        console.log(res.data)
+      })
+    },
+    importExcel(){
+      axios.post('user/import',)
+    }
+  },
+};
 </script>
 
 <style scoped>

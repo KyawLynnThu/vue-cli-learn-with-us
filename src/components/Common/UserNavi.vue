@@ -83,10 +83,10 @@
           aria-expanded="false"
           style="padding: 0"
         >
-          User One &nbsp;&nbsp;
+          {{loginUser.userName}} &nbsp;&nbsp;
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a @click="logOut" class="dropdown-item" href="#">Log Out</a>
         </div>
       </div>
     </div>
@@ -94,7 +94,25 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data(){
+    return{
+      loginUser:{
+        userName:''
+      }
+    }
+  },
+  //created(){
+  //  this.loginUser = JSON.parse(localStorage.getItem('loginUser'));
+  //  console.log(this.loginUser)
+  //},
+  methods:{
+    logOut(){
+    localStorage.clear();
+    }
+  }
+  
+}
 </script>
 
 <style scoped>

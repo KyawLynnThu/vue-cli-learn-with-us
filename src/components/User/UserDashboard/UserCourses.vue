@@ -48,8 +48,25 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "UserCourses",
+  data(){
+    return {
+      userCourse:[],
+      id: localStorage.getItem("id")
+    }
+  },
+  created(){
+    axios.get(`course/show/${this.id}`)
+      .then(res=>{
+        this.userCourse=res.data;
+        console.log(this.userCourse);
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+  }
 }
 </script>
 
