@@ -72,8 +72,8 @@ export default {
       
     this.$refs.form.validate().then(success=>{
       if(success){
-        updateCat() {
-      console.log("hello", this.category.name);
+        //updateCat() {
+      //console.log("hello", this.category.name);
       axios
         .put(`http://localhost:8000/api/categories/${this.$route.params.id}`, {
           name: this.category.name,
@@ -87,11 +87,11 @@ export default {
         .catch((error) => {
           console.log(error.response);
         });
-    },
-      }
+    }
     });
     }
   }
+}
 </script>
 
 <style scoped>
