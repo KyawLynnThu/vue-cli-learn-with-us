@@ -6,6 +6,7 @@
           <img
             class="card-img-top"
             :src="topCourses.course_cover_link"
+
             alt="Card image"
             style="width: 100%"
           />

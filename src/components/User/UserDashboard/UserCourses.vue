@@ -14,7 +14,7 @@
         </thead>
         <tbody class="bg-light">
           <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{ userCourse.id }}</th>
             <td>PHP 7</td>
             <td>PHP</td>
             <td>Free</td>

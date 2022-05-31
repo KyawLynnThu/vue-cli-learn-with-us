@@ -7,19 +7,19 @@
           <label for = "name">Username</label>
           <h6>{{ confirmData.name }}</h6>
         </div>
-        <div class = "form-group">
-          <label for = "email">Email</label>
+        <div class="form-group">
+          <label for="email">Email</label>
           <h6>{{ confirmData.email }}</h6>
         </div>
-        <div class = "form-group">
-          <label for = "">Password</label>
+        <div class="form-group">
+          <label for="">Password</label>
           <h6>{{ confirmData.password }}</h6>
         </div>
-        <div class = "form-group">
-          <label for = "">Confirm Password</label>
+        <div class="form-group">
+          <label for="">Confirm Password</label>
           <h6>{{ confirmData.password_comfirm }}</h6>
         </div>
-        <div class = "mb-3 mt-4">
+        <div class="mb-3 mt-4">
           <router-link
             type = "submit"
             class = "btn btn-dark btn-block text-uppercase font-weight-bold"
@@ -67,7 +67,7 @@ export default {
           console.log(res.data);
           this.$router.push({ path: '/login' })
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },

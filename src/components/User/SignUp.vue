@@ -1,4 +1,5 @@
 <template>
+
   <div class = "row confirm">
     <div class = "col-lg-4 col-md-6 col-12 mx-auto">
       <h2 class = "text-center m-3 text-uppercase">Sign Up</h2>
@@ -9,42 +10,47 @@
             v-model="registerData.name"
             type = "text"
             class = "form-control"
+
             required
           />
         </div>
-        <div class = "form-group">
-          <label for= "email">Email</label>
+        <div class="form-group">
+          <label for="email">Email</label>
           <input
             v-model="registerData.email"
+
             type = "email"
             class = "form-control"
+
             required
           />
         </div>
-        <div class = "form-group">
-          <label for = "">Password</label>
+        <div class="form-group">
+          <label for="">Password</label>
           <input
             v-model="registerData.password"
+
             type = "password"
             class = "form-control"
+
             autoComplete="password"
             required
           />
         </div>
-        <div class = "form-group">
-          <label for ="">Confirm Password</label>
+        <div class="form-group">
+          <label for="">Confirm Password</label>
           <input
             v-model="registerData.password_confirm"
             type = "password"
             class = "form-control"
+
             autoComplete="password_confirm"
             required
           />
         </div>
         <div class="mb-3 mt-3">
           <button
-            type = "submit"
-            class = "btn btn-dark btn-block text-uppercase font-weight-bold"
+
           >
             Register
           </button>
@@ -53,6 +59,7 @@
           <router-link
             :to = "{ name: 'LogIn' }"
             class = "
+
               btn btn-outline-dark btn-block
               text-uppercase
               font-weight-bold
@@ -91,7 +98,7 @@ export default {
           //console.log(this.token);
           //localStorage.setItem("token", token);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },

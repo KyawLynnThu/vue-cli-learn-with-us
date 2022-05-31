@@ -5,23 +5,24 @@
       <form class = "bg-light p-4" @submit.prevent="login">
         <div class = "form-group">
           <label for = "email">Email</label>
+
           <input
-            v-model = "loginData.email"
-            type = "email"
-            class = "form-control"
+            v-model="loginData.email"
+            type="email"
+            class="form-control"
             required
           />
         </div>
-        <div class = "form-group">
-          <label for = "">Password</label>
+        <div class="form-group">
+          <label for="">Password</label>
           <input
-            v-model = "loginData.password"
-            type = "password"
-            class = "form-control"
+            v-model="loginData.password"
+            type="password"
+            class="form-control"
             required
           />
         </div>
-        <div class = "mb-3 mt-3">
+        <div class="mb-3 mt-3">
           <button
             type = "submit"
             class = "
@@ -34,10 +35,11 @@
             log in
           </button>
         </div>
-        <div class = "mb-3">
+        <div class="mb-3">
           <router-link
             :to = "{ name: 'SignUp' }"
             class = "
+
               btn btn-outline-dark btn-block
               text-uppercase
               mb-3
@@ -47,8 +49,8 @@
             Register
           </router-link>
         </div>
-        <div class = "text-center mt-1">
-          <a class = "text-decoration-none text-dark">Forgot Password?</a>
+        <div class="text-center mt-1">
+          <a class="text-decoration-none text-dark">Forgot Password?</a>
         </div>
       </form>
     </div>
@@ -61,6 +63,7 @@ export default {
   name: "LogIn",
   data() {
     return {
+      token: "",
       loginData: {
         email: "",
         password: "",
@@ -78,9 +81,10 @@ export default {
           localStorage.setItem("id",id);
           this.$router.push('/')
         });
-    },
-  },
-};
+      }
+    }
+  
+}
 </script>
 
 <style scoped>

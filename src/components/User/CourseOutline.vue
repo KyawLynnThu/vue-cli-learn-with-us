@@ -16,6 +16,7 @@
       <h5 class="mt-3 mb-3">{{courseData.name}}</h5>
       <p>Description</p>
       <p class="">{{courseData.description}}</p>
+
       <span
         class="
           vd-desc
@@ -29,7 +30,8 @@
         "
         >Free</span
       >
-      <p class="vd-price mx-1">{{courseData.price}}</p>
+
+      <p class="vd-price mx-1">{{ courseData.price }}</p>
       <button
         type="button"
         class="btn btn-dark"
@@ -52,7 +54,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">
-                {{courseData.name}}
+                {{ courseData.name }}
               </h5>
               <button
                 type="button"
@@ -63,7 +65,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">{{courseData.description}}</div>
+            <div class="modal-body">{{ courseData.description }}</div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -150,10 +152,12 @@ export default {
 .vd-price {
   font-size: 20px;
 }
+
 .lock {
   width: 20px;
   height: 20px;
 }
+
 .course-btn {
   border-style: none;
 }
