@@ -9,11 +9,7 @@
       :key="relateCourses.id"
     >
       <div class="card shadow bg-white rounded">
-        <img
-          :src="relateCourses.cover_path"
-          alt=""
-          class="w-100 h-100"
-        />
+        <img :src="relateCourses.cover_path" alt="" class="w-100 h-100" />
         <div class="card-body">
           <h5 class="card-title">{{ relateCourses.name }}</h5>
           <p class="card-text">{{ relateCourses.instructor }}</p>
@@ -39,7 +35,7 @@ export default {
   },
   created() {
     axios
-      .get(`course/youmaylike/${this.id}`)
+      .get(`course/youmaylike/${this.categoryId}`)
       .then((res) => {
         this.relateCourse = res.data.data;
         console.log(this.relateCourse);
