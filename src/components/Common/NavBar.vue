@@ -106,7 +106,7 @@ export default {
     }
   },
    computed:{
-    ...mapGetters(["getCourses"])
+    ...mapGetters(["searchCourses"])
     },
   methods:{
   getSearchResults(search){

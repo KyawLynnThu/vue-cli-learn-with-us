@@ -1,17 +1,17 @@
 <template>
-  <div class="row mb-3" v-if="getCourses.length>0">
-    <div class="col-12 mb-3" v-for="getCourse in getCourses" :key="getCourse.id">
+  <div class="row mb-3" v-if="searchCourses.length>0">
+    <div class="col-12 mb-3" v-for="searchCourse in searchCourses" :key="searchCourse.id">
       <div class="card mb-3 shadow bg-white rounded">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img :src="getCourse.course_cover_link" alt="" class="w-100 h-100" />
+            <img :src="searchCourse.course_cover_link" alt="" class="w-100 h-100" />
           </div>
           <div class="col-md-6 p-4">
             <div class="card-body px-0">
-              <h5 class="card-title font-weight-bolder">{{ getCourse.name }}</h5>
-              <p class="card-text">{{ getCourse.short_descrip }}</p>
+              <h5 class="card-title font-weight-bolder">{{ searchCourse.name }}</h5>
+              <p class="card-text">{{ searchCourse.short_descrip }}</p>
               <p class="card-text">
-                <span>Instructor : </span>{{getCourse.instructor}}
+                <span>Instructor : </span>{{searchCourse.instructor}}
               </p>
               <!--<p class="card-text">
                 <small class="text-muted"
@@ -25,7 +25,7 @@
               class="text-md-right ml-4 font-weight-bolder mr-md-3 mt-md-3"
               style="font-size: 20px"
             >
-              ${{ getCourse.price }}
+              ${{ searchCourse.price }}
             </p>
           </div>
         </div>
@@ -41,7 +41,7 @@
 import {mapGetters} from "vuex";
 export default {
   computed:{
-    ...mapGetters(["getCourses"])
+    ...mapGetters(["searchCourses"])
   },
 }
 </script>

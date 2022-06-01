@@ -18,7 +18,7 @@ export default {
     axios.get(`http://127.0.0.1:8000/api/course/get_all`)
     .then(response=>{
       this.total=response.data
-    console.log(response.data)
+    //console.log(response.data)
   })
 }
 }
