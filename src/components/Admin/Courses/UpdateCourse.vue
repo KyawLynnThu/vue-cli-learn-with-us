@@ -3,8 +3,9 @@
     <div class="card bg-light">
       <div class="card-body">
         <h3 class="card-title my-3 pb-2 d-flex justify-content-center">
-          Create Course
+          Update Course
         </h3>
+
         <ValidationObserver v-slot="{}" ref="form">
           <form @submit.prevent="onSubmit">
             <ValidationProvider
@@ -16,7 +17,7 @@
                 <label for="courseName">Course Name</label>
                 <input
                   type="text"
-                  v-model="name"
+                  v-model="course.name"
                   class="form-control"
                   id="courseName"
                   :class="{ 'is-invalid': submitted }"
@@ -192,6 +193,7 @@ import {
   size,
   ext,
 } from "vee-validate/dist/rules";
+import axios from "axios";
 
 extend("required", {
   ...required,
@@ -238,7 +240,7 @@ extend("ext", {
 
 
 export default {
-  name: "CreateCourse",
+  name: "UpdateCourse",
   components: {
     ValidationProvider,
     ValidationObserver,
@@ -252,10 +254,19 @@ export default {
       instructor: "",
       price: "",
       imageFile: "",
-      submitted:false
+      submitted:false,
+      course: {
+        name: "",
+      },
     };
   },
-
+  mounted() {
+    axios
+      .get(`http://localhost:8000/api/course/show/${this.$route.params.id}`)
+      .then((response) => {
+        this.course = response.data;
+      });
+  },
   methods: {
      onSubmit() {
       this.submitted = true;

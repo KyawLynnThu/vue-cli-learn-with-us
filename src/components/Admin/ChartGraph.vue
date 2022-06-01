@@ -1,0 +1,96 @@
+<template>
+  <main role="main" class="col-md-12 ml-sm-auto mb-5">
+    <div class="row adminrow">
+      <div class="col-lg-4 col-md-4 col-sm-12 admincard">
+        <div class="card category">
+          <div class="card-body">
+            <div class="text-center">
+              <h3 class="text-secondary mb-4">Total Categories</h3>
+              <h4 class="text-secondary text-center">200</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 admincard">
+        <div class="card course">
+          <div class="card-body">
+            <div class="text-center">
+              <h3 class="text-success mb-4">Total Courses</h3>
+              <h4 class="text-success text-center">2000</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 admincard">
+        <div class="card user">
+          <div class="card-body">
+            <div class="text-center">
+              <h3 class="text-danger mb-4">Total Users</h3>
+              <h4 class="text-danger text-center">10000</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <column-chart
+      :data="tableData"
+      width="80%"
+      style="margin: 0 auto"
+      :download="true"
+    />
+  </main>
+</template>
+
+<script>
+export default {
+  name: "ChartGraph",
+  data() {
+    return {
+      tableData: [
+        { name: "PHP", data: { Category: 40 } },
+        { name: "Ruby", data: { Category: 5 } },
+        { name: "Java", data: { Category: 3 } },
+        { name: "C", data: { Category: 20 } },
+        { name: "Vue", data: { Category: 60 } },
+        { name: "React", data: { Category: 30 } },
+        { name: "Angualr", data: { Category: 10 } },
+        { name: "Python", data: { Category: 40 } },
+        { name: "Python", data: { Category: 45 } },
+        { name: "Python", data: { Category: 25 } },
+        { name: "Python", data: { Category: 45 } },
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+.category {
+  /* background-image: linear-gradient(to right, #d7bde2, #9b59b6); */
+  background-color: #d7bde2;
+  border-style: none;
+}
+.course {
+  /* background-image: linear-gradient(to right, #daf7a6, #82e0aa); */
+  background-color: #daf7a6;
+  border-style: none;
+}
+.user {
+  /* background-image: linear-gradient(to right, #f5b7b1, #ec7063); */
+  background-color: #f5b7b1;
+  border-style: none;
+}
+.admincard {
+  margin-bottom: 30px;
+}
+.adminrow {
+  margin-bottom: 60px;
+}
+h5 {
+  font-size: 60px;
+  margin: 0 auto;
+}
+h4 {
+  text-decoration: none;
+}
+</style>

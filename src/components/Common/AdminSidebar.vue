@@ -22,6 +22,11 @@
         >
       </li>
       <li>
+        <router-link :to="{ name: 'userUpload' }"
+          ><span class="fas fa-upload"></span> Users Upload</router-link
+        >
+      </li>
+      <li>
         <router-link :to="{ name: 'adminProfile' }"
           ><span class="fas fa-user-cog"></span> Admin Profile</router-link
         >
@@ -31,25 +36,9 @@
 </template>
 
 <script>
-//import axios from "axios";
-//export default {
-//   data() {
-//    return {
-//      userList: "",
-//    };
-//  },
-//  created() {
-//    axios
-//      .get("http://127.0.0.1:8000/api/user/list")
-//      .then((res) => {
-//        this.userList = res.data;
-//        console.log(this.userList);
-//      })
-//      .catch((error) => {
-//        console.log(error);
-//      });
-//  },
-//}
+
+export default {};
+
 </script>
 
 <style scoped>

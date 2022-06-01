@@ -25,11 +25,13 @@
                </div>
             </div>
              </ValidationProvider>
+
             <div class="text-center mt-4">
-              <button class="btn btn-primary">Upload</button>
+              <button class="btn btn-primary" type="submit">Upload</button>
             </div>
           </form>
            </ValidationObserver>
+
         </div>
       </div>
     </div>
@@ -96,3 +98,4 @@ export default {
   background: #ddd;
 }
 </style>
+
