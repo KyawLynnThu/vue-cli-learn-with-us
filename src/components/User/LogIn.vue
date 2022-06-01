@@ -11,7 +11,7 @@
           >
           <div class="form-group">
               <label for="email">Email</label>
-              <input  v-model="email" class="form-control" :class="{ 'is-invalid': submitted }" />
+              <input  v-model="loginData.email" class="form-control" :class="{ 'is-invalid': submitted }" />
              <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
@@ -22,11 +22,10 @@
             rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
             vid="password"
             v-slot="{ errors }"
-            
           >
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" v-model="password" class="form-control" :class="{ 'is-invalid': submitted }"/>
+              <input type="password" v-model="loginData.password" class="form-control" :class="{ 'is-invalid': submitted }"/>
               <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
@@ -50,7 +49,6 @@
           <div class="mb-3">
             <router-link
               :to="{ name: 'SignUp' }"
-              type="submit"
               class="
                 btn btn-outline-dark btn-block
                 text-uppercase
@@ -71,6 +69,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 import { required, email, min, regex } from "vee-validate/dist/rules";
 extend("required", {
@@ -99,8 +98,10 @@ export default {
   },
   data() {
     return {
-      email: "",
-      password: "",
+      loginData: {
+        email: "",
+        password: "",
+      },
       submitted: false
     };
   },
@@ -109,7 +110,15 @@ export default {
       this.submitted = true;
     this.$refs.form.validate().then(success=>{
       if(success){
-        alert("success")
+        axios.post("user/login", this.loginData)
+        .then(res => {
+          let token = res.data.data.token;
+          let id=res.data.data.id;
+          console.log(res);          
+          localStorage.setItem("token", token);
+          localStorage.setItem("id",id);
+          this.$router.push('/')
+        });
       }
     });
     }
@@ -123,3 +132,4 @@ export default {
   box-shadow: none !important;
 }
 </style>
+

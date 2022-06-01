@@ -13,14 +13,10 @@
         >
         </iframe>
       </div>
-      <h5 class="mt-3 mb-3">Title</h5>
+      <h5 class="mt-3 mb-3">{{courseData.name}}</h5>
       <p>Description</p>
-      <p class="">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sapiente
-        tempora maxime similique, nulla, ut sunt facilis dolorum quia minus
-        reprehenderit assumenda atque dolorem dolor quos, neque ipsum aliquid
-        laboriosam.
-      </p>
+      <p class="">{{courseData.description}}</p>
+
       <span
         class="
           vd-desc
@@ -34,7 +30,7 @@
         "
         >Free</span
       >
-      <p class="vd-price mx-1">$99.99</p>
+      <p class="vd-price mx-1">{{ courseData.price }}</p>
       <button
         type="button"
         class="btn btn-dark"
@@ -57,7 +53,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">
-                Modal title
+                {{ courseData.name }}
               </h5>
               <button
                 type="button"
@@ -68,12 +64,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim,
-              repellat deleniti cum magni exercitationem fuga dolorum debitis
-              neque eius quia, accusamus voluptas, nisi quidem. Ullam distinctio
-              fugiat culpa temporibus quaerat!
-            </div>
+            <div class="modal-body">{{ courseData.description }}</div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -133,17 +124,39 @@
 </template>
 
 <script>
-export default {}
+import axios from 'axios'
+export default {
+  data(){
+    return{
+      courseData:{
+        name:'',
+        description:'',
+        price:''
+      }
+    }
+  },
+  created(){
+    axios.get(`course/detail/${this.$route.params.id}`)
+    .then(res=>{
+      this.courseData=res.data.data;
+      let categoryId=res.data.data.category.id;
+      localStorage.setItem("categoryId", categoryId)      
+      console.log(this.courseData);
+    })
+  }
+}
 </script>
 
 <style scoped>
 .vd-price {
   font-size: 20px;
 }
+
 .lock {
   width: 20px;
   height: 20px;
 }
+
 .course-btn {
   border-style: none;
 }

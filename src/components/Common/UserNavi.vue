@@ -72,10 +72,10 @@
           aria-expanded="false"
           style="padding: 0"
         >
-          User One &nbsp;&nbsp;
+          {{loginUser.userName}} &nbsp;&nbsp;
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a @click="logOut" class="dropdown-item" href="#">Log Out</a>
         </div>
       </div>
     </div>
@@ -84,13 +84,27 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+
 export default {
+  data(){
+    return{
+      loginUser:{
+        userName:''
+      }
+    }
+  },
+ 
+  methods:{
+    ...mapActions(["getCat"]),
+    logOut(){
+    localStorage.clear();
+    }
+  },
   computed: mapGetters(["getCategories"]),
-  methods: mapActions(["getCat"]),
   mounted() {
     this.getCat();
   },
-};
+}
 </script>
 
 <style scoped>

@@ -15,7 +15,7 @@
                 <label for="courseName">Enter Old Password</label>
                 <input
                   type="password"
-                  v-model="oldPassword"
+                  v-model="userChangePwData.old_password"
                   class="form-control"
                   id="oldpassword"
                   :class="{ 'is-invalid': submitted }"
@@ -37,7 +37,7 @@
                 <label for="">Enter New Password</label>
                 <input
                   type="password"
-                  v-model="password"
+                  v-model="userChangePwData.new_password"
                   class="form-control"
                   id="newpassword"
                   :class="{ 'is-invalid': submitted }"
@@ -52,14 +52,12 @@
               name="Re-Type Password"
               rules="required|confirmed:password"
               v-slot="{ errors }"
-             
-              
             >
               <div class="form-group mx-5">
                 <label for="confirmPassword">Re-type New Password</label>
                 <input
                   type="password"
-                  v-model="confirmPassword"
+                  v-model="userChangePwData.confirm_password"
                   class="form-control"
                   id="retypepassword"
                    :class="{ 'is-invalid': submitted }"
@@ -71,19 +69,31 @@
             </ValidationProvider>
 
             <div class="text-center mt-4">
-              <button type="submit" class="btn btn-primary col-md-4 mr-2 mb-2">
-                Change
-              </button>
-              <button class="btn btn-danger col-md-4 mb-2">Cancel</button>
+              <button 
+              type="submit" 
+              class="
+              btn btn-primary 
+              col-md-4
+              mr-2
+              mb-2">
+            Change
+          </button>
+              <router-link :to="{ name: 'SignUp' }" class="
+              btn btn-danger col-md-4 mb-2
+            ">
+            Cancel
+          </router-link>
             </div>
           </form>
         </ValidationObserver>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 </template>
 
 <script>
+import axios from 'axios';
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 import { required, min, confirmed, regex } from "vee-validate/dist/rules";
 extend("required", {
@@ -111,9 +121,12 @@ export default {
   },
   data() {
     return {
-      oldPassword: "",
-      password: "",
-      confirmPassword: "",
+      userChangePwData: {
+        old_password: '',
+        new_password: '',
+        confirm_password: '',
+        id: localStorage.getItem("id")
+      }
       submitted:false
     };
   },
@@ -123,7 +136,11 @@ export default {
       this.submitted = true;
     this.$refs.form.validate().then(success=>{
       if(success){
-        alert("success")
+        axios.post('user/change/password', this.userChangePwData)
+        .then(res => {
+          console.log(res.data)
+          this.$router.push({ path: '/login' })
+        })
       }
     });
     }

@@ -11,7 +11,7 @@
           >
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" v-model="name" name='name' id="name" class="form-control" :class="{ 'is-invalid': submitted }" :state="errors[0] ? false : null"/>
+              <input type="text" v-model="registerData.name" name='name' id="name" class="form-control" :class="{ 'is-invalid': submitted }" :state="errors[0] ? false : null"/>
                  <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
@@ -25,7 +25,7 @@
           >
             <div class="form-group">
               <label for="email">Email</label>
-              <input  v-model="email" class="form-control" :state="errors[0] ? false : null" :class="{ 'is-invalid': submitted }" />
+              <input  v-model="registerData.email" class="form-control" :state="errors[0] ? false : null" :class="{ 'is-invalid': submitted }" />
              <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
@@ -40,7 +40,7 @@
           >
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" :state="errors[0] ? false : null" v-model="password" class="form-control" :class="{ 'is-invalid': submitted && errors }"/>
+              <input type="password" :state="errors[0] ? false : null" v-model="registerData.password" class="form-control" :class="{ 'is-invalid': submitted && errors }"/>
               <div v-if="submitted " class="invalid-feedback">
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
@@ -56,7 +56,7 @@
               <label for="confirmPassword">Confirm Password</label>
               <input
                 type="password"
-                v-model="confirmPassword"
+                v-model="registerData.password_confirm"
                 class="form-control"
                 :class="{ 'is-invalid': submitted }"
                 :state="errors[0] ? false : null"
@@ -74,7 +74,6 @@
           <div>
             <router-link
               :to="{ name: 'LogIn' }"
-              type="submit"
               class="
                 btn btn-outline-dark btn-block
                 text-uppercase
@@ -93,7 +92,7 @@
 </template>
 
 <script>
-
+import axios from "axios";
 import { ValidationProvider, ValidationObserver, extend} from "vee-validate";
 import {
   required,
@@ -134,12 +133,12 @@ export default {
   },
   data() {
     return {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      gender: "",
-      acceptTerms: "",
+      registerData: {
+        name: "",
+        email: "",
+        password: "",
+        password_confirm: "",
+      },
       submitted: false,
       
     };
@@ -150,11 +149,19 @@ export default {
       this.submitted = true;
       this.$refs.form.validate().then(success=>{
       if(success){
-        this.$router.push({ name: 'confirmSignup' }); 
+        axios.post('user/register', this.registerData)
+        .then(res => {
+          console.log(res.data);
+          this.$router.push({ path: '/login' })
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       }
     })
     }
   }
+
 };
 </script>
 

@@ -20,7 +20,24 @@
 </template>
 
 <script>
-export default {}
+//import axios from 'axios'
+export default {
+  //data(){
+  //  return{
+  //    cat:''
+  //  }
+  //},
+  //ceated(){
+  //  axios.get('categories')
+  //  .then(res=>{
+  //    this.cat=res.data;
+  //    console.log(this.cat)
+  //  })
+  //  .catch(error=>{
+  //    console.log(error)
+  //  })
+  //}
+}
 </script>
 
 <style scoped>

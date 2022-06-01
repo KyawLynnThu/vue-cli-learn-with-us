@@ -12,6 +12,7 @@
     "bootstrap": "^4.6.0",
     "chart.js": "^3.8.0",
     "core-js": "^3.8.3",
+    "file-saver": "^2.0.5",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "vee-validate": "^3.4.14",
@@ -19,6 +20,7 @@
     "vue-chartkick": "^0.6.1",
     "vue-router": "^3.5.4",
     "vue-slick-carousel": "^1.0.6",
+    "xlsx": "^0.18.5"
     "vuex": "^3.6.2"
   },
   "devDependencies": {
@@ -29,6 +31,7 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "script-loader": "^0.7.2",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {

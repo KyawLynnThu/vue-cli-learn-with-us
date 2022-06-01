@@ -1,111 +1,24 @@
 <template>
   <div>
     <VueSlickCarousel v-bind="setting" ref="carousel" class="slide clearfix">
-      <div class="col">
+      <div class="col" v-for="topCourses in topCourse" :key="topCourses.id">
         <div class="card shadow">
           <img
             class="card-img-top"
-            src="https://picsum.photos/600/300/?image=24"
+            :src="topCourses.course_cover_link"
             alt="Card image"
             style="width: 100%"
           />
           <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
+            <h5 class="card-title">{{ topCourses.instructor }}</h5>
             <p class="card-text">
-              Some example text some example text. John Doe is an architect and
-              engineer
+              {{ topCourses.short_descrip }}
             </p>
-            <a href="#" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow">
-          <img
-            class="card-img-top"
-            src="https://picsum.photos/600/300/?image=25"
-            alt="Card image"
-            style="width: 100%"
-          />
-          <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">
-              Some example text some example text. John Doe is an architect and
-              engineer
-            </p>
-            <a href="#" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow">
-          <img
-            class="card-img-top"
-            src="https://picsum.photos/600/300/?image=26"
-            alt="Card image"
-            style="width: 100%"
-          />
-          <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">
-              Some example text some example text. John Doe is an architect and
-              engineer
-            </p>
-            <a href="#" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow">
-          <img
-            class="card-img-top"
-            src="https://picsum.photos/600/300/?image=27"
-            alt="Card image"
-            style="width: 100%"
-          />
-          <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">
-              Some example text some example text. John Doe is an architect and
-              engineer
-            </p>
-            <a href="#" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow">
-          <img
-            class="card-img-top"
-            src="https://picsum.photos/600/300/?image=28"
-            alt="Card image"
-            style="width: 100%"
-          />
-          <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">
-              Some example text some example text. John Doe is an architect and
-              engineer
-            </p>
-            <a href="#" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow">
-          <img
-            class="card-img-top"
-            src="https://picsum.photos/600/300/?image=29"
-            alt="Card image"
-            style="width: 100%"
-          />
-          <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">
-              Some example text some example text. John Doe is an architect and
-              engineer
-            </p>
-            <a href="#" class="btn btn-primary">See Profile</a>
+            <router-link
+              :to="`/detail/${topCourses.id}`"
+              class="btn btn-primary"
+              >See Profile</router-link
+            >
           </div>
         </div>
       </div>
@@ -117,12 +30,19 @@
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+
+import axios from "axios";
 export default {
   components: {
     VueSlickCarousel,
   },
   data() {
     return {
+      topCourse: {
+        course_cover_link: "",
+        instructor: "",
+        short_descrip: "",
+      },
       setting1: {
         focusOnSelect: true,
         infinite: true,
@@ -151,6 +71,12 @@ export default {
     window.onresize = () => {
       this.windowWidth = window.screen.width;
     };
+    axios
+      .get("course/top")
+      .then((res) => {
+        this.topCourse = res.data.data;
+        console.log(res)
+      });
   },
   computed: {
     setting() {
