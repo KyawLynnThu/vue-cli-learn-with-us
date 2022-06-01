@@ -30,7 +30,6 @@
         "
         >Free</span
       >
-
       <p class="vd-price mx-1">{{ courseData.price }}</p>
       <button
         type="button"
@@ -140,7 +139,7 @@ export default {
     axios.get(`course/detail/${this.$route.params.id}`)
     .then(res=>{
       this.courseData=res.data.data;
-      let categoryId=res.data.data.category_id;
+      let categoryId=res.data.data.category.id;
       localStorage.setItem("categoryId", categoryId)      
       console.log(this.courseData);
     })
