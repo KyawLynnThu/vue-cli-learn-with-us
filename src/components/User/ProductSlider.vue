@@ -6,7 +6,6 @@
           <img
             class="card-img-top"
             :src="topCourses.course_cover_link"
-
             alt="Card image"
             style="width: 100%"
           />
@@ -76,7 +75,7 @@ export default {
       .get("course/top")
       .then((res) => {
         this.topCourse = res.data.data;
-        console.log(this.topCourse)
+        console.log(res)
       });
   },
   computed: {

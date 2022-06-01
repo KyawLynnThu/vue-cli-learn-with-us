@@ -50,7 +50,12 @@
         </div>
         <div class="mb-3 mt-3">
           <button
-
+          type="submit"
+            class = "
+              btn btn-dark btn-block
+              text-uppercase
+              font-weight-bold
+            "
           >
             Register
           </button>
