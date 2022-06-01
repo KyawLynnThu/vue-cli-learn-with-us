@@ -149,7 +149,7 @@ export default {
       this.submitted = true;
       this.$refs.form.validate().then(success=>{
       if(success){
-        axios.post('user/register', this.registerData)
+        axios.post('http://127.0.0.1:8000/api/user/register', this.registerData)
         .then(res => {
           console.log(res.data);
           this.$router.push({ path: '/login' })

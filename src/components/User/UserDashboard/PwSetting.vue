@@ -37,6 +37,7 @@
                 <label for="">Enter New Password</label>
                 <input
                   type="password"
+                  name="password"
                   v-model="userChangePwData.new_password"
                   class="form-control"
                   id="newpassword"
@@ -88,7 +89,6 @@
         </ValidationObserver>
       </div>
     </div>
-  </div>
 </main>
 </template>
 
@@ -126,7 +126,7 @@ export default {
         new_password: '',
         confirm_password: '',
         id: localStorage.getItem("id")
-      }
+      },
       submitted:false
     };
   },

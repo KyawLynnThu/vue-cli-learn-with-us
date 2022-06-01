@@ -73,7 +73,7 @@
               >
                 No
               </button>
-              <button type="button" class="btn btn-primary">Buy Course</button>
+              <button type="button" class="btn btn-primary"  @click.prevent="buyCourse()">Buy Course</button>
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@ export default {
       localStorage.setItem("categoryId", categoryId)      
       console.log(this.courseData);
     })
-  }
+  },
 }
 </script>
 
