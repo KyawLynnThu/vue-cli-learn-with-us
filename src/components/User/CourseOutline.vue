@@ -82,7 +82,7 @@
               >
                 No
               </button>
-              <button type="button" class="btn btn-primary">Buy Course</button>
+              <button type="button" class="btn btn-primary" @click.prevent="buyCourse()">Buy Course</button>
             </div>
           </div>
         </div>
@@ -133,7 +133,27 @@
 </template>
 
 <script>
-export default {}
+import axios from "axios";
+export default {
+  data(){
+    return{
+      buyCourseId:{
+         user_id:localStorage.getItem("id"),
+         course_id:this.$route.params.id
+      }
+    }
+  },
+ 
+  methods:{
+    async buyCourse(){
+      await axios.post(`http://127.0.0.1:8000/api/course/buy`,this.buyCourseId)
+      .then(response=>{
+        console.log(response)
+        this.$router.push({path:'/usercourse'})
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>

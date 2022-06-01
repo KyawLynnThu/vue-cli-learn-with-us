@@ -7,15 +7,15 @@
       <form class="text-center">
         <div class="form-group mx-5">
           <label for="courseName">Name</label>
-          <h6>Example Name</h6>
+          <h6>{{adminInfo.name}}</h6>
         </div>
         <div class="form-group mx-5">
           <label for="courseName">Gmail</label>
-          <h6>example@gmail.com</h6>
+          <h6>{{ adminInfo.email }}</h6>
         </div>
         <div class="form-group mx-5">
           <label for="courseName">Password</label>
-          <h6>#srdfs$2131343</h6>
+          <h6>{{adminInfo.password}}</h6>
         </div>
       </form>
     </div>
@@ -23,8 +23,22 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "CommonProfile",
+  data(){
+    return{
+      adminInfo:'',
+      id:1
+    }
+  },
+  mounted(){
+  axios.get(`http://127.0.0.1:8000/api/admin/show/${this.id}`)
+    .then(response=>{
+     this.adminInfo = response.data.data
+    console.log(this.adminInfo)
+  })
+  }
 }
 </script>
 

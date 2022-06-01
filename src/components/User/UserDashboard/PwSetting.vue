@@ -15,7 +15,7 @@
                 <label for="courseName">Enter Old Password</label>
                 <input
                   type="password"
-                  v-model="oldPassword"
+                  v-model="adminChangePw.old_password"
                   class="form-control"
                   id="oldpassword"
                   :class="{ 'is-invalid': submitted }"
@@ -31,15 +31,15 @@
               rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
               vid="password"
               v-slot="{ errors }"
-              
             >
               <div class="form-group mx-5">
                 <label for="">Enter New Password</label>
                 <input
                   type="password"
-                  v-model="password"
+                  v-model="adminChangePw.new_password"
                   class="form-control"
                   id="newpassword"
+                  name="password"
                   :class="{ 'is-invalid': submitted }"
                 />
                <div v-if="submitted" class="invalid-feedback">
@@ -52,14 +52,12 @@
               name="Re-Type Password"
               rules="required|confirmed:password"
               v-slot="{ errors }"
-             
-              
             >
               <div class="form-group mx-5">
                 <label for="confirmPassword">Re-type New Password</label>
                 <input
                   type="password"
-                  v-model="confirmPassword"
+                  v-model="adminChangePw.confirm_password"
                   class="form-control"
                   id="retypepassword"
                    :class="{ 'is-invalid': submitted }"
@@ -74,7 +72,7 @@
               <button type="submit" class="btn btn-primary col-md-4 mr-2 mb-2">
                 Change
               </button>
-              <button class="btn btn-danger col-md-4 mb-2">Cancel</button>
+              <router-link :to="{ name: 'adminProfile' }" class="btn btn-danger col-md-4 mb-2">Cancel</router-link>
             </div>
           </form>
         </ValidationObserver>
@@ -103,6 +101,7 @@ extend("confirmed", {
   ...confirmed,
   message: "Password does't match",
 });
+import axios from "axios";
 export default {
   name: "PwSetting",
   components: {
@@ -111,19 +110,27 @@ export default {
   },
   data() {
     return {
-      oldPassword: "",
-      password: "",
-      confirmPassword: "",
+      adminChangePw:{
+        old_password: "",
+        new_password: "",
+        confirm_password: "",
+        id:localStorage.getItem("id")
+    },
       submitted:false
     };
   },
-
   methods: {
     onSubmit() {
       this.submitted = true;
     this.$refs.form.validate().then(success=>{
       if(success){
-        alert("success")
+        //alert("success")
+        axios.post(`http://127.0.0.1:8000/api/admin/change/password`,this.adminChangePw)
+        .then(response=>{
+        //this.adminChangePw=response.data
+        console.log(response.data)
+        this.$router.push({path:'/login'})
+  })
       }
     });
     }
@@ -133,3 +140,6 @@ export default {
 
 <style scoped>
 </style>
+
+
+

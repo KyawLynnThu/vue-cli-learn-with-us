@@ -60,18 +60,19 @@
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 mx-3 my-lg-0">
+      <form class="form-inline my-2 mx-3 my-lg-0" @submit.prevent="getSearchResults(search)">
         <input
           class="form-control mr-sm-2"
           type="search"
           placeholder="Search"
+          v-model="search"
         />
-        <router-link
-          :to="{ name: 'Search' }"
+        <button
+        :disabled="search.length===0"
           class="btn btn-dark my-2 my-sm-0"
           type="submit"
           ><i class="fas fa-search"></i
-        ></router-link>
+        ></button>
       </form>
       <router-link
         :to="{ name: 'LogIn' }"
@@ -97,7 +98,23 @@
 </template>
 
 <script>
-export default {}
+import {mapGetters} from "vuex";
+export default {
+  data(){
+    return{
+      search:'',
+    }
+  },
+   computed:{
+    ...mapGetters(["getCourses"])
+    },
+  methods:{
+  getSearchResults(search){
+    this.$store.dispatch("getSearchResults",search);
+    this.$router.push({ name: 'Search' }).catch(()=>{})
+  }
+  },
+}
 </script>
 
 <style scoped>

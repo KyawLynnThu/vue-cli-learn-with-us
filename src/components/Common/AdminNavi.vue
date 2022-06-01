@@ -27,7 +27,7 @@
             >
               Admin
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <!--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <router-link
                 :to="{ name: 'adminProfile' }"
                 class="dropdown-item"
@@ -35,7 +35,7 @@
                 >Profile</router-link
               >
               <a class="dropdown-item" href="#">Logout</a>
-            </div>
+            </div>-->
           </li>
         </ul>
       </div>
