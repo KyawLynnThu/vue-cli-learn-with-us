@@ -40,22 +40,11 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <router-link
+              v-for="category in getCategories"
+              :key="category.id"
               :to="{ name: 'Category' }"
               class="dropdown-item"
-              href="#"
-              >PHP</router-link
-            >
-            <router-link
-              :to="{ name: 'Category' }"
-              class="dropdown-item"
-              href="#"
-              >Ruby</router-link
-            >
-            <router-link
-              :to="{ name: 'Category' }"
-              class="dropdown-item"
-              href="#"
-              >Java</router-link
+              >{{ category.name }}</router-link
             >
           </div>
         </li>
@@ -94,6 +83,8 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   data(){
     return{
@@ -102,16 +93,17 @@ export default {
       }
     }
   },
-  //created(){
-  //  this.loginUser = JSON.parse(localStorage.getItem('loginUser'));
-  //  console.log(this.loginUser)
-  //},
+ 
   methods:{
+    ...mapActions(["getCat"]),
     logOut(){
     localStorage.clear();
     }
-  }
-  
+  },
+  computed: mapGetters(["getCategories"]),
+  mounted() {
+    this.getCat();
+  },
 }
 </script>
 

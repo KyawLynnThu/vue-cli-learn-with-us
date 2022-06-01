@@ -40,22 +40,11 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <router-link
+              v-for="category in getCategories"
+              :key="category.id"
               :to="{ name: 'Category' }"
               class="dropdown-item"
-              href="#"
-              >PHP</router-link
-            >
-            <router-link
-              :to="{ name: 'Category' }"
-              class="dropdown-item"
-              href="#"
-              >Ruby</router-link
-            >
-            <router-link
-              :to="{ name: 'Category' }"
-              class="dropdown-item"
-              href="#"
-              >Java</router-link
+              >{{ category.name }}</router-link
             >
           </div>
         </li>
@@ -97,24 +86,14 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapGetters, mapActions } from "vuex";
 export default {
-  data(){
-    return{
-      cat:''
-    }
+  computed: mapGetters(["getCategories"]),
+  methods: mapActions(["getCat"]),
+  mounted() {
+    this.getCat();
   },
-  ceated(){
-    axios.get('categories')
-    .then(res=>{
-      this.cat=res.data;
-      console.log(this.cat)
-    })
-    .catch(error=>{
-      console.log(error)
-    })
-  }
-}
+};
 </script>
 
 <style scoped>
