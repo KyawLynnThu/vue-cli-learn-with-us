@@ -1,7 +1,7 @@
 <template>
   <main role="main" class="col-md-12 ml-sm-auto mb-5">
     <h3 class="my-3 pb-2 d-flex justify-content-center">Admin Profile</h3>
-    <common-profile />
+   <DashboardProfile></DashboardProfile>
     <div class="d-flex justify-content-center mt-3">
       <router-link
         :to="{ name: 'adminPasswordSetting' }"
@@ -14,12 +14,13 @@
 </template>
 
 <script>
-import CommonProfile from "@/components/Common/CommonProfile.vue";
+import DashboardProfile from './DashboardProfile'
 
 export default {
   name: "AdminProfile",
   components: {
-    CommonProfile,
+    DashboardProfile,
+   
   },
 }
 </script>

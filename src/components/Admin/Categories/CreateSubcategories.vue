@@ -5,7 +5,7 @@
         <h3 class="card-title my-3 pb-2 d-flex justify-content-center">
           Create Subcategory
         </h3>
-        <ValidationObserver v-slot="{ }" ref="form">
+        <ValidationObserver v-slot="{}" ref="form">
           <form @submit.prevent="createCat()">
             <ValidationProvider
               name="SubCategory name"
@@ -21,11 +21,11 @@
                     v-model="category.name"
                     type="text"
                     class="form-control"
-                    :class="{ 'is-invalid': submitted   }"
+                    :class="{ 'is-invalid': submitted }"
                   />
-                   <div v-if="submitted " class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                  <div v-if="submitted" class="invalid-feedback">
+                    <span class="text-danger">{{ errors[0] }}</span>
+                  </div>
                 </div>
               </div>
             </ValidationProvider>
@@ -68,8 +68,8 @@ export default {
      createCat() {
       this.submitted = true;
       
-      async createCat() {
-      console.log("hello", this.category.name);
+      //createCat() {
+      //console.log("hello", this.category.name);
       this.$refs.form.validate().then(success=>{
       if(success){
           axios
@@ -86,10 +86,12 @@ export default {
             .catch((error) => {
               console.log(error.response);
             });
-    },
-  },
+      }
+  });
+  //}
+     }
   }
-
+  }
 </script>
 
 <style scoped>

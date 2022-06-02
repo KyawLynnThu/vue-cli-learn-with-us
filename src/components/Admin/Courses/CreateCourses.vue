@@ -266,7 +266,7 @@ export default {
       this.submitted = true;
     this.$refs.form.validate().then(success=>{
       if(success){
-        this.$router.push({ name: 'confirmCourse' }); 
+       alert("success")
       }
     });
     }

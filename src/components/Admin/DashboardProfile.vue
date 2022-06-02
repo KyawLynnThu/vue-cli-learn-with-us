@@ -7,15 +7,11 @@
       <form class="text-center">
         <div class="form-group mx-5">
           <label for="courseName">Name</label>
-          <h6>{{ user.name }}</h6>
+          <h6>{{adminInfo.name}}</h6>
         </div>
         <div class="form-group mx-5">
           <label for="courseName">Gmail</label>
-          <h6>{{ user.email }}</h6>
-        </div>
-        <div class="form-group mx-5">
-          <label for="courseName">Password</label>
-          <h6>{{ user.password }}</h6>
+          <h6>{{ adminInfo.email }}</h6>
         </div>
       </form>
     </div>
@@ -25,24 +21,21 @@
 <script>
 import axios from "axios";
 export default {
-  name: "CommonProfile",
-  data() {
-    return {
-      user: {
-        name:'',
-        email:'',
-        password:''
-      },
-      id: localStorage.getItem("id"),
-    };
+  name: "DashboardProfile",
+  data(){
+    return{
+      adminInfo:'',
+      id:localStorage.getItem("id")
+    }
   },
-  created() {
-    axios.get(`user/show/${this.id}`).then((res) => {
-      this.user = res.data.data;
-      console.log(this.user);
-    });
-  },
-};
+  mounted(){
+  axios.get(`http://127.0.0.1:8000/api/admin/show/${this.id}`)
+    .then(response=>{
+     this.adminInfo = response.data.data
+    console.log(this.adminInfo)
+  })
+  }
+}
 </script>
 
 <style scoped>

@@ -3,9 +3,9 @@
     <div class="d-flex flex-wrap flex-md-nowrap">
       <h2 class="my-4">User Lists</h2>
     </div>
-    <a href="" class="btn btn-primary mb-4">
+    <button @click="exportExcel" href="" class="btn btn-primary mb-4">
       <i class="fas fa-download"></i> &nbsp; Download
-    </a>
+    </button>
     <div class="table-responsive">
       <table class="table table-hover text-center">
         <thead class="bg-primary">
@@ -18,33 +18,11 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>balblabla@gmail.com</td>
-            <td>Otto</td>
-            <td>
-              <button class="btn btn-danger">
-                <i class="fas fa-user-alt-slash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Otto</td>
-            <td>
-              <button class="btn btn-danger">
-                <i class="fas fa-user-alt-slash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Mark</td>
-            <td>Otto</td>
+          <tr v-for="userLists in userList" :key="userLists.id">
+            <th scope="row">{{ userLists.id }}</th>
+            <td>{{ userLists.name }}</td>
+            <td>{{ userLists.email }}</td>
+            <td>{{ userLists.courses }}</td>
             <td>
               <button class="btn btn-danger">
                 <i class="fas fa-user-alt-slash"></i>
@@ -58,8 +36,35 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "UserLists",
+
+  data() {
+    return {
+      userList: "",
+    };
+  },
+  created() {
+    axios
+      .get("user/list")
+      .then((res) => {
+        this.userList = res.data.data;
+        console.log(this.userList);
+      })
+      .catch(error=>{
+        console.log(error)
+        console.log(this.userList)
+      })
+  },
+  methods: {
+    exportExcel() {
+      axios.get('user/export')
+      .then(res=>{
+        console.log(res.data)
+      })
+    }
+  }
 };
 </script>
 

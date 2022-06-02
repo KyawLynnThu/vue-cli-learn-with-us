@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import jQuery from 'jquery'
 window.jQuery = jQuery;
 import 'bootstrap';
-import router from "./router"
+import router from "./router";
+import './axios';
 import store from "./store"
 
 import Chartkick from 'vue-chartkick'
@@ -18,6 +19,5 @@ Vue.config.productionTip = false
 new Vue({
   store,
   router,
-  store,
   render: h => h(App),
 }).$mount('#app')

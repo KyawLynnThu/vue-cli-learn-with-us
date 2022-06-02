@@ -31,9 +31,6 @@
             >
               Admin
             </a>
-
-          
-
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="#">Logout</a>
             </div>
