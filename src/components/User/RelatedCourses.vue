@@ -9,11 +9,22 @@
       :key="relateCourses.id"
     >
       <div class="card shadow bg-white rounded">
-        <img :src="relateCourses.cover_path" alt="" class="w-100 h-100" />
+        <img
+          :src="relateCourses.course_cover_link"
+          alt=""
+          class="w-100 h-100"
+        />
         <div class="card-body">
           <h5 class="card-title">{{ relateCourses.name }}</h5>
           <p class="card-text">{{ relateCourses.instructor }}</p>
           <p>{{ relateCourses.price }}</p>
+          <router-link
+            :to="`/detail/${relateCourses.id}`"
+            class="btn btn-primary"
+            onClick="window.location.reload(true)"
+          >
+            More Detail
+          </router-link>
         </div>
       </div>
     </div>
@@ -30,6 +41,7 @@ export default {
         name: "",
         instructor: "",
         price: "",
+        course_cover_link: "",
       },
     };
   },
@@ -47,5 +59,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -13,10 +13,10 @@
           <label for="courseName">Gmail</label>
           <h6>{{ user.email }}</h6>
         </div>
-        <div class="form-group mx-5">
+        <!--<div class="form-group mx-5">
           <label for="courseName">Password</label>
           <h6>{{ user.password }}</h6>
-        </div>
+        </div>-->
       </form>
     </div>
   </div>
@@ -29,9 +29,8 @@ export default {
   data() {
     return {
       user: {
-        name:'',
-        email:'',
-        password:''
+        name: "",
+        email: "",
       },
       id: localStorage.getItem("id"),
     };
@@ -50,9 +49,11 @@ img {
   width: 100px;
   height: 100px;
 }
+
 label {
   font-weight: bold;
 }
+
 .form-group {
   margin-bottom: 35px;
 }

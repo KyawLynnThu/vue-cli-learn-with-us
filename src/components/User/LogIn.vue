@@ -9,12 +9,16 @@
             rules="required|email"
             v-slot="{ errors }"
           >
-          <div class="form-group">
+            <div class="form-group">
               <label for="email">Email</label>
-              <input  v-model="loginData.email" class="form-control" :class="{ 'is-invalid': submitted }" />
-             <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+              <input
+                v-model="loginData.email"
+                class="form-control"
+                :class="{ 'is-invalid': submitted }"
+              />
+              <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger">{{ errors[0] }}</span>
+              </div>
             </div>
           </ValidationProvider>
           <ValidationProvider
@@ -25,13 +29,17 @@
           >
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" v-model="loginData.password" class="form-control" :class="{ 'is-invalid': submitted }"/>
+              <input
+                type="password"
+                v-model="loginData.password"
+                class="form-control"
+                :class="{ 'is-invalid': submitted }"
+              />
               <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                <span class="text-danger">{{ errors[0] }}</span>
+              </div>
             </div>
           </ValidationProvider>
-
 
           <div class="mb-3 mt-3">
             <button
@@ -88,7 +96,7 @@ extend("min", {
 
 extend("regex", {
   ...regex,
-  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character								`,
+  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character		`,
 });
 
 export default {
@@ -102,27 +110,34 @@ export default {
         email: "",
         password: "",
       },
-      submitted: false
+      submitted: false,
+      ishidden: true,
     };
   },
-   methods: {
+  methods: {
     onSubmit() {
       this.submitted = true;
-    this.$refs.form.validate().then(success=>{
-      if(success){
-        axios.post("user/login", this.loginData)
-        .then(res => {
-          let token = res.data.data.token;
-          let id=res.data.data.id;
-          console.log(res);          
-          localStorage.setItem("token", token);
-          localStorage.setItem("id",id);
-          this.$router.push('/')
-        });
-      }
-    });
-    }
-  }
+      this.$refs.form.validate().then((success) => {
+        if (success) {
+          axios.post("user/login", this.loginData).then((res) => {
+            let token = res.data.data.token;
+            let id = res.data.data.id;
+            let name = res.data.data.name;
+            let type = res.data.data.type;
+            console.log(res);
+            localStorage.setItem("token", token);
+            localStorage.setItem("id", id);
+            localStorage.setItem("name", name);
+            localStorage.setItem("type", type);
+            this.ishidden = true;
+            console.log(this.ishidden);
+            localStorage.setItem("hide", this.ishidden);
+            this.$router.push("/");
+          });
+        }
+      });
+    },
+  },
 };
 </script>
 
@@ -132,4 +147,3 @@ export default {
   box-shadow: none !important;
 }
 </style>
-

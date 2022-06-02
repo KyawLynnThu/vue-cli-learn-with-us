@@ -11,14 +11,14 @@
 
 <script>
 import CategoryCard from "@/components/User/CategoryCard"
-import PagiNav from "@/components/User/PagiNav"
+//import PagiNav from "@/components/User/PagiNav"
 import NavBar from "@/components/Common/NavBar"
 import CommonFooter from "@/components/Common/CommonFooter"
 
 export default {
   components: {
     CategoryCard,
-    PagiNav,
+    //PagiNav,
     NavBar,
     CommonFooter,
   },

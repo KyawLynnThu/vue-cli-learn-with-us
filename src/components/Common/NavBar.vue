@@ -40,12 +40,13 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <router-link
-              v-for="category in getCategories"
-              :key="category.id"
-              :to="{ name: 'Category' }"
+              :to="`/category/${cats.id}`"
+              v-for="cats in cat"
+              :key="cats.id"
+              onClick="window.location.reload(true)"
               class="dropdown-item"
-              >{{ category.name }}</router-link
-            >
+              >{{ cats.name }}
+            </router-link>
           </div>
         </li>
       </ul>
@@ -63,35 +64,77 @@
         ></router-link>
       </form>
       <router-link
+        v-if="ishidden == hide"
         :to="{ name: 'LogIn' }"
         class="btn btn-outline-dark my-2 my-sm-0 mx-3"
         >LOG IN</router-link
       >
       <router-link
+        v-if="ishidden == hide"
         :to="{ name: 'SignUp' }"
         class="btn btn-secondary my-2 my-sm-0 mr-3"
         >SIGN UP</router-link
       >
-      <!--<div class="nav-item dropdown my-2 my-lg-0 mx-3">
-        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0">
-          User One
+      <div class="nav-item dropdown mx-3">
+        <a
+          class="nav-link dropdown-toggle text-dark"
+          href="#"
+          id="navbarDropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          {{ name }} &nbsp;
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Log Out</a>
+          <router-link
+            v-if="type == 1"
+            :to="{ name: 'userDashboard' }"
+            class="dropdown-item"
+            >Dashboard</router-link
+          >
+          <router-link
+            v-if="type == 0"
+            :to="{ name: 'adminProfile' }"
+            class="dropdown-item"
+            >Dashboard</router-link
+          >
+          <button @click="logOut" class="dropdown-item">Logout</button>
         </div>
-      </div>-->
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import axios from "axios";
 export default {
-  computed: mapGetters(["getCategories"]),
-  methods: mapActions(["getCat"]),
-  mounted() {
-    this.getCat();
+  data() {
+    return {
+      ishidden: false,
+      cat: {
+        name: "",
+      },
+      name: localStorage.getItem("name"),
+      type: localStorage.getItem("type"),
+      hide: false,
+    };
+  },
+  created() {
+    axios.get("categories").then((res) => {
+      this.cat = res.data;
+      console.log(this.cat);
+    });
+    this.hide = false;
+    this.hide = localStorage.getItem("hide");
+  },
+  methods: {
+    logOut() {
+      localStorage.clear();
+      this.$router.push("/login");
+      let hide = false;
+      localStorage.setItem("hide", hide);
+    },
   },
 };
 </script>
@@ -101,9 +144,11 @@ export default {
   border-color: #030303 !important;
   box-shadow: none !important;
 }
+
 .navbar {
   margin-bottom: 0;
 }
+
 .dropdown-menu {
   min-width: 6rem !important;
 }
