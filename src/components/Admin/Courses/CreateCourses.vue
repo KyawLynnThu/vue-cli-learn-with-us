@@ -162,6 +162,7 @@
                   @change="uploadVideo"
                   class="form-control-file"
                   :class="{ 'is-invalid': submitted }"
+                  multiple
                 />
                 <div v-if="submitted" class="invalid-feedback">
                   <span class="text-danger">{{ errors[0] }}</span>
@@ -254,14 +255,13 @@ export default {
       submitted: false,
       course: {
         name: "",
-        course_cover_path: "",
         category_id: "",
         short_descrip: "",
         description: "",
         instructor: "",
         price: "",
-        video_path: [],
       },
+      
     };
   },
   mounted() {
@@ -271,18 +271,31 @@ export default {
   methods: {
     ...mapActions(["getCat"]),
 
-    uploadFile(event) {
-        console.log(event);
-      },
-      
+    uploadCover(event) {
+      console.log(event);
+      this.uploadCoverPath = event.target.files[0];
+    },
+
+    uploadVideo(event) {
+      console.log(event);
+    },
+
     onSubmit() {
       this.submitted = true;
-      
+
       this.$refs.form.validate().then((success) => {
         if (success) {
+          const fd= new FormData();
+          fd.append('image', this.uploadCoverPath, this.uploadCoverPath.name)
           axios
             .post("http://127.0.0.1:8000/api/course/create/", {
               name: this.course.name,
+              category_id: this.course.category_id,
+              short_descrip: this.course.short_descrip,
+              description: this.course.description,
+              instructor: this.course.instructor,
+              price: this.course.price,
+              fd
             })
             .then((response) => {
               console.log(response.data);
