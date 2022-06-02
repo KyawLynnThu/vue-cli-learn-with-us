@@ -17,14 +17,13 @@
                 <label for="courseName">Course Name</label>
                 <input
                   type="text"
-                  v-model="course.name"
+                  v-model="course.data.name"
                   class="form-control"
-                  id="courseName"
                   :class="{ 'is-invalid': submitted }"
                 />
                 <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -41,9 +40,10 @@
                   class="form-control-file"
                   :class="{ 'is-invalid': submitted }"
                 />
+                <img :src="course.data.cover_path" alt="" style="display:block"/>
                 <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -56,17 +56,15 @@
                 <label for="chooseSubcategory">Choose Subcategory</label>
                 <select
                   class="form-control"
-                  v-model="category"
+                  v-model="course.data.category.name"
                   id="chooseSubcategory"
                   :class="{ 'is-invalid': submitted }"
                 >
-                  <option>php</option>
-                  <option>js</option>
-                  <option>html</option>
+                  <option>{{ course.data.category.name }}</option>
                 </select>
-               <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                <div v-if="submitted" class="invalid-feedback">
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -81,12 +79,12 @@
                   class="form-control"
                   id="shortDescription"
                   rows="2"
-                  v-model="shortDesc"
+                  v-model="course.data.short_descrip"
                   :class="{ 'is-invalid': submitted }"
                 ></textarea>
-               <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                <div v-if="submitted" class="invalid-feedback">
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -101,12 +99,12 @@
                   class="form-control"
                   id="description"
                   rows="3"
-                  v-model="description"
+                  v-model="course.data.description"
                   :class="{ 'is-invalid': submitted }"
                 ></textarea>
                 <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -121,12 +119,12 @@
                   type="text"
                   class="form-control"
                   id="instructorName"
-                  v-model="instructor"
+                  v-model="course.data.instructor"
                   :class="{ 'is-invalid': submitted }"
                 />
                 <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -139,14 +137,14 @@
                 <label for="price">Price</label>
                 <input
                   type="text"
-                  v-model="price"
+                  v-model="course.data.price"
                   class="form-control"
                   id="price"
                   :class="{ 'is-invalid': submitted }"
                 />
-               <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                <div v-if="submitted" class="invalid-feedback">
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -163,16 +161,16 @@
                   class="form-control-file"
                   :class="{ 'is-invalid': submitted }"
                 />
+                    <video autoplay muted controls preload="auto" v-for="video in course.data.video" :key="video.id">
+                    <source :src="video.video_path" type="video/mp4" />
+                  </video>
                 <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
             <div class="form-group mx-5">
-              <button
-                class="btn btn-primary"
-                >Create</button>
-              
+              <button class="btn btn-primary">Update</button>
             </div>
           </form>
         </ValidationObserver>
@@ -180,7 +178,6 @@
     </div>
   </main>
 </template>
-
 <script>
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 import {
@@ -199,11 +196,10 @@ extend("required", {
   ...required,
   message: (field) => field + ` is required`,
 }),
-
-extend("short_desc__max", {
-  ...max,
-  message: "Instructor must not be more than 100 characters.",
-});
+  extend("short_desc__max", {
+    ...max,
+    message: "Instructor must not be more than 100 characters.",
+  });
 extend("desc_max", {
   ...max,
   message: "Instructor must not be more than 200 characters.",
@@ -238,7 +234,6 @@ extend("ext", {
   message: (field) => field + "  must be mp4 format",
 });
 
-
 export default {
   name: "UpdateCourse",
   components: {
@@ -254,31 +249,48 @@ export default {
       instructor: "",
       price: "",
       imageFile: "",
-      submitted:false,
+      submitted: false,
       course: {
         name: "",
+        description: "",
       },
+      
     };
   },
   mounted() {
     axios
-      .get(`http://localhost:8000/api/course/show/${this.$route.params.id}`)
+      .get(`http://localhost:8000/api/course/detail/${this.$route.params.id}`)
       .then((response) => {
         this.course = response.data;
       });
   },
   methods: {
-     onSubmit() {
+    onSubmit() {
       this.submitted = true;
-    this.$refs.form.validate().then(success=>{
-      if(success){
-        return "success"
-      }
-    });
-    }
-  }
+      this.$refs.form.validate().then((success) => {
+        if (success) {
+          return "success";
+        }
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
+video {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 30%;
+  height: 30%;
+  display: inline-block;
+}
+img {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 20%;
+  height: 10%;
+}
 </style>

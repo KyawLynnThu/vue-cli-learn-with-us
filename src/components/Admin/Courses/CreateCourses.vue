@@ -6,262 +6,118 @@
           Create Course
         </h3>
 
-        <ValidationObserver v-slot="{}" ref="form">
-          <form @submit.prevent="onSubmit">
-            <ValidationProvider
-              name="Name"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <div class="form-group mx-5">
-                <label for="courseName">Course Name</label>
-                <input
-                  type="text"
-                  v-model="course.name"
-                  class="form-control"
-                  id="courseName"
-                  :class="{ 'is-invalid': submitted }"
-                />
-                <div v-if="submitted" class="invalid-feedback">
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </div>
-              </div>
-            </ValidationProvider>
+        <form @submit.prevent="onSubmit">
+          <div class="form-group mx-5">
+            <label for="courseName">Course Name</label>
+            <input
+              type="text"
+              v-model="course.name"
+              class="form-control"
+              id="courseName"
+            />
+          </div>
 
-            <ValidationProvider
-              name="Your Image"
-              rules="required|mimes:['image/jpeg','image/jpg','image/png']|size:2000"
-              v-slot="{ errors }"
-            >
-              <div class="form-group mx-5">
-                <label for="cover">Course Cover</label>
-                <input
-                  type="file"
-                  @change="uploadCover"
-                  class="form-control-file"
-                  :class="{ 'is-invalid': submitted }"
-                />
-                <div v-if="submitted" class="invalid-feedback">
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </div>
-              </div>
-            </ValidationProvider>
+          <div class="form-group mx-5">
+            <label for="cover">Course Cover</label>
+            <input
+              type="file"
+              name="cover"
+              @change="uploadCover"
+              class="form-control-file"
+            />
+          </div>
 
-            <ValidationProvider
-              name="Category"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <div class="form-group mx-5">
-                <label for="chooseSubcategory">Choose Subcategory</label>
-                <select
-                  class="form-control"
-                  v-model="course.category_id"
-                  id="chooseSubcategory"
-                  :class="{ 'is-invalid': submitted }"
-                >
-                  <option v-for="category in getCategories" :key="category.id">
-                    {{ category.name }}
-                  </option>
-                </select>
-                <div v-if="submitted" class="invalid-feedback">
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </div>
-              </div>
-            </ValidationProvider>
+          <div class="form-group mx-5">
+            <label for="chooseSubcategory">Choose Subcategory</label>
+            <select class="form-control" id="chooseSubcategory">
+              <option
+                v-for="category in getCategories"
+                :key="category.id"
+                :value="category.id"
+              >
+                {{ category.id }}
+              </option>
+            </select>
+          </div>
 
-            <ValidationProvider
-              name="Short_Description"
-              rules="required|short_desc__max:100"
-              v-slot="{ errors }"
-            >
-              <div class="form-group mx-5">
-                <label for="shortDescription">Short Description</label>
-                <textarea
-                  class="form-control"
-                  id="shortDescription"
-                  rows="2"
-                  v-model="course.short_descrip"
-                  :class="{ 'is-invalid': submitted }"
-                ></textarea>
-                <div v-if="submitted" class="invalid-feedback">
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </div>
-              </div>
-            </ValidationProvider>
+          <div class="form-group mx-5">
+            <label for="shortDescription">Short Description</label>
+            <textarea
+              class="form-control"
+              id="shortDescription"
+              rows="2"
+              v-model="course.short_descrip"
+            ></textarea>
+          </div>
 
-            <ValidationProvider
-              name="Description"
-              rules="required|desc_max:200"
-              v-slot="{ errors }"
-            >
-              <div class="form-group mx-5">
-                <label for="description">Description</label>
-                <textarea
-                  class="form-control"
-                  id="description"
-                  rows="3"
-                  v-model="course.description"
-                  :class="{ 'is-invalid': submitted }"
-                ></textarea>
-                <div v-if="submitted" class="invalid-feedback">
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </div>
-              </div>
-            </ValidationProvider>
+          <div class="form-group mx-5">
+            <label for="description">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              rows="3"
+              v-model="course.description"
+            ></textarea>
+          </div>
 
-            <ValidationProvider
-              name="Instructor"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <div class="form-group mx-5">
-                <label for="instructorName">Instructor Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="instructorName"
-                  v-model="course.instructor"
-                  :class="{ 'is-invalid': submitted }"
-                />
-                <div v-if="submitted" class="invalid-feedback">
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </div>
-              </div>
-            </ValidationProvider>
+          <div class="form-group mx-5">
+            <label for="instructorName">Instructor Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="instructorName"
+              v-model="course.instructor"
+            />
+          </div>
+          <div class="form-group mx-5">
+            <label for="price">Price</label>
+            <input
+              type="text"
+              v-model="course.price"
+              class="form-control"
+              id="price"
+            />
+          </div>
 
-            <ValidationProvider
-              name="Price"
-              rules="required|numeric"
-              v-slot="{ errors }"
-            >
-              <div class="form-group mx-5">
-                <label for="price">Price</label>
-                <input
-                  type="text"
-                  v-model="course.price"
-                  class="form-control"
-                  id="price"
-                  :class="{ 'is-invalid': submitted }"
-                />
-                <div v-if="submitted" class="invalid-feedback">
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </div>
-              </div>
-            </ValidationProvider>
+          <div class="form-group mx-5">
+            <label for="video">Video</label>
+            <input
+              type="file"
+              @change="uploadVideo"
+              class="form-control-file"
+              multiple
+            />
+          </div>
 
-            <ValidationProvider
-              name="Your Video"
-              rules="required|ext:mp4|video_size:200000"
-              v-slot="{ errors }"
-            >
-              <div class="form-group mx-5">
-                <label for="video">Video</label>
-                <input
-                  type="file"
-                  @change="uploadVideo"
-                  class="form-control-file"
-                  :class="{ 'is-invalid': submitted }"
-                  multiple
-                />
-                <div v-if="submitted" class="invalid-feedback">
-                  <span class="text-danger">{{ errors[0] }}</span>
-                </div>
-              </div>
-            </ValidationProvider>
-            <div class="form-group mx-5">
-              <button class="btn btn-primary" type="submit">Create</button>
-            </div>
-          </form>
-        </ValidationObserver>
+          <div class="form-group mx-5">
+            <button class="btn btn-primary" type="submit">Create</button>
+          </div>
+        </form>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import {
-  required,
-  confirmed,
-  regex,
-  max,
-  mimes,
-  numeric,
-  size,
-  ext,
-} from "vee-validate/dist/rules";
 import { mapGetters, mapActions } from "vuex";
 import axios from "axios";
 import store from "@/store";
 
-extend("required", {
-  ...required,
-  message: (field) => field + ` is required`,
-}),
-  extend("short_desc__max", {
-    ...max,
-    message: "Instructor must not be more than 100 characters.",
-  });
-extend("desc_max", {
-  ...max,
-  message: "Instructor must not be more than 200 characters.",
-});
-
-extend("numeric", {
-  ...numeric,
-  message: (field) => field + " must be numberic.",
-});
-extend("regex", {
-  ...regex,
-  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character								`,
-});
-extend("confirmed", {
-  ...confirmed,
-  message: "Password does't match",
-});
-extend("mimes", {
-  ...mimes,
-  message: "Your image must be JPG or JPEG or PNG format",
-});
-extend("size", {
-  ...size,
-  message: (field) => field + " is more than 2Mb",
-});
-extend("video_size", {
-  ...size,
-  message: (field) => field + " is more than 20Mb",
-});
-extend("ext", {
-  ...ext,
-  message: (field) => field + "  must be mp4 format",
-});
-
 export default {
   name: "CreateCourse",
-  components: {
-    ValidationProvider,
-    ValidationObserver,
-  },
   data() {
     return {
-      //name: "",
-      //category: "",
-      //shortDesc: "",
-      //description: "",
-      //instructor: "",
-      //price: "",
-      //imageFile: "",
       submitted: false,
       course: {
         name: "",
-        category_id: "",
+
         short_descrip: "",
         description: "",
         instructor: "",
         price: "",
+        course_cover_path: "",
+        video_path: [],
       },
-      
     };
   },
   mounted() {
@@ -273,41 +129,37 @@ export default {
 
     uploadCover(event) {
       console.log(event);
-      this.uploadCoverPath = event.target.files[0];
+      this.cover = event.target.files[0];
     },
 
     uploadVideo(event) {
       console.log(event);
+      this.video = event.target.files;
     },
 
     onSubmit() {
-      this.submitted = true;
+      var data = new FormData();
 
-      this.$refs.form.validate().then((success) => {
-        if (success) {
-          const fd= new FormData();
-          fd.append('image', this.uploadCoverPath, this.uploadCoverPath.name)
-          axios
-            .post("http://127.0.0.1:8000/api/course/create/", {
-              name: this.course.name,
-              category_id: this.course.category_id,
-              short_descrip: this.course.short_descrip,
-              description: this.course.description,
-              instructor: this.course.instructor,
-              price: this.course.price,
-              fd
-            })
-            .then((response) => {
-              console.log(response.data);
-              let course = response.data;
-              store.commit("storeCourse", course);
-              this.$router.push({ name: "Courses" });
-            })
-            .catch((error) => {
-              console.log(error.response);
-            });
-        }
-      });
+      data.append("name", this.course.name);
+      data.append("category_id", this.course.category_id);
+      data.append("short_descrip", this.course.short_descrip);
+      data.append("description", this.course.description);
+      data.append("instructor", this.course.instructor);
+      data.append("price", this.course.price);
+      data.append("course_cover_path", this.cover);
+      data.append("video_path", this.video);
+      axios
+        .post("http://127.0.0.1:8000/api/course/create/", data)
+        .then((response) => {
+          console.log(response.data);
+          let course = response.data;
+          store.commit("storeCourse", course);
+          this.$router.push({ name: "Courses" });
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+      this.submitted = true;
     },
   },
 };
