@@ -19,7 +19,6 @@
               rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
               vid="password"
               v-slot="{ errors }"
-              
             >
               <div class="form-group mx-5">
                 <label for="">Enter New Password</label>
@@ -35,7 +34,6 @@
                 <span class="text-danger" >{{ errors[0] }}</span>
                </div>
               </div>
-            </div>
           </ValidationProvider>
 
           <ValidationProvider name="Re-Type Password" rules="required|confirmed:password" v-slot="{ errors }">
@@ -65,6 +63,7 @@
         </form>
       </ValidationObserver>
     </div>
+  </div>
 </main>
 </template>
 
