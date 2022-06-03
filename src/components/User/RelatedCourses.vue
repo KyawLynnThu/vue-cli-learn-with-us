@@ -47,7 +47,7 @@ export default {
   },
   created() {
     axios
-      .get(`course/youmaylike/${this.categoryId}`)
+      .get('course/youmaylike/6')
       .then((res) => {
         this.relateCourse = res.data.data;
         console.log(this.relateCourse);

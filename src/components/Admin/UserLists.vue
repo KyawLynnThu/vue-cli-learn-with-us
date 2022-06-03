@@ -21,10 +21,10 @@
         </thead>
         <tbody class="bg-light">
           <tr v-for="userLists in userList" :key="userLists.id">
-            <th scope="row">{{ userLists.id }}</th>
+            <th scope="row">{{ userLists.user_id }}</th>
             <td>{{ userLists.user_name }}</td>
             <td>{{ userLists.email }}</td>
-            <td>{{ userLists.courses }}</td>
+            <td>{{ userLists.name }}</td>
             <td>
               <button class="btn btn-danger">
                 <i class="fas fa-user-alt-slash"></i>
