@@ -111,7 +111,7 @@ export default {
         password: "",
       },
       submitted: false,
-      ishidden: true,
+      logHide: ''
     };
   },
   methods: {
@@ -129,9 +129,8 @@ export default {
             localStorage.setItem("id", id);
             localStorage.setItem("name", name);
             localStorage.setItem("type", type);
-            this.ishidden = true;
-            console.log(this.ishidden);
-            localStorage.setItem("hide", this.ishidden);
+            this.logHide = true;
+            localStorage.setItem("logHide", this.logHide);
             this.$router.push("/");
           });
         }

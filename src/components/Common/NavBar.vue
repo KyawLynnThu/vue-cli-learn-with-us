@@ -26,8 +26,8 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" v-model="search" />
       <button :disabled="search.length===0" class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
     </form>
-    <router-link v-if="ishidden == hide" :to="{ name: 'LogIn' }" class="btn btn-outline-dark my-2 my-sm-0 mx-3">LOG IN</router-link>
-    <router-link v-if="ishidden == hide" :to="{ name: 'SignUp' }" class="btn btn-secondary my-2 my-sm-0 mr-3">SIGN UP</router-link>
+    <router-link v-if="ishidden==logHide" :to="{ name: 'LogIn' }" class="btn btn-outline-dark my-2 my-sm-0 mx-3">LOG IN</router-link>
+    <router-link v-if="ishidden==logHide" :to="{ name: 'SignUp' }" class="btn btn-secondary my-2 my-sm-0 mr-3">SIGN UP</router-link>
     <div class="nav-item dropdown mx-3">
       <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{ name }} &nbsp;
@@ -48,14 +48,12 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      ishidden: false,
       cat: {
         name: "",
       },
       search: '',
       name: localStorage.getItem("name"),
       type: localStorage.getItem("type"),
-      hide: false,
     };
   },
   computed: mapGetters(["searchCourses"]),
@@ -64,15 +62,14 @@ export default {
       this.cat = res.data;
       console.log(this.cat);
     });
-    this.hide = false;
-    this.hide = localStorage.getItem("hide");
+    this.logHide = localStorage.getItem("logHide");
   },
   methods: {
     logOut() {
       localStorage.clear();
       this.$router.push("/login");
-      let hide = false;
-      localStorage.setItem("hide", hide);
+      //let hide = false;
+      //localStorage.setItem("logHide", hide);
     },
     getSearchResults(search) {
       this.$store.dispatch("getSearchResults", search);
