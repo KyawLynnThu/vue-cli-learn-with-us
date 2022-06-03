@@ -14,13 +14,26 @@
               </div>
             </div>
           </ValidationProvider>
-
-          <ValidationProvider name="Password" rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$" vid="password" v-slot="{ errors }">
-            <div class="form-group mx-5">
-              <label for="">Enter New Password</label>
-              <input type="password" v-model="userChangePwData.new_password" class="form-control" id="newpassword" :class="{ 'is-invalid': submitted }" />
-              <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger">{{ errors[0] }}</span>
+            <ValidationProvider
+              name="Password"
+              rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
+              vid="password"
+              v-slot="{ errors }"
+              
+            >
+              <div class="form-group mx-5">
+                <label for="">Enter New Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  v-model="userChangePwData.new_password"
+                  class="form-control"
+                  id="newpassword"
+                  :class="{ 'is-invalid': submitted }"
+                />
+               <div v-if="submitted" class="invalid-feedback">
+                <span class="text-danger" >{{ errors[0] }}</span>
+               </div>
               </div>
             </div>
           </ValidationProvider>
@@ -52,7 +65,6 @@
         </form>
       </ValidationObserver>
     </div>
-  </div>
 </main>
 </template>
 

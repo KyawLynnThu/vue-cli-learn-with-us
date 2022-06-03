@@ -77,7 +77,7 @@
               >
                 No
               </button>
-              <button type="button" class="btn btn-primary">Buy Course</button>
+              <button type="button" class="btn btn-primary"  @click.prevent="buyCourse()">Buy Course</button>
             </div>
           </div>
         </div>
@@ -138,6 +138,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style scoped>
