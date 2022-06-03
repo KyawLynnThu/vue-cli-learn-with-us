@@ -29,10 +29,13 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Admin
+              {{ name }} &nbsp;&nbsp;
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Logout</a>
+              <router-link :to="{ name: 'Home' }" class="dropdown-item"
+                >Home</router-link
+              >
+              <a @click="logOut" class="dropdown-item" href="#">Log Out</a>
             </div>
           </li>
         </ul>
@@ -42,7 +45,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    data() {
+      return {
+        name: localStorage.getItem("name"),
+      };
+    },
+    logOut() {
+      localStorage.clear();
+      this.$router.push("/");
+      let hide = false;
+      localStorage.setItem("hide", hide);
+    },
+  },
+};
 </script>
 
 <style scoped>

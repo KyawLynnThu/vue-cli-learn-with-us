@@ -6,33 +6,23 @@
           Upload User Lists
         </h3>
         <div class="card-body">
-          <ValidationObserver v-slot="{ }" ref="form">
-          <form class="text-center" @submit.prevent="onSubmit">
-            <ValidationProvider
-            name="File"
-             rules="require|ext:xlsx,csv,xls"
-            v-slot="{ errors,validate }"
-          >
+          <form class="text-center">
             <div class="upload-container col-lg-12 col-md-12 col-sm-12">
               <input
-                  ref="uploadFile"
-                  type="file"
-                 @change="validate"
-                  class="form-control-file"
-                  :class="{ 'is-invalid': submitted }"
-                />
-                <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                type="file"
+                id="file"
+                ref="file"
+                v-on:change="onChangeFileUpload()"
+                class="form-control-file"
+                required
+              />
             </div>
-             </ValidationProvider>
-
             <div class="text-center mt-4">
-              <button class="btn btn-primary" type="submit">Upload</button>
+              <button class="btn btn-primary" v-on:click="submitForm()">
+                Upload
+              </button>
             </div>
           </form>
-           </ValidationObserver>
-
         </div>
       </div>
     </div>
@@ -40,63 +30,36 @@
 </template>
 
 <script>
-import axios from 'axios'
-import { ValidationProvider, ValidationObserver, extend} from "vee-validate";
-import {
-  required,
-  ext,
-} from "vee-validate/dist/rules";
-
-extend("require", {
-  ...required,
-  message: (field) => field + ` is required`,
-})
-extend("ext", {
-  ...ext,
-  message: (field) => field + ` must be excel format`
-})
+import axios from "axios";
 export default {
-  name: "UploadUserFile",
-  components: {
-    ValidationProvider,
-    ValidationObserver,
+  data() {
+    return {
+      file: "",
+    };
   },
-  data(){
-    return{
-        uploadFile:"",
-        submitted:false
-    }
+
+  methods: {
+    submitForm() {
+      let formData = new FormData();
+      formData.append("file", this.file);
+
+      axios
+        .post("user/import", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then(function (data) {
+          console.log(data.data);
+        })
+        .catch(function () {
+          console.log("FAILURE!!");
+        });
+    },
+
+    onChangeFileUpload() {
+      this.file = this.$refs.file.files[0];
+    },
   },
-   methods: {
-     onSubmit() {
-      this.submitted = true;
-    this.$refs.form.validate().then(success=>{
-      if(success){
-        axios.post('user/import', this.$refs.uploadFile.files);
-      }
-    });
-    }
-  }
 };
 </script>
-
-<style scoped>
-.main {
-  text-align: center;
-}
-.upload-container {
-  position: relative;
-}
-.upload-container input {
-  border: 1px solid #92b0b3;
-  background: #f1f1f1;
-  outline: 2px dashed #92b0b3;
-  outline-offset: -10px;
-  padding: 50px 30px 50px 100px;
-  text-align: center !important;
-}
-.upload-container input:hover {
-  background: #ddd;
-}
-</style>
-

@@ -53,7 +53,7 @@ const routes = [
     component: SearchView
   },
   {
-    path: "/category",
+    path: "/category/:id",
     name: "Category",
     component: CategoryView
   },

@@ -3,9 +3,11 @@
     <div class="d-flex flex-wrap flex-md-nowrap">
       <h2 class="my-4">User Lists</h2>
     </div>
-    <button @click="exportExcel" href="" class="btn btn-primary mb-4">
-      <i class="fas fa-download"></i> &nbsp; Download
-    </button>
+    <a type="button" :href="`http://127.0.0.1:8000/api/user/export`">
+      <button class="btn btn-primary mb-4">
+        <i class="fas fa-download"></i> &nbsp; Download
+      </button>
+    </a>
     <div class="table-responsive">
       <table class="table table-hover text-center">
         <thead class="bg-primary">
@@ -20,7 +22,7 @@
         <tbody class="bg-light">
           <tr v-for="userLists in userList" :key="userLists.id">
             <th scope="row">{{ userLists.id }}</th>
-            <td>{{ userLists.name }}</td>
+            <td>{{ userLists.user_name }}</td>
             <td>{{ userLists.email }}</td>
             <td>{{ userLists.courses }}</td>
             <td>
@@ -46,25 +48,11 @@ export default {
     };
   },
   created() {
-    axios
-      .get("user/list")
-      .then((res) => {
-        this.userList = res.data.data;
-        console.log(this.userList);
-      })
-      .catch(error=>{
-        console.log(error)
-        console.log(this.userList)
-      })
+    axios.get("user/list").then((res) => {
+      this.userList = res.data.data;
+      console.log(this.userList);
+    });
   },
-  methods: {
-    exportExcel() {
-      axios.get('user/export')
-      .then(res=>{
-        console.log(res.data)
-      })
-    }
-  }
 };
 </script>
 
