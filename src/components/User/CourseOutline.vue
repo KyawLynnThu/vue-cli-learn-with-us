@@ -77,7 +77,9 @@
               >
                 No
               </button>
+
               <button type="button" class="btn btn-primary"  @click.prevent="buyCourse()">Buy Course</button>
+
             </div>
           </div>
         </div>

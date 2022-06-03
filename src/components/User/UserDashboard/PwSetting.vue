@@ -24,10 +24,13 @@
                 <label for="">Enter New Password</label>
                 <input
                   type="password"
+
                   name="password"
                   v-model="userChangePwData.new_password"
+
                   class="form-control"
                   id="newpassword"
+                
                   :class="{ 'is-invalid': submitted }"
                 />
                <div v-if="submitted" class="invalid-feedback">
@@ -87,7 +90,8 @@ extend("regex", {
 extend("confirmed", {
   ...confirmed,
   message: "Password does't match",
-});
+})
+
 export default {
   name: "PwSetting",
   components: {
@@ -96,6 +100,7 @@ export default {
   },
   data() {
     return {
+
       userChangePwData: {
         old_password: '',
         new_password: '',
@@ -105,7 +110,6 @@ export default {
       submitted: false
     };
   },
-
   methods: {
     onSubmit() {
       this.submitted = true;
@@ -125,3 +129,5 @@ export default {
 
 <style scoped>
 </style>
+
+
