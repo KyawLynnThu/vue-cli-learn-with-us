@@ -61,7 +61,7 @@ export default {
   },
   mounted() {
     axios
-      .get(`http://localhost:8000/api/categories/${this.$route.params.id}`)
+      .get(`http://localhost:8000/api/categories/show_name/${this.$route.params.id}`)
       .then((response) => {
         this.category = response.data;
       });

@@ -6,7 +6,7 @@
           <div class="card-body">
             <div class="text-center">
               <h3 class="text-secondary mb-4">Total Categories</h3>
-              <h4 class="text-secondary text-center">200</h4>
+              <h4 class="text-secondary text-center">{{ totalCat }}</h4>
             </div>
           </div>
         </div>
@@ -16,7 +16,7 @@
           <div class="card-body">
             <div class="text-center">
               <h3 class="text-success mb-4">Total Courses</h3>
-              <h4 class="text-success text-center">2000</h4>
+              <h4 class="text-success text-center">{{ totalCourse }}</h4>
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@
           <div class="card-body">
             <div class="text-center">
               <h3 class="text-danger mb-4">Total Users</h3>
-              <h4 class="text-danger text-center">10000</h4>
+              <h4 class="text-danger text-center">{{ totalUser }}</h4>
             </div>
           </div>
         </div>
@@ -42,25 +42,49 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "ChartGraph",
   data() {
     return {
-      tableData: [
-        { name: "PHP", data: { Category: 40 } },
-        { name: "Ruby", data: { Category: 5 } },
-        { name: "Java", data: { Category: 3 } },
-        { name: "C", data: { Category: 20 } },
-        { name: "Vue", data: { Category: 60 } },
-        { name: "React", data: { Category: 30 } },
-        { name: "Angualr", data: { Category: 10 } },
-        { name: "Python", data: { Category: 40 } },
-        { name: "Python", data: { Category: 45 } },
-        { name: "Python", data: { Category: 25 } },
-        { name: "Python", data: { Category: 45 } },
-      ],
+      tableData: [],
+        // { name: "Angualr", data: { Category: 10 } },
+        // { name: "Python", data: { Category: 40 } },
+        // { name: "Python", data: { Category: 45 } },
+        // { name: "Python", data: { Category: 25 } },
+        // { name: "Python", data: { Category: 45 } }, 
     };
   },
+  mounted() {
+    axios.get('http://127.0.0.1:8000/api/categories/count_purchase')
+    .then((response)=> {
+      // console.log(response.data);
+      // this.tableData = response.data;
+      let entries = {};
+            response.data.forEach(val => {
+                entries[val.name] = val.purchase_videos_count;
+                
+            })
+            this.tableData = entries;
+    })
+  },
+  created() {
+    axios.get('http://127.0.0.1:8000/api/user/count')
+    .then((response) => {
+      console.log(response.data)
+      this.totalUser= response.data;
+    })
+
+    axios.get('http://127.0.0.1:8000/api/categories/count')
+    .then((response) => {
+      this.totalCat= response.data;
+    })
+
+    axios.get('http://127.0.0.1:8000/api/course/count')
+    .then((response) => {
+      this.totalCourse= response.data;
+    })
+  }
 };
 </script>
 
@@ -71,13 +95,13 @@ export default {
   border-style: none;
 }
 .course {
-  /* background-image: linear-gradient(to right, #daf7a6, #82e0aa); */
-  background-color: #daf7a6;
+  background-image: linear-gradient(to right, #daf7a6, #82e0aa);
+  /* background-color: #daf7a6; */
   border-style: none;
 }
 .user {
-  /* background-image: linear-gradient(to right, #f5b7b1, #ec7063); */
-  background-color: #f5b7b1;
+  background-image: linear-gradient(to right, #f5b7b1, #ec7063);
+  /* background-color: #f5b7b1; */
   border-style: none;
 }
 .admincard {

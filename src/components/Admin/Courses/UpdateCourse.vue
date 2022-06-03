@@ -6,123 +6,107 @@
           Update Course
         </h3>
 
-     
-          <form @submit.prevent="onSubmit">
+        <form @submit.prevent="onSubmit">
+          <div class="form-group mx-5">
+            <label for="courseName">Course Name</label>
+            <input
+              type="text"
+              v-model="course.name"
+              class="form-control"
+            />
+          </div>
 
-              <div class="form-group mx-5">
-                <label for="courseName">Course Name</label>
-                <input
-                  type="text"
-                  v-model="course.data.name"
-                  class="form-control"
-                />
+          <div class="form-group mx-5">
+            <label for="cover">Course Cover</label>
+            <input
+              type="file"
+              @change="uploadCover"
+              class="form-control-file"
+            />
+            <img :src="course.cover_path" alt="" style="display: block" />
+          </div>
 
-              </div>
+          <div class="form-group mx-5">
+            <label for="chooseSubcategory">Choose Subcategory</label>
+            <select
+              class="form-control"
+              v-model="course.category_id"
+              id="chooseSubcategory"
+            >
+              <option v-for="category in getCategories" :key="category.id" :value="category.id">{{ course.category.name }}</option>
+            </select>
+          </div>
 
+          <div class="form-group mx-5">
+            <label for="shortDescription">Short Description</label>
+            <textarea
+              class="form-control"
+              id="shortDescription"
+              rows="2"
+              v-model="course.short_descrip"
+            ></textarea>
+          </div>
 
-     
-              <div class="form-group mx-5">
-                <label for="cover">Course Cover</label>
-                <input
-                  type="file"
-                  @change="uploadCover"
-                  class="form-control-file"
-                 
-                />
-                <img :src="course.data.cover_path" alt="" style="display:block"/>
-         
-              </div>
-   
-              <div class="form-group mx-5">
-                <label for="chooseSubcategory">Choose Subcategory</label>
-                <select
-                  class="form-control"
-                  v-model="course.data.category.id"
-                  id="chooseSubcategory"
+          <div class="form-group mx-5">
+            <label for="description">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              rows="3"
+              v-model="course.description"
+            ></textarea>
+          </div>
 
-                >
-                  <option>{{ course.data.category.name }}</option>
-                </select>
-   
-              </div>
+          <div class="form-group mx-5">
+            <label for="instructorName">Instructor Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="instructorName"
+              v-model="course.instructor"
+            />
+          </div>
 
-              <div class="form-group mx-5">
-                <label for="shortDescription">Short Description</label>
-                <textarea
-                  class="form-control"
-                  id="shortDescription"
-                  rows="2"
-                  v-model="course.data.short_descrip"
-                 
-                ></textarea>
-              
-              </div>
+          <div class="form-group mx-5">
+            <label for="price">Price</label>
+            <input
+              type="text"
+              v-model="course.price"
+              class="form-control"
+              id="price"
+            />
+          </div>
 
+          <div class="form-group mx-5">
+            <label for="video">Video</label>
+            <input
+              type="file"
+              @change="uploadVideo"
+              class="form-control-file"
+            />
+            <video
+              autoplay
+              muted
+              controls
+              preload="auto"
+              v-for="video in course.video"
+              :key="video.id"
+            >
+              <source :src="video.video_path" type="video/mp4" />
+            </video>
+          </div>
 
-              <div class="form-group mx-5">
-                <label for="description">Description</label>
-                <textarea
-                  class="form-control"
-                  id="description"
-                  rows="3"
-                  v-model="course.data.description"
-                 
-                ></textarea>
-      
-              </div>
-
-
-              <div class="form-group mx-5">
-                <label for="instructorName">Instructor Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="instructorName"
-                  v-model="course.data.instructor"
-                 
-                />
-               
-              </div>
-          
-              <div class="form-group mx-5">
-                <label for="price">Price</label>
-                <input
-                  type="text"
-                  v-model="course.data.price"
-                  class="form-control"
-                  id="price"
-     
-                />
-               
-              </div>
-
-
-            
-              <div class="form-group mx-5">
-                <label for="video">Video</label>
-                <input
-                  type="file"
-                  @change="uploadVideo"
-                  class="form-control-file"
-                  
-                />
-                    <video autoplay muted controls preload="auto" v-for="video in course.data.video" :key="video.id">
-                    <source :src="video.video_path" type="video/mp4" />
-                  </video>
-               
-              </div>
-           
-            <div class="form-group mx-5">
-              <button class="btn btn-primary" type="submit">Update</button>
-            </div>
-          </form>
-
+          <div class="form-group mx-5">
+            <button class="btn btn-primary" type="submit">Update</button>
+          </div>
+        </form>
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import axios from "axios";
 import store from "@/store";
 export default {
@@ -130,17 +114,32 @@ export default {
   data() {
     return {
       submitted: false,
-      course: [] 
+      course: {
+        name: "",
+        category_id: "",
+        short_descrip: "",
+        description: "",
+        instructor: "",
+        price: "",
+        // course_cover_path: "",
+        // video_path: [],
+      },
     };
   },
   mounted() {
     axios
       .get(`http://localhost:8000/api/course/detail/${this.$route.params.id}`)
       .then((response) => {
-        this.course = response.data;
+        this.course = response.data.data;
       });
   },
+  created() {
+    this.getCat();
+  },
+  computed: mapGetters(["getCategories"]),
   methods: {
+    ...mapActions(["getCat"]),
+
     uploadCover(event) {
       console.log(event);
       this.cover = event.target.files[0];
@@ -154,19 +153,20 @@ export default {
     onSubmit() {
       var data = new FormData();
 
-      data.append("name", this.course.data.name);
-      data.append("category_id", this.course.data.category.id);
-      data.append("short_descrip", this.course.data.short_descrip);
-      data.append("description", this.course.data.description);
-      data.append("instructor", this.course.data.instructor);
-      data.append("price", this.course.data.price);
+      data.append("name", this.course.name);
+      data.append("category_id", this.course.category_id);
+      data.append("short_descrip", this.course.short_descrip);
+      data.append("description", this.course.description);
+      data.append("instructor", this.course.instructor);
+      data.append("price", this.course.price);
       data.append("course_cover_path", this.cover);
 
-      for( var i = 0; i < this.video.length; i++ ){
-        data.append("video_path[]", this.video[i] );
+      for (var i = 0; i < this.video.length; i++) {
+        data.append("video_path[]", this.video[i]);
       }
+      console.log(data);
       axios
-        .put(
+        .post(
           `http://localhost:8000/api/course/update/${this.$route.params.id}`,
           data,
           {
