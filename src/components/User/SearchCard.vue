@@ -14,11 +14,6 @@
                 <span>Instructor : </span>{{searchCourse.instructor}}
               </p>
               <router-link :to="`/detail/${searchCourse.id}`" class="btn btn-dark">More Detail</router-link>
-              <!--<p class="card-text">
-                <small class="text-muted"
-                  >1.5 Total Hours <span>Beginner</span></small
-                >
-              </p>-->
             </div>
           </div>
           <div class="col-md-2">
@@ -41,11 +36,6 @@
 <script>
 import {mapGetters} from "vuex";
 export default {
-  data(){
-    return{
-    
-    }
-  },
   computed:{
     ...mapGetters(["searchCourses"])
   },

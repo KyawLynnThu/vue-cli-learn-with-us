@@ -20,7 +20,6 @@ export default {
   name: "AdminProfile",
   components: {
     DashboardProfile,
-   
   },
 }
 </script>

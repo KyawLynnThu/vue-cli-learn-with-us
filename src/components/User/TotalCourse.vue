@@ -8,7 +8,6 @@
 </template>
 
 <script>
-//import axios from "axios";
 import {mapGetters} from "vuex";
 export default {
   data(){
@@ -19,13 +18,6 @@ export default {
   computed:{
     ...mapGetters(["searchCourses"])
   },
-//  created(){
-//    axios.get(`http://127.0.0.1:8000/api/course/get_all`)
-//    .then(response=>{
-//      this.total=response.data
-//    console.log(response.data)
-//  })
-//}
 }
 </script>
 

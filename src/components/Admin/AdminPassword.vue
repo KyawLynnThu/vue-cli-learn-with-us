@@ -119,25 +119,15 @@ export default {
       submitted:false
     };
   },
-// mounted(){
-//    axios.post(`http://127.0.0.1:8000/api/user/change/password`,this.adminChangePw)
-//    .then(response=>{
-//      this.admin=response.data
-//    console.log(response.data)
-//  })
-//  },
   methods: {
     onSubmit() {
       this.submitted = true;
     this.$refs.form.validate().then(success=>{
       if(success){
-        //alert("success")
         axios.post(`http://127.0.0.1:8000/api/admin/change/password`,this.adminChangePw)
-        .then(response=>{
-        //this.adminChangePw=response.data
-        console.log(response.data)
+        .then(()=>{
         this.$router.push({path:'/login'})
-  })
+     })
       }
     });
     }

@@ -67,8 +67,6 @@ export default new Vuex.Store({
         },
         async getSearchResults({commit},search) {
           let response = await axios.get(`http://127.0.0.1:8000/api/course/search/${search}`);
-          //let searchItem = response.data.data;
-          console.log(response.data.data)
           commit('searchCoursesShow', response.data.data)
         },
     },

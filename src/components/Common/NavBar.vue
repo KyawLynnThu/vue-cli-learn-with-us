@@ -73,15 +73,6 @@
         class="btn btn-secondary my-2 my-sm-0 mr-3"
         >SIGN UP</router-link
       >
-      <!--<div class="nav-item dropdown my-2 my-lg-0 mx-3">
-        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0">
-          User One
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Log Out</a>
-        </div>
-      </div>-->
     </div>
   </nav>
 </template>

@@ -32,7 +32,6 @@ export default {
   axios.get(`http://127.0.0.1:8000/api/admin/show/${this.id}`)
     .then(response=>{
      this.adminInfo = response.data.data
-    console.log(this.adminInfo)
   })
   }
 }

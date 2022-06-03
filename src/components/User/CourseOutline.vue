@@ -144,8 +144,7 @@ export default {
    methods:{
     async buyCourse(){
       await axios.post(`http://127.0.0.1:8000/api/course/buy`,this.buyCourseId)
-      .then(response=>{
-        console.log(response)
+      .then(()=>{
         this.$router.push({path:'/usercourse'})
       })
     }
