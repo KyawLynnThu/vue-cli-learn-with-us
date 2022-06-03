@@ -1,3 +1,4 @@
+
 import Vuex from 'vuex'
 import Vue from 'vue'
 import axios from 'axios'
@@ -7,9 +8,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         categories: [],
-        courses: []
+        courses: [],
+        results: [],
     },
     getters: {
+      searchCourses(state) {
+        return state.results;
+      },
         getCategories(state) {
             return state.categories;
         },
@@ -18,6 +23,9 @@ export default new Vuex.Store({
         }
     },
     mutations: {
+      searchCoursesShow(state,results) {
+        state.results=results
+      },
         showCategory(state, categories) {
             state.categories = categories;
         },
@@ -60,5 +68,10 @@ export default new Vuex.Store({
             await axios.delete(`http://localhost:8000/api/course/delete/${removeId}`);
             commit('removeCourse', removeId);
         },
+        async getSearchResults({commit},search) {
+          let response = await axios.get(`http://127.0.0.1:8000/api/course/search/${search}`);
+          commit('searchCoursesShow', response.data.data)
+        },
     },
 })
+

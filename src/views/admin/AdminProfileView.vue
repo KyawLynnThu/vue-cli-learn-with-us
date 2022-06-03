@@ -21,6 +21,7 @@ export default {
     AdminNavi,
     AdminProfile,
   },
+  
 }
 </script>
 

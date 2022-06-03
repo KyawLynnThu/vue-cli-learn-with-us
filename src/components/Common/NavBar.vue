@@ -49,18 +49,19 @@
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 mx-3 my-lg-0">
+      <form class="form-inline my-2 mx-3 my-lg-0" @submit.prevent="getSearchResults(search)">
         <input
           class="form-control mr-sm-2"
           type="search"
           placeholder="Search"
+          v-model="search"
         />
-        <router-link
-          :to="{ name: 'Search' }"
+        <button
+        :disabled="search.length===0"
           class="btn btn-dark my-2 my-sm-0"
           type="submit"
           ><i class="fas fa-search"></i
-        ></router-link>
+        ></button>
       </form>
       <router-link
         :to="{ name: 'LogIn' }"
@@ -72,15 +73,6 @@
         class="btn btn-secondary my-2 my-sm-0 mr-3"
         >SIGN UP</router-link
       >
-      <!--<div class="nav-item dropdown my-2 my-lg-0 mx-3">
-        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0">
-          User One
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Log Out</a>
-        </div>
-      </div>-->
     </div>
   </nav>
 </template>
@@ -88,12 +80,24 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-  computed: mapGetters(["getCategories"]),
-  methods: mapActions(["getCat"]),
+  data(){
+    return{
+      search:'',
+    }
+  },
+   computed: mapGetters(["getCategories","searchCourses"]),
+  methods: {
+    ...mapActions(["getCat"]),
+     getSearchResults(search){
+    this.$store.dispatch("getSearchResults",search);
+    this.$router.push({ name: 'Search' }).catch(()=>{})
+  }
+  },
   mounted() {
     this.getCat();
   },
 };
+
 </script>
 
 <style scoped>

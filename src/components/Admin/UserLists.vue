@@ -3,9 +3,9 @@
     <div class="d-flex flex-wrap flex-md-nowrap">
       <h2 class="my-4">User Lists</h2>
     </div>
-    <a href="" class="btn btn-primary mb-4">
+    <button @click="exportExcel" href="" class="btn btn-primary mb-4">
       <i class="fas fa-download"></i> &nbsp; Download
-    </a>
+    </button>
     <div class="table-responsive">
       <table class="table table-hover text-center">
         <thead class="bg-primary">
@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr v-for="userLists in userList" :key="userLists.key">
+          <tr v-for="userLists in userList" :key="userLists.id">
             <th scope="row">{{ userLists.id }}</th>
             <td>{{ userLists.name }}</td>
             <td>{{ userLists.email }}</td>
@@ -32,8 +32,6 @@
         </tbody>
       </table>
     </div>
-    <button @click="exportExcel" class="btn btn-primary">Export Excel</button>
-    <button @click="importExcel" class="btn btn-primary">Import Excel</button>
   </main>
 </template>
 
@@ -54,21 +52,19 @@ export default {
         this.userList = res.data.data;
         console.log(this.userList);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(error=>{
+        console.log(error)
+        console.log(this.userList)
+      })
   },
   methods: {
     exportExcel() {
-      axios.get('/user/export')
+      axios.get('user/export')
       .then(res=>{
         console.log(res.data)
       })
-    },
-    importExcel(){
-      axios.post('user/import',)
     }
-  },
+  }
 };
 </script>
 

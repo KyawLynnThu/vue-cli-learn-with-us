@@ -8,6 +8,7 @@ import 'bootstrap';
 import router from "./router";
 import './axios';
 import store from "./store"
+
 import Chartkick from 'vue-chartkick'
 import Chart from 'chart.js/auto'
 

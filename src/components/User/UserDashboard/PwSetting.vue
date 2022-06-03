@@ -15,7 +15,9 @@
                 <label for="courseName">Enter Old Password</label>
                 <input
                   type="password"
+
                   v-model="userChangePwData.old_password"
+
                   class="form-control"
                   id="oldpassword"
                   :class="{ 'is-invalid': submitted }"
@@ -31,16 +33,18 @@
               rules="required|min:8|regex:(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$"
               vid="password"
               v-slot="{ errors }"
-              
             >
               <div class="form-group mx-5">
                 <label for="">Enter New Password</label>
                 <input
                   type="password"
+
                   name="password"
                   v-model="userChangePwData.new_password"
+
                   class="form-control"
                   id="newpassword"
+                
                   :class="{ 'is-invalid': submitted }"
                 />
                <div v-if="submitted" class="invalid-feedback">
@@ -58,7 +62,10 @@
                 <label for="confirmPassword">Re-type New Password</label>
                 <input
                   type="password"
+
+
                   v-model="userChangePwData.confirm_password"
+
                   class="form-control"
                   id="retypepassword"
                    :class="{ 'is-invalid': submitted }"
@@ -112,7 +119,8 @@ extend("regex", {
 extend("confirmed", {
   ...confirmed,
   message: "Password does't match",
-});
+})
+
 export default {
   name: "PwSetting",
   components: {
@@ -121,21 +129,23 @@ export default {
   },
   data() {
     return {
+
       userChangePwData: {
         old_password: '',
         new_password: '',
         confirm_password: '',
         id: localStorage.getItem("id")
       },
+
       submitted:false
     };
   },
-
   methods: {
     onSubmit() {
       this.submitted = true;
     this.$refs.form.validate().then(success=>{
       if(success){
+
         axios.post('user/change/password', this.userChangePwData)
         .then(res => {
           console.log(res.data)
@@ -150,3 +160,5 @@ export default {
 
 <style scoped>
 </style>
+
+

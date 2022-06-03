@@ -17,7 +17,7 @@
         >
       </li>
       <li>
-        <router-link :to="{ name: 'userLists' }"
+        <router-link :to="{ name: `userLists` }"
           ><span class="fa fa-user"></span> Users</router-link
         >
       </li>
@@ -36,7 +36,9 @@
 </template>
 
 <script>
+
 export default {};
+
 </script>
 
 <style scoped>

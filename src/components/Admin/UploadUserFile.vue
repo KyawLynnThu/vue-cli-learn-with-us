@@ -10,11 +10,12 @@
           <form class="text-center" @submit.prevent="onSubmit">
             <ValidationProvider
             name="File"
-             rules="required|ext:pdf,xlxs"
+             rules="require|ext:xlsx,csv,xls"
             v-slot="{ errors,validate }"
           >
             <div class="upload-container col-lg-12 col-md-12 col-sm-12">
               <input
+                  ref="uploadFile"
                   type="file"
                  @change="validate"
                   class="form-control-file"
@@ -39,19 +40,20 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { ValidationProvider, ValidationObserver, extend} from "vee-validate";
 import {
   required,
   ext,
 } from "vee-validate/dist/rules";
 
-extend("required", {
+extend("require", {
   ...required,
   message: (field) => field + ` is required`,
 })
 extend("ext", {
   ...ext,
-  message: (field) => field + ` must be excel or pdf format`
+  message: (field) => field + ` must be excel format`
 })
 export default {
   name: "UploadUserFile",
@@ -70,8 +72,7 @@ export default {
       this.submitted = true;
     this.$refs.form.validate().then(success=>{
       if(success){
-        //this.$router.push({ name: 'confirmCourse' }); 
-        alert("success")
+        axios.post('user/import', this.$refs.uploadFile.files);
       }
     });
     }

@@ -73,7 +73,9 @@
               >
                 No
               </button>
+
               <button type="button" class="btn btn-primary"  @click.prevent="buyCourse()">Buy Course</button>
+
             </div>
           </div>
         </div>
@@ -132,7 +134,19 @@ export default {
         name:'',
         description:'',
         price:''
+      },
+       buyCourseId:{
+         user_id:localStorage.getItem("id"),
+         course_id:this.$route.params.id
       }
+    }
+  },
+   methods:{
+    async buyCourse(){
+      await axios.post(`http://127.0.0.1:8000/api/course/buy`,this.buyCourseId)
+      .then(()=>{
+        this.$router.push({path:'/usercourse'})
+      })
     }
   },
   created(){
