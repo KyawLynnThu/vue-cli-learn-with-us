@@ -122,7 +122,11 @@ export default {
     return {
       courseData: [],
       videoID: "",
-    };
+      buyCourseId: {
+         user_id: localStorage.getItem("id"),
+         course_id: this.$route.params.id
+      }
+    }
   },
   created() {
     axios.get(`course/detail/${this.$route.params.id}`).then((res) => {
@@ -138,6 +142,13 @@ export default {
       this.videoID = videoId;
       console.log(this.videoID);
     },
+    async buyCourse(){
+      await axios.post(`http://127.0.0.1:8000/api/course/buy`,this.buyCourseId)
+      .then(()=>{
+        this.loading="loading..."
+        this.$router.push({path:'/usercourse'})
+      })
+    }
   },
 };
 
