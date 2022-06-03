@@ -40,6 +40,9 @@ export default new Vuex.Store({
         showCourses(state, courses) {
             state.courses = courses;
         },
+        storeCourse(state, course) {
+            state.courses.unshift(course);
+        },
         removeCourse(state, removeId) {
             state.courses = state.courses.filter(course => {
                 return course.id != removeId
