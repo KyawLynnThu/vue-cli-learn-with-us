@@ -16,7 +16,7 @@
                   v-model="course.data.name"
                   class="form-control"
                 />
-
+                <p v-if="errors.name" class="text-danger">{{errors.name[0]}}</p>
               </div>
 
 
@@ -27,10 +27,9 @@
                   type="file"
                   @change="uploadCover"
                   class="form-control-file"
-                 
                 />
                 <img :src="course.data.cover_path" alt="" style="display:block"/>
-         
+                 <p v-if="errors.course_cover_path" class="text-danger">{{errors.course_cover_path[0]}}</p>
               </div>
    
               <div class="form-group mx-5">
@@ -39,9 +38,9 @@
                   class="form-control"
                   v-model="course.data.category.id"
                   id="chooseSubcategory"
-
                 >
                   <option>{{ course.data.category.name }}</option>
+
                 </select>
    
               </div>
@@ -53,9 +52,8 @@
                   id="shortDescription"
                   rows="2"
                   v-model="course.data.short_descrip"
-                 
                 ></textarea>
-              
+              <p v-if="errors.short_descrip" class="text-danger">{{errors.short_descrip[0]}}</p>
               </div>
 
 
@@ -66,9 +64,8 @@
                   id="description"
                   rows="3"
                   v-model="course.data.description"
-                 
                 ></textarea>
-      
+                 <p v-if="errors.description" class="text-danger">{{errors.description[0]}}</p>
               </div>
 
 
@@ -79,9 +76,8 @@
                   class="form-control"
                   id="instructorName"
                   v-model="course.data.instructor"
-                 
                 />
-               
+               <p v-if="errors.instructor" class="text-danger">{{errors.instructor[0]}}</p>
               </div>
           
               <div class="form-group mx-5">
@@ -93,7 +89,7 @@
                   id="price"
      
                 />
-               
+               <p v-if="errors.price" class="text-danger">{{errors.price[0]}}</p>
               </div>
 
 
@@ -109,7 +105,7 @@
                     <video autoplay muted controls preload="auto" v-for="video in course.data.video" :key="video.id">
                     <source :src="video.video_path" type="video/mp4" />
                   </video>
-               
+                 <p v-if="errors.video_path" class="text-danger">{{errors.video_path[0]}}</p>
               </div>
            
             <div class="form-group mx-5">
@@ -130,7 +126,17 @@ export default {
   data() {
     return {
       submitted: false,
-      course: [] 
+      course: [],
+      //video:[],
+      // errors:{
+      //  name: "",
+      //  short_descrip: "",
+      //  description: "",
+      //  instructor: "",
+      //  price: "",
+      //  course_cover_path: "",
+      //  video_path:"",
+      //}
     };
   },
   mounted() {
@@ -183,6 +189,7 @@ export default {
         })
         .catch((error) => {
           console.log(error.response);
+          this.errors=error.response.data.data
         });
       this.submitted = true;
     },

@@ -6,11 +6,11 @@
           <div class="col-md-4">
             <img :src="searchCourse.course_cover_link" alt="" class="w-100 h-100" />
           </div>
-          <div class="col-md-6  px-4 ">
+          <div class="col-md-6  px-4 pt-3">
             <div class="card-body px-0">
-              <h5 class="card-title font-weight-bolder mb-3">{{ searchCourse.name }}</h5>
-              <p class="card-text">{{ searchCourse.short_descrip }}</p>
-              <p class="card-text">
+              <h5 class="card-title font-weight-bolder mb-3" style="font-size: 25px">{{ searchCourse.name }}</h5>
+              <p class="card-text" style="font-size: 20px">{{ searchCourse.short_descrip }}</p>
+              <p class="card-text mb-4" style="font-size: 15px">
                 <span>Instructor : </span>{{searchCourse.instructor}}
               </p>
               <router-link :to="`/detail/${searchCourse.id}`" class="btn btn-dark">More Detail</router-link>

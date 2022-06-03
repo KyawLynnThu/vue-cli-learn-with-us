@@ -15,6 +15,7 @@
               class="form-control"
               id="courseName"
             />
+            <p v-if="errors.name" class="text-danger">{{errors.name[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -25,6 +26,7 @@
               @change="uploadCover"
               class="form-control-file"
             />
+            <p v-if="errors.course_cover_path" class="text-danger">{{errors.course_cover_path[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -48,6 +50,7 @@
               rows="2"
               v-model="course.short_descrip"
             ></textarea>
+            <p v-if="errors.short_descrip" class="text-danger">{{errors.short_descrip[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -58,6 +61,7 @@
               rows="3"
               v-model="course.description"
             ></textarea>
+             <p v-if="errors.description" class="text-danger">{{errors.description[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -68,6 +72,7 @@
               id="instructorName"
               v-model="course.instructor"
             />
+            <p v-if="errors.instructor" class="text-danger">{{errors.instructor[0]}}</p>
           </div>
           <div class="form-group mx-5">
             <label for="price">Price</label>
@@ -77,6 +82,7 @@
               class="form-control"
               id="price"
             />
+            <p v-if="errors.price" class="text-danger">{{errors.price[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -87,6 +93,7 @@
               class="form-control-file"
               multiple="multiple"
             />
+            <p v-if="errors.video_path" class="text-danger">{{errors.video_path[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -108,6 +115,7 @@ export default {
   data() {
     return {
       submitted: false,
+      video:[],
       course: {
         name: "",
         category_id: 1,
@@ -118,6 +126,15 @@ export default {
         course_cover_path: "",
         video_path: [],
       },
+      errors:{
+        name: "",
+        short_descrip: "",
+        description: "",
+        instructor: "",
+        price: "",
+        course_cover_path: "",
+        video_path:"",
+      }
     };
   },
   mounted() {
@@ -169,6 +186,7 @@ export default {
         })
         .catch((error) => {
           console.log(error.response);
+          this.errors=error.response.data.data
         });
       this.submitted = true;
     },
