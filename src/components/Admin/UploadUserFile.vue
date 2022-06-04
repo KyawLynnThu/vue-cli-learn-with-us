@@ -6,6 +6,7 @@
           Upload User Lists
         </h3>
         <div class="card-body">
+
           <form class="text-center" @submit.prevent="submitForm()">
             <div class="upload-container col-lg-12 col-md-12 col-sm-12">
               <input
@@ -14,16 +15,14 @@
                 ref="file"
                 v-on:change="onChangeFileUpload()"
                 class="form-control-file"
-                
               />
               <p v-if="error" class="text-danger">{{error.file[0]}}</p>
             </div>
            
             <div class="text-center mt-4">
-              <button class="btn btn-primary" type="sumit">
+              <button class="btn btn-primary" type="submit">
                 Upload
               </button>
-               
             </div>
           </form>
         </div>
@@ -39,7 +38,6 @@ export default {
     return {
       file: "",
       error:""
-      
     };
   },
 
@@ -47,10 +45,10 @@ export default {
     onChangeFileUpload() {
       this.file = this.$refs.file.files[0];
     },
+
     submitForm() {
       let formData = new FormData();
       formData.append("file", this.file);
-      
       axios
         .post("user/import", formData, {
           headers: {
@@ -58,17 +56,13 @@ export default {
           },
         })
         .then(function (data) {
-          console.log('then')
-          console.log(data.data.file);
+          console.log(data.data);
         })
         .catch(err=> {
           console.log(err.response.data.data.file);
           this.error=err.response.data.data
         });
-       
     },
-    
-    
   },
 };
 </script>

@@ -5,7 +5,7 @@
         <iframe
           width="100%"
           height="450"
-          src="https://www.youtube.com/embed/TAfLqDL-e9U"
+          :src="courseData.video[0].video_path"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -13,24 +13,28 @@
         >
         </iframe>
       </div>
-      <h5 class="mt-3 mb-3">{{courseData.name}}</h5>
+      <h5 class="mt-3 mb-3">{{ courseData.name }}</h5>
       <p>Description</p>
-      <p class="">{{courseData.description}}</p>
+      <p class="">{{ courseData.description }}</p>
 
-      <span
-        class="
-          vd-desc
-          bg-dark
-          text-white
-          mb-3
-          p-2
-          text-center
-          rounded
-          d-inline-block
-        "
-        >Free</span
-      >
-      <p class="vd-price mx-1">{{ courseData.price }}</p>
+      <div class="pb-3">
+        <span
+          v-if="courseData.price == 0"
+          class="
+            vd-desc
+            bg-dark
+            text-white
+            p-2
+            text-center
+            rounded
+            d-inline-block
+          "
+          >Free</span
+        >
+        <p v-if="courseData.price > 0" class="vd-price mx-1">
+          {{ courseData.price }}
+        </p>
+      </div>
       <button
         type="button"
         class="btn btn-dark"
@@ -83,82 +87,71 @@
     </div>
     <div class="col-md-5 pr-md-5 mt-4 mt-md-0">
       <h2>Course Outline</h2>
-      <button
-        class="
-          course-btn
-          bg-secondary
-          text-white
-          p-3
-          mb-1
-          d-block
-          w-100
-          text-left
-        "
-      >
-        CHAPTER 1
-        <img
-          src="@/assets/lock.svg"
-          alt=""
-          class="lock float-right text-white"
-        />
-      </button>
-      <button
-        class="
-          course-btn
-          bg-secondary
-          text-white
-          p-3
-          mb-1
-          d-block
-          w-100
-          text-left
-        "
-      >
-        CHAPTER 2
-        <img
-          src="@/assets/lock.svg"
-          alt=""
-          class="lock float-right text-white"
-        />
-      </button>
+      <div v-for="videos in courseData.video" :key="videos.id">
+        <button
+          class="
+            course-btn
+            bg-secondary
+            text-white
+            p-3
+            mb-1
+            d-block
+            w-100
+            text-left
+          "
+          onClick="changePath(this.videos.id)"
+        >
+          CHAPTER {{ videos.id }}
+          <span v-if="videos.id > 1">
+            <img
+              src="@/assets/lock.svg"
+              alt=""
+              class="lock float-right text-white"
+            />
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  data(){
-    return{
-      courseData:{
-        name:'',
-        description:'',
-        price:''
-      },
-       buyCourseId:{
-         user_id:localStorage.getItem("id"),
-         course_id:this.$route.params.id
+  data() {
+    return {
+      courseData: [],
+      videoID: "",
+      buyCourseId: {
+         user_id: localStorage.getItem("id"),
+         course_id: this.$route.params.id
       }
     }
   },
-   methods:{
+  created() {
+    axios.get(`course/detail/${this.$route.params.id}`).then((res) => {
+      this.courseData = res.data.data;
+      let categoryId = res.data.data.category.id;
+      localStorage.setItem("categoryId", categoryId);
+      console.log(this.courseData);
+      console.log(this.courseData.video[0].video_path);
+    });
+  },
+  methods: {
+    changePath(videoId) {
+      this.videoID = videoId;
+      console.log(this.videoID);
+    },
     async buyCourse(){
       await axios.post(`http://127.0.0.1:8000/api/course/buy`,this.buyCourseId)
       .then(()=>{
+        this.loading="loading..."
         this.$router.push({path:'/usercourse'})
       })
     }
   },
-  created(){
-    axios.get(`course/detail/${this.$route.params.id}`)
-    .then(res=>{
-      this.courseData=res.data.data;
-      let categoryId=res.data.data.category.id;
-      localStorage.setItem("categoryId", categoryId)      
-      console.log(this.courseData);
-    })
-  },
-}
+};
+
 </script>
 
 <style scoped>

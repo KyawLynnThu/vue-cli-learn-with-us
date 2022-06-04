@@ -116,6 +116,7 @@ export default {
     return {
       submitted: false,
       video:[],
+      video_path: [],
       course: {
         name: "",
         category_id: 1,
@@ -133,8 +134,11 @@ export default {
         instructor: "",
         price: "",
         course_cover_path: "",
-        video_path:"",
-      }
+        video_path:[],
+      },
+      //videoErr:{
+      //  video_path:"",
+      //}
     };
   },
   mounted() {
@@ -179,14 +183,16 @@ export default {
           }
         )
         .then((response) => {
-          console.log(response.data);
+          //console.log(response.data);
           let course = response.data;
           store.commit("storeCourse", course);
           this.$router.push({ name: "Courses" });
         })
         .catch((error) => {
-          console.log(error.response);
+          //console.log(error.response);
           this.errors=error.response.data.data
+          console.log(this.errors)
+          //console.log(this.errors.short_descrip)
         });
       this.submitted = true;
     },

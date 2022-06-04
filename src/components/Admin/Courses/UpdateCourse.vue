@@ -105,7 +105,7 @@
                     <video autoplay muted controls preload="auto" v-for="video in course.data.video" :key="video.id">
                     <source :src="video.video_path" type="video/mp4" />
                   </video>
-                 <p v-if="errors.video_path" class="text-danger">{{errors.video_path[0]}}</p>
+                 <p v-if="errors.video_path[index]" class="text-danger">{{errors.video_path[index]}}</p>
               </div>
            
             <div class="form-group mx-5">
@@ -127,16 +127,17 @@ export default {
     return {
       submitted: false,
       course: [],
-      //video:[],
-      // errors:{
-      //  name: "",
-      //  short_descrip: "",
-      //  description: "",
-      //  instructor: "",
-      //  price: "",
-      //  course_cover_path: "",
-      //  video_path:"",
-      //}
+      video:[],
+       errors:{
+        name: "",
+        short_descrip: "",
+        description: "",
+        instructor: "",
+        price: "",
+        course_cover_path: "",
+        video_path:"",
+        
+      }
     };
   },
   mounted() {
@@ -172,7 +173,7 @@ export default {
         data.append("video_path[]", this.video[i] );
       }
       axios
-        .put(
+        .post(
           `http://localhost:8000/api/course/update/${this.$route.params.id}`,
           data,
           {
