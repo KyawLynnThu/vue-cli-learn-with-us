@@ -38,7 +38,7 @@ export default {
     };
   },
   created() {
-    axios.get(`categories/${this.$route.params.id}`).then((res) => {
+    axios.get(`categories/show/${this.$route.params.id}`).then((res) => {
       this.courseCard = res.data.data;
       console.log(this.courseCard);
     });

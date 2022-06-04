@@ -3,7 +3,7 @@
     <nav-bar />
     <div class="container-fluid pt-5 px-5">
       <category-card />
-      <pagi-nav />
+      <!--<pagi-nav />-->
     </div>
     <common-footer />
   </div>
