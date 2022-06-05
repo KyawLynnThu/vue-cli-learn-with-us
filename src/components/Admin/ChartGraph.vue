@@ -47,19 +47,30 @@ export default {
   name: "ChartGraph",
   data() {
     return {
-      tableData: [],
+      tableData: [
         // { name: "Angualr", data: { Category: 10 } },
         // { name: "Python", data: { Category: 40 } },
         // { name: "Python", data: { Category: 45 } },
         // { name: "Python", data: { Category: 25 } },
         // { name: "Python", data: { Category: 45 } }, 
+      ],
     };
   },
   mounted() {
     axios.get('http://127.0.0.1:8000/api/categories/count_purchase')
     .then((response)=> {
-      // console.log(response.data);
-      // this.tableData = response.data;
+       console.log(response.data);
+      // let chart = [];
+      // chart.name = "PHP";
+      //chart.data = '{ Category:'+10+'}';
+      //chart.data['category'] = 10;
+      //this.tableData = chart;
+      //console.log(this.tableData);
+      // this.tableData.name = response.data.name;
+      // console.log(this.tableData.name);
+      // let graph = 'Category:'+response.data.purchase_videos_count;
+      // this.tableData.data = graph;
+      // console.log(this.tableData.data);
       let entries = {};
             response.data.forEach(val => {
                 entries[val.name] = val.purchase_videos_count;
@@ -71,18 +82,18 @@ export default {
   created() {
     axios.get('http://127.0.0.1:8000/api/user/count')
     .then((response) => {
-      console.log(response.data)
-      this.totalUser= response.data;
+      console.log(response.data.count)
+      this.totalUser= response.data.count;
     })
 
     axios.get('http://127.0.0.1:8000/api/categories/count')
     .then((response) => {
-      this.totalCat= response.data;
+      this.totalCat= response.data.count;
     })
 
     axios.get('http://127.0.0.1:8000/api/course/count')
     .then((response) => {
-      this.totalCourse= response.data;
+      this.totalCourse= response.data.data;
     })
   }
 };

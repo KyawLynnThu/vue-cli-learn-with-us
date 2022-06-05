@@ -33,7 +33,7 @@
               v-model="course.category_id"
               id="chooseSubcategory"
             >
-              <option v-for="category in getCategories" :key="category.id" :value="category.id">{{ course.category.name }}</option>
+              <option v-for="category in getCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
             </select>
           </div>
 
@@ -83,6 +83,7 @@
               type="file"
               @change="uploadVideo"
               class="form-control-file"
+              multiple="multiple"
             />
             <video
               autoplay
@@ -114,6 +115,8 @@ export default {
   data() {
     return {
       submitted: false,
+      video: [],
+      cover: [],
       course: {
         name: "",
         category_id: "",
@@ -152,7 +155,8 @@ export default {
 
     onSubmit() {
       var data = new FormData();
-
+      
+      //data.append("_method", "PUT");
       data.append("name", this.course.name);
       data.append("category_id", this.course.category_id);
       data.append("short_descrip", this.course.short_descrip);
