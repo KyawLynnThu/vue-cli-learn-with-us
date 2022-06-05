@@ -134,6 +134,7 @@ export default {
       .get(`http://localhost:8000/api/course/detail/${this.$route.params.id}`)
       .then((response) => {
         this.course = response.data.data;
+        this.course.category_id = this.course.category.id;
       });
   },
   created() {
