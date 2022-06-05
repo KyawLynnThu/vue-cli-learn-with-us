@@ -14,7 +14,6 @@
                 ref="file"
                 v-on:change="onChangeFileUpload()"
                 class="form-control-file"
-                
               />
               <p v-if="error" class="text-danger">{{error.file[0]}}</p>
             </div>
@@ -39,7 +38,6 @@ export default {
     return {
       file: "",
       error:""
-      
     };
   },
 
@@ -47,10 +45,11 @@ export default {
     onChangeFileUpload() {
       this.file = this.$refs.file.files[0];
     },
+
     submitForm() {
       let formData = new FormData();
       formData.append("file", this.file);
-      
+
       axios
         .post("user/import", formData, {
           headers: {
@@ -67,8 +66,6 @@ export default {
         });
        
     },
-    
-    
   },
 };
 </script>
