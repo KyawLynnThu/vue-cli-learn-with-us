@@ -36,8 +36,8 @@
               v-model="course.category_id"
               id="chooseSubcategory"
             >
-              <option v-for="category in getCategories" :key="category.id">
-                {{ category.id }}
+              <option v-for="category in getCategories" :key="category.id" :value="category.id">
+                {{ category.name }}
               </option>
             </select>
           </div>
@@ -121,7 +121,7 @@ export default {
       video_path: [],
       course: {
         name: "",
-        category_id: 1,
+        category_id: "",
         short_descrip: "",
         description: "",
         instructor: "",
