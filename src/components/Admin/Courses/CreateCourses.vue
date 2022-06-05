@@ -39,7 +39,9 @@
               <option v-for="category in getCategories" :key="category.id" :value="category.id">
                 {{ category.name }}
               </option>
+             
             </select>
+             <p v-if="errors.category_id" class="text-danger">{{errors.category_id[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -119,6 +121,7 @@ export default {
       submitted: false,
       video:[],
       video_path: [],
+      cover: [],
       course: {
         name: "",
         category_id: "",
@@ -131,6 +134,7 @@ export default {
       },
       errors:{
         name: "",
+        category_id: "",
         short_descrip: "",
         description: "",
         instructor: "",
@@ -192,6 +196,7 @@ export default {
           let videoPathErr = Object.keys(this.errors)
           let foundVideoPathErr = videoPathErr.filter(e => e.startsWith("video_path"))
           this.videoErrs = foundVideoPathErr
+          console.log(this.errors);
         });
         
       this.submitted = true;

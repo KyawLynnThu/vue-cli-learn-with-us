@@ -28,11 +28,11 @@
     </form>
     <router-link v-if="ishidden==logHide" :to="{ name: 'LogIn' }" class="btn btn-outline-dark my-2 my-sm-0 mx-3">LOG IN</router-link>
     <router-link v-if="ishidden==logHide" :to="{ name: 'SignUp' }" class="btn btn-secondary my-2 my-sm-0 mr-3">SIGN UP</router-link>
-    <div class="nav-item dropdown mx-3">
+    <div class="nav-item dropdown mx-3" v-if="ishidden!=logHide">
       <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{ name }} &nbsp;
       </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <div class="dropdown-menu dd" aria-labelledby="navbarDropdownMenuLink">
         <router-link v-if="type == 1" :to="{ name: 'userDashboard' }" class="dropdown-item">Dashboard</router-link>
         <router-link v-if="type == 0" :to="{ name: 'adminProfile' }" class="dropdown-item">Dashboard</router-link>
         <button @click="logOut" class="dropdown-item">Logout</button>
@@ -89,7 +89,11 @@ export default {
   margin-bottom: 0;
 }
 
-.dropdown-menu {
-  min-width: 6rem !important;
+.dd {
+  min-width: 3rem !important;
+}
+
+.dropdown-item {
+  padding: 0.25rem 0.7rem !important;
 }
 </style>

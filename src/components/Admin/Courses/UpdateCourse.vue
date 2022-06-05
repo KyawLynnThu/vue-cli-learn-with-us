@@ -123,7 +123,6 @@ export default {
   data() {
     return {
       submitted: false,
-
       video: [],
       cover: [],
       course: {
