@@ -1,29 +1,20 @@
 <template>
-  <div>
-    <VueSlickCarousel v-bind="setting" ref="carousel" class="slide clearfix">
-      <div class="col" v-for="topCourses in topCourse" :key="topCourses.id">
-        <div class="card shadow">
-          <img
-            class="card-img-top"
-            :src="topCourses.course_cover_link"
-            alt="Card image"
-            style="width: 100%"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ topCourses.instructor }}</h5>
-            <p class="card-text">
-              {{ topCourses.short_descrip }}
-            </p>
-            <router-link
-              :to="`/detail/${topCourses.id}`"
-              class="btn btn-primary"
-              >See Profile</router-link
-            >
-          </div>
+<div>
+  <VueSlickCarousel v-bind="setting" ref="carousel" class="slide clearfix">
+    <div class="col" v-for="topCourses in topCourse" :key="topCourses.id">
+      <div class="card shadow">
+        <img class="card-img-top" :src="topCourses.course_cover_link" alt="Card image" style="width: 100%" />
+        <div class="card-body">
+          <h5 class="card-title">{{ topCourses.instructor }}</h5>
+          <p class="card-text">
+            {{ topCourses.short_descrip }}
+          </p>
+          <router-link :to="`/detail/${topCourses.id}`" class="btn btn-primary">More Detail</router-link>
         </div>
       </div>
-    </VueSlickCarousel>
-  </div>
+    </div>
+  </VueSlickCarousel>
+</div>
 </template>
 
 <script>

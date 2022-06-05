@@ -13,28 +13,14 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr>
-            <th scope="row">{{ userCourse.id }}</th>
-            <td>PHP 7</td>
-            <td>PHP</td>
-            <td>Free</td>
+          <tr v-for="(userCourses, index) in userCourse" :key="index">
+            <th scope="row">{{ index + 1 }}</th>
+            <td>{{ userCourses.name }}</td>
+            <td>{{ userCourses.category_name }}</td>
+            <td>{{ userCourses.price }}</td>
             <td>
               <router-link
-                :to="{ name: 'Detail' }"
-                class="btn btn-sm btn-success mr-2"
-              >
-                <i class="fas fa-play"></i> &nbsp; START
-              </router-link>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Ruby on Rail</td>
-            <td>Ruby</td>
-            <td>$ 19.99</td>
-            <td>
-              <router-link
-                :to="{ name: 'Detail' }"
+                :to="`/detail/${userCourses.id}`"
                 class="btn btn-sm btn-success mr-2"
               >
                 <i class="fas fa-play"></i> &nbsp; START
@@ -48,26 +34,25 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "UserCourses",
-  data(){
+  data() {
     return {
-      userCourse:[],
-      id: localStorage.getItem("id")
-    }
+      userCourse: {},
+      courseId: "",
+      id: localStorage.getItem("id"),
+    };
   },
-  created(){
-    axios.get(`course/show/${this.id}`)
-      .then(res=>{
-        this.userCourse=res.data;
-        console.log(this.userCourse);
-      })
-      .catch(error=>{
-        console.log(error)
-      })
-  }
-}
+  created() {
+    axios.get(`course/show/${this.id}`).then((res) => {
+      this.userCourse = res.data.data;
+      console.log(this.userCourse);
+      this.courseId = res.data.data.id;
+      console.log(res.data.data);
+    });
+  },
+};
 </script>
 
 <style scoped>

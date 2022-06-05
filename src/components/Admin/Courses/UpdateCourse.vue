@@ -5,7 +5,6 @@
         <h3 class="card-title my-3 pb-2 d-flex justify-content-center">
           Update Course
         </h3>
-
         <form @submit.prevent="onSubmit">
           <div class="form-group mx-5">
             <label for="courseName">Course Name</label>
@@ -14,6 +13,7 @@
               v-model="course.name"
               class="form-control"
             />
+            <p v-if="errors.name" class="text-danger">{{errors.name[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -24,6 +24,7 @@
               class="form-control-file"
             />
             <img :src="course.cover_path" alt="" style="display: block" />
+            <p v-if="errors.course_cover_path" class="text-danger">{{errors.course_cover_path[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -45,6 +46,7 @@
               rows="2"
               v-model="course.short_descrip"
             ></textarea>
+            <p v-if="errors.short_descrip" class="text-danger">{{errors.short_descrip[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -55,6 +57,7 @@
               rows="3"
               v-model="course.description"
             ></textarea>
+            <p v-if="errors.description" class="text-danger">{{errors.description[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -65,6 +68,7 @@
               id="instructorName"
               v-model="course.instructor"
             />
+            <p v-if="errors.instructor" class="text-danger">{{errors.instructor[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -75,6 +79,7 @@
               class="form-control"
               id="price"
             />
+            <p v-if="errors.price" class="text-danger">{{errors.price[0]}}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -95,6 +100,9 @@
             >
               <source :src="video.video_path" type="video/mp4" />
             </video>
+            <p v-for="videoErr in videoErrs" class="text-danger" :key="videoErr">
+                <span>{{errors[videoErr][0]}}</span>
+            </p>
           </div>
 
           <div class="form-group mx-5">
@@ -115,6 +123,7 @@ export default {
   data() {
     return {
       submitted: false,
+
       video: [],
       cover: [],
       course: {
@@ -124,9 +133,18 @@ export default {
         description: "",
         instructor: "",
         price: "",
-        // course_cover_path: "",
-        // video_path: [],
       },
+       errors:{
+        name: "",
+
+        short_descrip: "",
+        description: "",
+        instructor: "",
+        price: "",
+        course_cover_path: "",
+        video_path:"",
+      },
+      videoErrs:[]
     };
   },
   mounted() {
@@ -188,6 +206,10 @@ export default {
         })
         .catch((error) => {
           console.log(error.response);
+          this.errors=error.response.data.data
+          let videoPathErr = Object.keys(this.errors)
+          let foundVideoPathErr = videoPathErr.filter(e => e.startsWith("video_path"))
+          this.videoErrs = foundVideoPathErr
         });
       this.submitted = true;
     },

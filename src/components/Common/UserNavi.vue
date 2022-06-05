@@ -20,49 +20,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active mx-3">
-          <router-link class="nav-link" :to="{ name: 'About' }"
-            >About</router-link
-          >
-        </li>
-        <li class="nav-item dropdown mx-3">
-          <a
-            class="nav-link dropdown-toggle text-dark"
-            href="#"
-            id="navbarDropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Categories &nbsp;
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <router-link
-              v-for="category in getCategories"
-              :key="category.id"
-              :to="{ name: 'Category' }"
-              class="dropdown-item"
-              >{{ category.name }}</router-link
-            >
-          </div>
-        </li>
-      </ul>
-      <form class="form-inline my-2 mx-3 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-        />
-        <router-link
-          :to="{ name: 'Search' }"
-          class="btn btn-dark my-2 my-sm-0"
-          type="submit"
-          ><i class="fas fa-search"></i
-        ></router-link>
-      </form>
-      <div class="nav-item dropdown my-2 my-lg-0 mx-3">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02 ">
+      <div class="nav-item dropdown my-2 my-lg-0 mx-3 ml-auto">
         <a
           class="nav-link dropdown-toggle text-dark"
           href="#"
@@ -72,9 +31,12 @@
           aria-expanded="false"
           style="padding: 0"
         >
-          {{loginUser.userName}} &nbsp;&nbsp;
+          {{ name }} &nbsp;&nbsp;
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <router-link :to="{ name: 'Home' }" class="dropdown-item"
+            >Home</router-link
+          >
           <a @click="logOut" class="dropdown-item" href="#">Log Out</a>
         </div>
       </div>
@@ -83,28 +45,31 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-
+import axios from "axios";
 export default {
-  data(){
-    return{
-      loginUser:{
-        userName:''
-      }
-    }
+  data() {
+    return {
+      cat: {
+        name: "",
+      },
+      name: localStorage.getItem("name"),
+    };
   },
- 
-  methods:{
-    ...mapActions(["getCat"]),
-    logOut(){
-    localStorage.clear();
-    }
+  created() {
+    axios.get("categories").then((res) => {
+      this.cat = res.data;
+      console.log(this.cat);
+    });
   },
-  computed: mapGetters(["getCategories"]),
-  mounted() {
-    this.getCat();
+  methods: {
+    logOut() {
+      localStorage.clear();
+      this.$router.push("/");
+      let hide = false;
+      localStorage.setItem("hide", hide);
+    },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -112,9 +77,11 @@ export default {
   border-color: #030303 !important;
   box-shadow: none !important;
 }
+
 .navbar {
   margin-bottom: 0;
 }
+
 .dropdown-menu {
   min-width: 6rem !important;
 }

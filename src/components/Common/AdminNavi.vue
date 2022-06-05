@@ -29,10 +29,13 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Admin
+              {{ name }} &nbsp;&nbsp;
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Logout</a>
+              <router-link :to="{ name: 'Home' }" class="dropdown-item"
+                >Home</router-link
+              >
+              <a @click="logOut" class="dropdown-item" href="#">Log Out</a>
             </div>
           </li>
         </ul>
@@ -42,7 +45,31 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      cat: {
+        name: "",
+      },
+      name: localStorage.getItem("name"),
+    };
+  },
+  created() {
+    axios.get("categories").then((res) => {
+      this.cat = res.data;
+      console.log(this.cat);
+    });
+  },
+  methods: {
+    logOut() {
+      localStorage.clear();
+      this.$router.push("/");
+      let hide = false;
+      localStorage.setItem("hide", hide);
+    },
+  },
+};
 </script>
 
 <style scoped>

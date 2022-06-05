@@ -3,8 +3,10 @@
     <div class="d-flex flex-wrap flex-md-nowrap">
       <h2 class="my-4">User Lists</h2>
     </div>
-    <a href="" class="btn btn-primary mb-4">
-      <i class="fas fa-download"></i> &nbsp; Download
+    <a type="button" :href="`http://127.0.0.1:8000/api/user/export`">
+      <button class="btn btn-primary mb-4">
+        <i class="fas fa-download"></i> &nbsp; Download
+      </button>
     </a>
     <div class="table-responsive">
       <table class="table table-hover text-center">
@@ -18,13 +20,13 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr v-for="userLists in userList" :key="userLists.key">
-            <th scope="row">{{ userLists.id }}</th>
-            <td>{{ userLists.name }}</td>
+          <tr v-for="(userLists, index) in userList" :key="index">
+            <th scope="row">{{ index +1 }}</th>
+            <td>{{ userLists.user_name }}</td>
             <td>{{ userLists.email }}</td>
-            <td>{{ userLists.courses }}</td>
+            <td>{{ userLists.name }}</td>
             <td>
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" @click.prevent="deleteUser(userLists.user_id)">
                 <i class="fas fa-user-alt-slash"></i>
               </button>
             </td>
@@ -32,8 +34,6 @@
         </tbody>
       </table>
     </div>
-    <button @click="exportExcel" class="btn btn-primary">Export Excel</button>
-    <button @click="importExcel" class="btn btn-primary">Import Excel</button>
   </main>
 </template>
 
@@ -45,30 +45,24 @@ export default {
   data() {
     return {
       userList: "",
+      id:''
     };
   },
   created() {
-    axios
-      .get("user/list")
-      .then((res) => {
-        this.userList = res.data.data;
-        console.log(this.userList);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.get("user/list").then((res) => {
+      this.userList = res.data.data;
+      console.log(this.userList);
+    });
   },
-  methods: {
-    exportExcel() {
-      axios.get('/user/export')
-      .then(res=>{
-        console.log(res.data)
-      })
-    },
-    importExcel(){
-      axios.post('user/import',)
-    }
-  },
+  methods:{
+    deleteUser(user_id){
+    this.id=user_id;
+    axios.get(`user/disable/${this.id}`)
+    .then(res=>{
+      console.log(res.data)
+    })
+  }
+  }
 };
 </script>
 
