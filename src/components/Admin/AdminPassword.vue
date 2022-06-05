@@ -126,7 +126,7 @@ export default {
       if(success){
         axios.post(`http://127.0.0.1:8000/api/admin/change/password`,this.adminChangePw)
         .then(()=>{
-          localStorage.clear();
+        localStorage.clear();
         this.$router.push({path:'/login'})
      })
       }

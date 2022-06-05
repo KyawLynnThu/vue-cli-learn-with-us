@@ -117,7 +117,8 @@ export default {
         if (success) {
           axios.post('user/change/password', this.userChangePwData)
             .then(res => {
-              console.log(res.data)
+              console.log(res.data);
+              localStorage.clear();
               this.$router.push({ path: '/' })
             })
         }

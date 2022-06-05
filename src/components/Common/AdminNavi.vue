@@ -45,13 +45,23 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
+  data() {
+    return {
+      cat: {
+        name: "",
+      },
+      name: localStorage.getItem("name"),
+    };
+  },
+  created() {
+    axios.get("categories").then((res) => {
+      this.cat = res.data;
+      console.log(this.cat);
+    });
+  },
   methods: {
-    data() {
-      return {
-        name: localStorage.getItem("name"),
-      };
-    },
     logOut() {
       localStorage.clear();
       this.$router.push("/");

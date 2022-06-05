@@ -36,8 +36,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      categoryId: localStorage.getItem("categoryId"),
       relateCourse: {
+        id:"",
         name: "",
         instructor: "",
         price: "",
@@ -47,7 +47,7 @@ export default {
   },
   created() {
     axios
-      .get('course/youmaylike/6')
+      .get(`course/youmaylike/${this.$route.params.id}`)
       .then((res) => {
         this.relateCourse = res.data.data;
         console.log(this.relateCourse);
