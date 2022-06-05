@@ -20,13 +20,13 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr v-for="userLists in userList" :key="userLists.id">
-            <th scope="row">{{ userLists.user_id }}</th>
+          <tr v-for="(userLists, index) in userList" :key="index">
+            <th scope="row">{{ index +1 }}</th>
             <td>{{ userLists.user_name }}</td>
             <td>{{ userLists.email }}</td>
             <td>{{ userLists.name }}</td>
             <td>
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" @click.prevent="deleteUser(userLists.user_id)">
                 <i class="fas fa-user-alt-slash"></i>
               </button>
             </td>
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       userList: "",
+      id:''
     };
   },
   created() {
@@ -53,6 +54,15 @@ export default {
       console.log(this.userList);
     });
   },
+  methods:{
+    deleteUser(user_id){
+    this.id=user_id;
+    axios.get(`user/disable/${this.id}`)
+    .then(res=>{
+      console.log(res.data)
+    })
+  }
+  }
 };
 </script>
 

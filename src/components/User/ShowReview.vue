@@ -19,7 +19,7 @@
               </div>
               <div class="col-10">
                 <div class="card-body px-md-0 px-sm-0 px-xs-5">
-                  <h5 class="card-title font-weight-bolder mb-4">Username</h5>
+                  <h5 class="card-title font-weight-bolder mb-4">{{showReview.user_name}}</h5>
                   <p class="card-text pr-3">{{ showReview.content }}</p>
                 </div>
               </div>
@@ -38,7 +38,8 @@ export default {
   data() {
     return {
       showReviewData: {
-        content: "",
+        user_name:'',
+        content: ""
       },
     };
   },

@@ -6,7 +6,7 @@
           Upload User Lists
         </h3>
         <div class="card-body">
-          <form class="text-center">
+          <form class="text-center" @submit.prevent="submitForm()">
             <div class="upload-container col-lg-12 col-md-12 col-sm-12">
               <input
                 type="file"
@@ -14,13 +14,16 @@
                 ref="file"
                 v-on:change="onChangeFileUpload()"
                 class="form-control-file"
-                required
+                
               />
+              <p v-if="error" class="text-danger">{{error.file[0]}}</p>
             </div>
+           
             <div class="text-center mt-4">
-              <button class="btn btn-primary" v-on:click="submitForm()">
+              <button class="btn btn-primary" type="submit">
                 Upload
               </button>
+               
             </div>
           </form>
         </div>
@@ -35,14 +38,19 @@ export default {
   data() {
     return {
       file: "",
+      error:""
+      
     };
   },
 
   methods: {
+    onChangeFileUpload() {
+      this.file = this.$refs.file.files[0];
+    },
     submitForm() {
       let formData = new FormData();
       formData.append("file", this.file);
-
+      
       axios
         .post("user/import", formData, {
           headers: {
@@ -50,16 +58,36 @@ export default {
           },
         })
         .then(function (data) {
-          console.log(data.data);
+          console.log('then')
+          console.log(data.data.file);
         })
-        .catch(function () {
-          console.log("FAILURE!!");
+        .catch(err=> {
+          console.log(err.response.data.data.file);
+          this.error=err.response.data.data
         });
+       
     },
-
-    onChangeFileUpload() {
-      this.file = this.$refs.file.files[0];
-    },
+    
+    
   },
 };
 </script>
+<style scoped>
+.main {
+  text-align: center;
+}
+.upload-container {
+  position: relative;
+}
+.upload-container input {
+  border: 1px solid #92b0b3;
+  background: #f1f1f1;
+  outline: 2px dashed #92b0b3;
+  outline-offset: -10px;
+  padding: 50px 30px 50px 100px;
+  text-align: center !important;
+}
+.upload-container input:hover {
+  background: #ddd;
+}
+</style>
