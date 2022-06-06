@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "UserSayCard",
+  name: "UserSayCard"
 }
 </script>
 

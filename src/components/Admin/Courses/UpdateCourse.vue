@@ -8,12 +8,8 @@
         <form @submit.prevent="onSubmit">
           <div class="form-group mx-5">
             <label for="courseName">Course Name</label>
-            <input
-              type="text"
-              v-model="course.name"
-              class="form-control"
-            />
-            <p v-if="errors.name" class="text-danger">{{errors.name[0]}}</p>
+            <input type="text" v-model="course.name" class="form-control" />
+            <p v-if="errors.name" class="text-danger">{{ errors.name[0] }}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -24,7 +20,9 @@
               class="form-control-file"
             />
             <img :src="course.cover_path" alt="" style="display: block" />
-            <p v-if="errors.course_cover_path" class="text-danger">{{errors.course_cover_path[0]}}</p>
+            <p v-if="errors.course_cover_path" class="text-danger">
+              {{ errors.course_cover_path[0] }}
+            </p>
           </div>
 
           <div class="form-group mx-5">
@@ -34,7 +32,13 @@
               v-model="course.category_id"
               id="chooseSubcategory"
             >
-              <option v-for="category in getCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
+              <option
+                v-for="category in getCategories"
+                :key="category.id"
+                :value="category.id"
+              >
+                {{ category.name }}
+              </option>
             </select>
           </div>
 
@@ -46,7 +50,9 @@
               rows="2"
               v-model="course.short_descrip"
             ></textarea>
-            <p v-if="errors.short_descrip" class="text-danger">{{errors.short_descrip[0]}}</p>
+            <p v-if="errors.short_descrip" class="text-danger">
+              {{ errors.short_descrip[0] }}
+            </p>
           </div>
 
           <div class="form-group mx-5">
@@ -57,7 +63,9 @@
               rows="3"
               v-model="course.description"
             ></textarea>
-            <p v-if="errors.description" class="text-danger">{{errors.description[0]}}</p>
+            <p v-if="errors.description" class="text-danger">
+              {{ errors.description[0] }}
+            </p>
           </div>
 
           <div class="form-group mx-5">
@@ -68,7 +76,9 @@
               id="instructorName"
               v-model="course.instructor"
             />
-            <p v-if="errors.instructor" class="text-danger">{{errors.instructor[0]}}</p>
+            <p v-if="errors.instructor" class="text-danger">
+              {{ errors.instructor[0] }}
+            </p>
           </div>
 
           <div class="form-group mx-5">
@@ -79,7 +89,7 @@
               class="form-control"
               id="price"
             />
-            <p v-if="errors.price" class="text-danger">{{errors.price[0]}}</p>
+            <p v-if="errors.price" class="text-danger">{{ errors.price[0] }}</p>
           </div>
 
           <div class="form-group mx-5">
@@ -100,8 +110,12 @@
             >
               <source :src="video.video_path" type="video/mp4" />
             </video>
-            <p v-for="videoErr in videoErrs" class="text-danger" :key="videoErr">
-                <span>{{errors[videoErr][0]}}</span>
+            <p
+              v-for="videoErr in videoErrs"
+              class="text-danger"
+              :key="videoErr"
+            >
+              <span>{{ errors[videoErr][0] }}</span>
             </p>
           </div>
 
@@ -133,18 +147,17 @@ export default {
         instructor: "",
         price: "",
       },
-       errors:{
+      errors: {
         name: "",
-
         short_descrip: "",
         description: "",
         instructor: "",
         price: "",
         course_cover_path: "",
-        video_path:"",
+        video_path: "",
       },
-      videoErrs:[]
-    };
+      videoErrs: [],
+    }
   },
   mounted() {
     axios
@@ -152,7 +165,7 @@ export default {
       .then((response) => {
         this.course = response.data.data;
         this.course.category_id = this.course.category.id;
-      });
+      })
   },
   created() {
     this.getCat();
@@ -162,19 +175,16 @@ export default {
     ...mapActions(["getCat"]),
 
     uploadCover(event) {
-      console.log(event);
       this.cover = event.target.files[0];
     },
 
     uploadVideo(event) {
-      console.log(event);
       this.video = event.target.files;
     },
 
     onSubmit() {
       var data = new FormData();
-      
-      //data.append("_method", "PUT");
+
       data.append("name", this.course.name);
       data.append("category_id", this.course.category_id);
       data.append("short_descrip", this.course.short_descrip);
@@ -184,7 +194,7 @@ export default {
       data.append("course_cover_path", this.cover);
 
       for (var i = 0; i < this.video.length; i++) {
-        data.append("video_path[]", this.video[i]);
+        data.append("video_path[]", this.video[i])
       }
       console.log(data);
       axios
@@ -194,7 +204,7 @@ export default {
           {
             headers: {
               "Content-Type": "multipart/form-data",
-            },
+            }
           }
         )
         .then((response) => {
@@ -205,15 +215,17 @@ export default {
         })
         .catch((error) => {
           console.log(error.response);
-          this.errors=error.response.data.data
-          let videoPathErr = Object.keys(this.errors)
-          let foundVideoPathErr = videoPathErr.filter(e => e.startsWith("video_path"))
-          this.videoErrs = foundVideoPathErr
-        });
+          this.errors = error.response.data.data;
+          let videoPathErr = Object.keys(this.errors);
+          let foundVideoPathErr = videoPathErr.filter((e) =>
+            e.startsWith("video_path")
+          );
+          this.videoErrs = foundVideoPathErr;
+        })
       this.submitted = true;
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>

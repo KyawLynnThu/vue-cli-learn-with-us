@@ -47,17 +47,11 @@ export default {
   name: "ChartGraph",
   data() {
     return {
-      tableData: [
-        // { name: "Angualr", data: { Category: 10 } },
-        // { name: "Python", data: { Category: 40 } },
-        // { name: "Python", data: { Category: 45 } },
-        // { name: "Python", data: { Category: 25 } },
-        // { name: "Python", data: { Category: 45 } },
-      ],
+      tableData: [],
       totalUser: "",
       totalCourse: "",
       totalCat: "",
-    };
+    }
   },
   mounted() {
     axios
@@ -68,41 +62,38 @@ export default {
           entries.push({
             name: val.name,
             data: { category: val.purchase_videos_count },
-          });
-        });
+          })
+        })
         this.tableData = entries;
-      });
+      })
   },
   created() {
     axios.get("http://127.0.0.1:8000/api/user/count").then((response) => {
       this.totalUser = response.data.count;
-    });
+    })
 
     axios.get("http://127.0.0.1:8000/api/categories/count").then((response) => {
       this.totalCat = response.data.count;
-    });
+    })
 
     axios.get("http://127.0.0.1:8000/api/course/count").then((response) => {
       this.totalCourse = response.data.data;
-    });
-  },
-};
+    })
+  }
+}
 </script>
 
 <style scoped>
 .category {
-  /* background-image: linear-gradient(to right, #d7bde2, #9b59b6); */
   background-color: #d7bde2;
   border-style: none;
 }
 .course {
   background-image: linear-gradient(to right, #daf7a6, #82e0aa);
-  /* background-color: #daf7a6; */
   border-style: none;
 }
 .user {
   background-image: linear-gradient(to right, #f5b7b1, #ec7063);
-  /* background-color: #f5b7b1; */
   border-style: none;
 }
 .admincard {

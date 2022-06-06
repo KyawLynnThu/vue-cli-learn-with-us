@@ -58,20 +58,17 @@ export default {
   data() {
     return {
       name: "",
-      submitted:false,
+      submitted: false,
       category: {
         name: "",
       },
     };
   },
   methods: {
-     createCat() {
+    createCat() {
       this.submitted = true;
-      
-      //createCat() {
-      //console.log("hello", this.category.name);
-      this.$refs.form.validate().then(success=>{
-      if(success){
+      this.$refs.form.validate().then((success) => {
+        if (success) {
           axios
             .post("http://127.0.0.1:8000/api/categories/", {
               name: this.category.name,
@@ -80,18 +77,16 @@ export default {
               console.log(response.data);
               let category = response.data;
               store.commit("storeCategory", category);
-              // this.$router.push({ name: 'subCategory' });
               this.$router.push({ path: "/subCategory" });
             })
             .catch((error) => {
               console.log(error.response);
-            });
-      }
-  });
-  //}
-     }
+            })
+        }
+      })
+    }
   }
-  }
+}
 </script>
 
 <style scoped>

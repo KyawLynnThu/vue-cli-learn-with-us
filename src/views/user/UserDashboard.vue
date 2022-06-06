@@ -22,8 +22,8 @@ export default {
   components: {
     UserSidebar,
     UserNavi,
-    CommonProfile,
-  },
+    CommonProfile
+  }
 }
 </script>
 

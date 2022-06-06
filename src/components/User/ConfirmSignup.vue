@@ -56,7 +56,6 @@ export default {
   },
   create() {
     let res = axios.get("register/confirm");
-    console.log(res);
     this.confirmData = res.data;
   },
   methods: {
@@ -69,10 +68,10 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-        });
-    },
-  },
-};
+        })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -80,17 +79,14 @@ export default {
   border-color: #030303 !important;
   box-shadow: none !important;
 }
-
 label {
   font-weight: bold;
   display: block;
 }
-
 h6 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 .confirm {
   margin-top: 35px;
 }

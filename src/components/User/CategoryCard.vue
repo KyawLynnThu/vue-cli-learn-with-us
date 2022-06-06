@@ -40,10 +40,9 @@ export default {
   created() {
     axios.get(`categories/show/${this.$route.params.id}`).then((res) => {
       this.courseCard = res.data.data;
-      console.log(this.courseCard);
-    });
-  },
-};
+    })
+  }
+}
 </script>
 
 <style scoped>

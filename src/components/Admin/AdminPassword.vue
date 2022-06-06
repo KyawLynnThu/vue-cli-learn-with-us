@@ -3,7 +3,7 @@
     <h3 class="my-3 pb-2 d-flex justify-content-center">Password Setting</h3>
     <div class="card bg-light col-lg-7 mx-auto">
       <div class="card-body">
-        <ValidationObserver v-slot="{ }" ref="form">
+        <ValidationObserver v-slot="{}" ref="form">
           <form @submit.prevent="onSubmit">
             <ValidationProvider
               name="oldPassword"
@@ -21,8 +21,8 @@
                   :class="{ 'is-invalid': submitted }"
                 />
                 <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -42,9 +42,9 @@
                   name="password"
                   :class="{ 'is-invalid': submitted }"
                 />
-               <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                <div v-if="submitted" class="invalid-feedback">
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -60,11 +60,11 @@
                   v-model="adminChangePw.confirm_password"
                   class="form-control"
                   id="retypepassword"
-                   :class="{ 'is-invalid': submitted }"
+                  :class="{ 'is-invalid': submitted }"
                 />
                 <div v-if="submitted" class="invalid-feedback">
-                <span class="text-danger" >{{ errors[0] }}</span>
-               </div>
+                  <span class="text-danger">{{ errors[0] }}</span>
+                </div>
               </div>
             </ValidationProvider>
 
@@ -72,7 +72,11 @@
               <button type="submit" class="btn btn-primary col-md-4 mr-2 mb-2">
                 Change
               </button>
-              <router-link :to="{ name: 'adminProfile' }" class="btn btn-danger col-md-4 mb-2">Cancel</router-link>
+              <router-link
+                :to="{ name: 'adminProfile' }"
+                class="btn btn-danger col-md-4 mb-2"
+                >Cancel</router-link
+              >
             </div>
           </form>
         </ValidationObserver>
@@ -95,7 +99,7 @@ extend("min", {
 });
 extend("regex", {
   ...regex,
-  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character`
+  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character`,
 });
 extend("confirmed", {
   ...confirmed,
@@ -110,34 +114,35 @@ export default {
   },
   data() {
     return {
-      adminChangePw:{
+      adminChangePw: {
         old_password: "",
         new_password: "",
         confirm_password: "",
-        id:localStorage.getItem("id")
-    },
-      submitted:false
-    };
+        id: localStorage.getItem("id"),
+      },
+      submitted: false,
+    }
   },
   methods: {
     onSubmit() {
       this.submitted = true;
-    this.$refs.form.validate().then(success=>{
-      if(success){
-        axios.post(`http://127.0.0.1:8000/api/admin/change/password`,this.adminChangePw)
-        .then(()=>{
-        localStorage.clear();
-        this.$router.push({path:'/login'})
-     })
-      }
-    });
+      this.$refs.form.validate().then((success) => {
+        if (success) {
+          axios
+            .post(
+              `http://127.0.0.1:8000/api/admin/change/password`,
+              this.adminChangePw
+            )
+            .then(() => {
+              localStorage.clear();
+              this.$router.push({ path: "/login" });
+            })
+        }
+      })
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
 </style>
-
-
-

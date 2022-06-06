@@ -19,8 +19,8 @@ export default {
   components: {
     AdminSidebar,
     AdminNavi,
-    UserLists,
-  },
+    UserLists
+  }
 }
 </script>
 

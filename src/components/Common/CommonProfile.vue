@@ -13,10 +13,6 @@
           <label for="courseName">Gmail</label>
           <h6>{{ user.email }}</h6>
         </div>
-        <!--<div class="form-group mx-5">
-          <label for="courseName">Password</label>
-          <h6>{{ user.password }}</h6>
-        </div>-->
       </form>
     </div>
   </div>
@@ -33,15 +29,15 @@ export default {
         email: "",
       },
       id: localStorage.getItem("id"),
-    };
+    }
   },
   created() {
     axios.get(`user/show/${this.id}`).then((res) => {
       this.user = res.data.data;
       console.log(this.user);
-    });
-  },
-};
+    })
+  }
+}
 </script>
 
 <style scoped>

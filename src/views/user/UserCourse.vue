@@ -20,7 +20,7 @@ export default {
     UserSidebar,
     UserNavi,
     UserCourses
-  },
+  }
 }
 </script>
 

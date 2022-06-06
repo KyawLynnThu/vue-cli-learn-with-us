@@ -89,4 +89,7 @@ export default {
   margin: 0 auto;
   margin-top: 40px;
 }
+.card-img-top {
+  height: 150px !important;
+}
 </style>

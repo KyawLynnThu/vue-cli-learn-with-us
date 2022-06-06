@@ -37,8 +37,8 @@ export default {
     OurService,
     UserSayCard,
     CommonFooter,
-    ContactUs,
-  },
+    ContactUs
+  }
 }
 </script>
 
