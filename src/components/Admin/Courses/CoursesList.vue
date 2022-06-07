@@ -23,7 +23,7 @@
           <tr v-for="course in getCourses" :key="course.id">
             <th scope="row">{{ course.id }}</th>
             <td>{{ course.name }}</td>
-            <td>{{ course.category.name }}</td>
+            <td>{{ course.category ? course.category.name: '' }}</td>
             <td>{{ course.instructor }}</td>
             <td>{{ course.price }}</td>
             <td>
