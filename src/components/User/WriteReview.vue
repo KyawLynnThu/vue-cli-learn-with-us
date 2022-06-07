@@ -38,6 +38,7 @@ export default {
       axios.post("comment/create", this.commentData).then((res) => {
         console.log(res.data);
         this.commentData.content = "";
+        location.reload();
       })
     }
   }

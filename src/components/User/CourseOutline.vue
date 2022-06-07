@@ -2,26 +2,15 @@
   <div class="row mt-4 pl-md-5">
     <div class="col-md-7">
       <div v-if="purchase == false">
-        <iframe
-          width="100%"
-          height="450"
-          :src="defaultVideolink"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <iframe width="100%" height="450" :src="defaultVideolink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div v-if="purchase == true">
-        <iframe
-          width="100%"
-          height="450"
-          :src="videoPath"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <span class="" v-if="!videoPath">
+        <iframe width="100%" height="450" :src="defaultVideolink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </span>
+      <span v-if="videoPath">
+        <iframe width="100%" height="450" :src="videoPath" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </span>
       </div>
       <h5 class="mt-3 mb-3">{{ courseData.name }}</h5>
       <p>Description</p>
@@ -98,6 +87,7 @@
           </span>
         </button>
       </div>
+    </div>
       <div v-if="purchase == true">
         <div v-for="(videos, index) in courseData.video" :key="index">
           <button

@@ -152,7 +152,33 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes, scrollBehavior() {
+    return {x:0, y:0}
+  }
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'adminProfile' || to.name === 'createCategory' || to.name === 'updateCategory' || to.name === 'createCourse' || to.name === 'updateCourse' || to.name === 'confirmCourse' || to.name === 'userUpload' || to.name === 'adminPasswordSetting' || to.name === 'userLists' || to.name === 'AdminDashboard' || to.name === 'Courses' || to.name === 'subCategory') {
+    let userType = localStorage.getItem('type');
+    if (userType==0) {next()}
+    else {next({ name: 'Home' })}
+  }
+  else {
+    next();
+ }
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'userDashboard' || to.name === 'Detail' || to.name === 'passwordSetting' || to.name === 'userCourse') {
+    let userType = localStorage.getItem('type');
+    if (userType==1) {
+      next()
+    }
+    else {next({ name: 'LogIn' })}
+  }
+  else {
+    next();
+ }
 })
 
 export default router;
