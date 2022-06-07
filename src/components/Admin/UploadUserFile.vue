@@ -16,6 +16,7 @@
                 class="form-control-file"
               />
               <p v-if="error" class="text-danger">{{error.file[0]}}</p>
+              <p v-for="err in errs" class="text-danger" :key="err.index">{{err.errors[0]}}</p>
             </div>
            
             <div class="text-center mt-4">
@@ -36,8 +37,9 @@ export default {
   data() {
     return {
       file: "",
-      error:""
-    }
+      error:"",
+      errs:[],
+    };
   },
 
   methods: {
@@ -55,17 +57,17 @@ export default {
             "Content-Type": "multipart/form-data",
           },
         })
-        .then(function (data) {
-          console.log('then')
-          console.log(data.data.file);
+        .then(function () {
+         
         })
         .catch(err=> {
-          console.log(err.response.data.data.file);
           this.error=err.response.data.data
+          this.errs=err.response.data
         })       
     }
   }
 }
+
 </script>
 <style scoped>
 .main {

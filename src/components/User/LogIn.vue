@@ -16,8 +16,10 @@
                 class="form-control"
                 :class="{ 'is-invalid': submitted }"
               />
+              
               <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger">{{ errors[0] }}</span>
+                <span v-if="wrongEmail" class="text-danger">{{wrongEmail.email[0]}}</span>
               </div>
             </div>
           </ValidationProvider>
@@ -35,8 +37,10 @@
                 class="form-control"
                 :class="{ 'is-invalid': submitted }"
               />
+              
               <div v-if="submitted" class="invalid-feedback">
                 <span class="text-danger">{{ errors[0] }}</span>
+                <span v-if="wrongPw" class="text-danger">{{wrongPw}}</span>
               </div>
             </div>
           </ValidationProvider>
@@ -110,8 +114,10 @@ export default {
         email: "",
         password: "",
       },
+      wrongEmail:'',
+      wrongPw:'',
       submitted: false,
-      logHide: "",
+      logHide: '',
     };
   },
   methods: {
@@ -131,6 +137,12 @@ export default {
             this.logHide = true;
             localStorage.setItem("logHide", this.logHide);
             this.$router.push("/");
+          })
+          .catch(err=>{
+            this.wrongEmail=err.response.data.data
+            if(err.response.data.message != "Validation errors"){
+              this.wrongPw=err.response.data.message
+            }
           })
         }
       })
