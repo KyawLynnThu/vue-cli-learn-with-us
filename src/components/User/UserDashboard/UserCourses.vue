@@ -42,7 +42,7 @@ export default {
       userCourse: {},
       courseId: "",
       id: localStorage.getItem("id"),
-    };
+    }
   },
   created() {
     axios.get(`course/show/${this.id}`).then((res) => {
@@ -50,9 +50,9 @@ export default {
       console.log(this.userCourse);
       this.courseId = res.data.data.id;
       console.log(res.data.data);
-    });
-  },
-};
+    })
+  }
+}
 </script>
 
 <style scoped>

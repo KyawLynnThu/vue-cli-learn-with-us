@@ -63,10 +63,11 @@ export default {
         .catch(err=> {
           this.error=err.response.data.data
           this.errs=err.response.data
-        });
-    },
-  },
-};
+        })       
+    }
+  }
+}
+
 </script>
 <style scoped>
 .main {

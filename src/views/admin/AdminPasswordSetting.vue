@@ -20,8 +20,8 @@ export default {
     AdminSidebar,
     AdminNavi,
     AdminPassword,
-  },
-};
+  }
+}
 </script>
 
 <style scoped>

@@ -53,13 +53,12 @@ export default {
         name: "",
       },
       name: localStorage.getItem("name"),
-    };
+    }
   },
   created() {
     axios.get("categories").then((res) => {
       this.cat = res.data;
-      console.log(this.cat);
-    });
+    })
   },
   methods: {
     logOut() {
@@ -67,9 +66,9 @@ export default {
       this.$router.push("/");
       let hide = false;
       localStorage.setItem("hide", hide);
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -77,11 +76,9 @@ export default {
   border-color: #030303 !important;
   box-shadow: none !important;
 }
-
 .navbar {
   margin-bottom: 0;
 }
-
 .dropdown-menu {
   min-width: 6rem !important;
 }

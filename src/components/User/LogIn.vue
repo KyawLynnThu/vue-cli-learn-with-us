@@ -118,7 +118,6 @@ export default {
       wrongPw:'',
       submitted: false,
       logHide: '',
-
     };
   },
   methods: {
@@ -131,7 +130,6 @@ export default {
             let id = res.data.data.id;
             let name = res.data.data.name;
             let type = res.data.data.type;
-            console.log(res);
             localStorage.setItem("token", token);
             localStorage.setItem("id", id);
             localStorage.setItem("name", name);
@@ -147,10 +145,10 @@ export default {
             }
           })
         }
-      });
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>

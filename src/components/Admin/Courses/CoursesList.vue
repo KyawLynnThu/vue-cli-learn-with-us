@@ -20,10 +20,10 @@
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr v-for="course in getCourses" :key="course.id">
-            <th scope="row">{{ course.id }}</th>
+          <tr v-for="(course, index) in getCourses" :key="index">
+            <th scope="row">{{ index + 1 }}</th>
             <td>{{ course.name }}</td>
-            <td>{{ course.category.name }}</td>
+            <td>{{ course.category ? course.category.name: '' }}</td>
             <td>{{ course.instructor }}</td>
             <td>{{ course.price }}</td>
             <td>
@@ -33,8 +33,10 @@
               >
                 <i class="fas fa-pen"></i>
               </router-link>
-              <button class="btn btn-danger"
-              @click.prevent="deleteCourse(course.id)">
+              <button
+                class="btn btn-danger"
+                @click.prevent="deleteCourse(course.id)"
+              >
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -50,11 +52,11 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "CoursesList",
   computed: mapGetters(["getCourses"]),
-  methods: mapActions(["getCourse","deleteCourse"]),
+  methods: mapActions(["getCourse", "deleteCourse"]),
   mounted() {
-    this.getCourse();
-  },
-};
+    this.getCourse()
+  }
+}
 </script>
 
 <style scoped>

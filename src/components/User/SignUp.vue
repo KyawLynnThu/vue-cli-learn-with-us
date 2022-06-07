@@ -176,13 +176,12 @@ export default {
             })
             .catch((error) => {
               console.log(error);
-            });
+            })
         }
-      });
-    },
-  },
-
-};
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -190,7 +189,6 @@ export default {
   border-color: #030303 !important;
   box-shadow: none !important;
 }
-
 .confirm {
   margin-top: 35px;
 }

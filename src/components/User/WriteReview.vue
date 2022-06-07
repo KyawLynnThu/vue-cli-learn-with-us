@@ -30,18 +30,18 @@ export default {
         content: "",
         user_id: localStorage.getItem("id"),
         course_id: this.$route.params.id,
-      },
-    };
+      }
+    }
   },
   methods: {
     reviewSubmit() {
       axios.post("comment/create", this.commentData).then((res) => {
         console.log(res.data);
         this.commentData.content = "";
-      });
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>

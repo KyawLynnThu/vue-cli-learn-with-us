@@ -29,7 +29,7 @@
 <script>
 export default {
   name: "AboutUS",
-};
+}
 </script>
 
 <style scoped>

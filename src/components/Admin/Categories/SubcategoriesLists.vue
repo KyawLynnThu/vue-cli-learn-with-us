@@ -13,13 +13,15 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Subcategory Name</th>
+            <th scope="col">Total Course</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody class="bg-light">
-          <tr v-for="category in getCategories" :key="category.id">
-            <th scope="row">{{ category.id }}</th>
+          <tr v-for="(category, index) in getCategories" :key="index">
+            <th scope="row">{{ index + 1 }}</th>
             <td>{{ category.name }}</td>
+            <td>{{ category.course_count }}</td>
             <td>
               <router-link
                 :to="`/updatecategory/${category.id}`"
@@ -48,9 +50,9 @@ export default {
   computed: mapGetters(["getCategories"]),
   methods: mapActions(["getCat", "deleteCat"]),
   mounted() {
-    this.getCat();
-  },
-};
+    this.getCat()
+  }
+}
 </script>
 
 <style scoped>

@@ -19,9 +19,8 @@ export default {
   components: {
     AdminSidebar,
     AdminNavi,
-    AdminProfile,
-  },
-  
+    AdminProfile
+  }
 }
 </script>
 

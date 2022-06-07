@@ -19,7 +19,9 @@
               </div>
               <div class="col-10">
                 <div class="card-body px-md-0 px-sm-0 px-xs-5">
-                  <h5 class="card-title font-weight-bolder mb-4">{{showReview.user_name}}</h5>
+                  <h5 class="card-title font-weight-bolder mb-4">
+                    {{ showReview.user_name }}
+                  </h5>
                   <p class="card-text pr-3">{{ showReview.content }}</p>
                 </div>
               </div>
@@ -27,7 +29,6 @@
           </div>
         </div>
       </div>
-      <!--<button type="button" class="btn btn-dark btn-block">More Reviews</button>-->
     </div>
   </div>
 </template>
@@ -38,18 +39,17 @@ export default {
   data() {
     return {
       showReviewData: {
-        user_name:'',
-        content: ""
-      },
-    };
+        user_name: "",
+        content: "",
+      }
+    }
   },
   created() {
     axios.get(`comment/course/${this.$route.params.id}`).then((res) => {
       this.showReviewData = res.data.data;
-      console.log(this.showReviewData);
-    });
-  },
-};
+    })
+  }
+}
 </script>
 
 <style scoped>

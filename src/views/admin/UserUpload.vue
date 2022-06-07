@@ -19,8 +19,8 @@ export default {
   components: {
     AdminSidebar,
     AdminNavi,
-    UploadUserFile,
-  },
+    UploadUserFile
+  }
 }
 </script>
 
