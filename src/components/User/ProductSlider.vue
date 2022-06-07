@@ -89,7 +89,6 @@ export default {
         console.log(res)
       });
 }
-}
 </script>
 
 <style scoped>
@@ -98,6 +97,7 @@ export default {
   margin: 0 auto;
   margin-top: 40px;
 }
+
 .slick-slide img {
   height: 200px !important;
 }
@@ -110,5 +110,6 @@ export default {
 }
 .card {
   margin-bottom: 40px;
+
 }
 </style>

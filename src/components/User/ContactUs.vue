@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="row align-items-center">
-      <div class="col-md-5 col-sm-4 col-3">
-      </div>
+      <div class="col-md-5 col-sm-4 col-3"></div>
       <div class="col-md-7 col-sm-8 col-9">
         <h2 class="text-left mt-5 mb-5 font-weight-bold">Contact Us</h2>
       </div>
@@ -57,7 +56,7 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style scoped>

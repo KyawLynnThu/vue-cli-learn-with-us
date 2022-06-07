@@ -42,21 +42,20 @@ export default {
         instructor: "",
         price: "",
         course_cover_link: "",
-      },
-    };
+      }
+    }
   },
   created() {
     axios
       .get(`course/youmaylike/${this.$route.params.id}`)
       .then((res) => {
         this.relateCourse = res.data.data;
-        console.log(this.relateCourse);
       })
       .catch((error) => {
         console.log(error);
-      });
-  },
-};
+      })
+  }
+}
 </script>
 
 <style scoped></style>

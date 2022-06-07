@@ -17,8 +17,8 @@ export default {
   components: {
     NavBar,
     LogIn,
-    CommonFooter,
-  },
+    CommonFooter
+  }
 }
 </script>
 

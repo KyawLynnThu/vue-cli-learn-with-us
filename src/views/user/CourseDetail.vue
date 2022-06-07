@@ -26,8 +26,8 @@ export default {
     ShowReview,
     RelatedCourses,
     NavBar,
-    CommonFooter,
-  },
+    CommonFooter
+  }
 }
 </script>
 

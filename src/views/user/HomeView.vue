@@ -23,8 +23,8 @@ export default {
     CommonFooter,
     VideoBanner,
     ProductSlider,
-    HomeSection,
-  },
+    HomeSection
+  }
 }
 </script>
 

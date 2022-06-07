@@ -18,9 +18,8 @@ export default {
   components: {
     SearchCard,
     TotalCourse,
-    NavBar,
-    
-  },
+    NavBar
+  }
 }
 </script>
 

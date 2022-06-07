@@ -22,7 +22,6 @@
               <button class="btn btn-primary" type="submit">
                 Upload
               </button>
-               
             </div>
           </form>
         </div>
@@ -38,7 +37,7 @@ export default {
     return {
       file: "",
       error:""
-    };
+    }
   },
 
   methods: {
@@ -63,11 +62,10 @@ export default {
         .catch(err=> {
           console.log(err.response.data.data.file);
           this.error=err.response.data.data
-        });
-       
-    },
-  },
-};
+        })       
+    }
+  }
+}
 </script>
 <style scoped>
 .main {
