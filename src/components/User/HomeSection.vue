@@ -4,13 +4,14 @@
       <div class="col-md-7 col-sm-12 p-3">
         <div class="text-md-right text-center p-md-5">
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione
-            amet libero pariatur, mollitia enim maxime! Perspiciatis, provident
-            earum. Temporibus placeat possimus obcaecati accusantium fuga earum,
-            magni qui facilis porro exercitationem! Lorem ipsum dolor sit amet
-            consectetur, adipisicing elit. Ratione amet libero pariatur,
-            mollitia enim maxime! Perspiciatis, provident earum. Temporibus
-            placeat possimus obcaecati accusantium fuga earum,
+            For many, education is synonymous with schooling, and with
+            preparation for a subsequent career. From this perspective,
+            education may seem like little more than a series of boxes to check:
+            show up at class, learn the material, do the homework, pass the
+            test, and, finally, get the diploma that gets you the job. This kind
+            of rote, almost transactional experience of learning can be all too
+            common, and it represents a misunderstanding of what it means to be
+            an educator - or an educated person.
           </p>
         </div>
       </div>
