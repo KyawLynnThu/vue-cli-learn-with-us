@@ -20,7 +20,7 @@
         </div>
         </div>
       </div>
-      <!-- <span class="slick-arrow slick next" style="display: none;"></span> -->
+      <span class="slick-arrow slick next" style="display: none;"></span>
     </VueSlickCarousel>
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
   "dots": false,
   "infinite": false,
   "speed": 500,
-  "focusOnSelect": true,
+  "focusOnSelect": false,
   "slidesToShow": 4,
   "slidesToScroll": 1,
   "initialSlide": 0,
@@ -88,6 +88,7 @@ export default {
         this.topCourse = res.data.data;
         console.log(res)
       });
+}
 }
 </script>
 

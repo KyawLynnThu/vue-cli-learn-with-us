@@ -57,8 +57,8 @@ export default {
             "Content-Type": "multipart/form-data",
           },
         })
-        .then(function () {
-         
+        .then(()=>{
+          this.$router.push("/userlists");
         })
         .catch(err=> {
           this.error=err.response.data.data
