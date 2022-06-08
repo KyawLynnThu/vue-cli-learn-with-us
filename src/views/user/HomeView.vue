@@ -5,7 +5,7 @@
     <h3>Top Courses</h3>
     <product-slider></product-slider>
     <home-section />
-    <home-section />
+    <home-section-two></home-section-two>
     <common-footer />
   </div>
 </template>
@@ -16,6 +16,7 @@ import CommonFooter from "@/components/Common/CommonFooter"
 import VideoBanner from "@/components/User/VideoBanner"
 import ProductSlider from "@/components/User/ProductSlider"
 import HomeSection from "@/components/User/HomeSection"
+import HomeSectionTwo from "@/components/User/HomeSectionTwo"
 
 export default {
   components: {
@@ -23,7 +24,8 @@ export default {
     CommonFooter,
     VideoBanner,
     ProductSlider,
-    HomeSection
+    HomeSection,
+    HomeSectionTwo
   }
 }
 </script>

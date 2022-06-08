@@ -13,7 +13,9 @@
       </span>
       </div>
       <h3 class="mt-3 mb-3"><strong>{{ courseData.name }}</strong></h3>
-      <h6 class="mt-5"><strong>Course Outline</strong></h6>
+      <h5 class="mt-5"><strong>Instructor</strong></h5>
+      <p class="">{{ courseData.instructor }}</p>
+      <h5 class=""><strong>Course Outline</strong></h5>
       <p class="">{{ courseData.description }}</p>
 
       <div class="pb-3">
@@ -31,7 +33,7 @@
           >Free</span
         >
         <p v-if="courseData.price > 0" class="vd-price mb-0">
-          ${{ courseData.price }}
+          Price : $ {{ courseData.price }}
         </p>
       </div>
      <div v-if="purchase==false">

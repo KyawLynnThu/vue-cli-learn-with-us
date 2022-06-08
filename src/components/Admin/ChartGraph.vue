@@ -25,7 +25,7 @@
         <div class="card user">
           <div class="card-body">
             <div class="text-center">
-              <h3 class="text-danger mb-4">Total Users</h3>
+              <h3 class="text-danger mb-4">Total Learners</h3>
               <h4 class="text-danger text-center">{{ totalUser }}</h4>
             </div>
           </div>
@@ -37,6 +37,7 @@
       width="80%"
       style="margin: 0 auto"
       :download="true"
+      xtitle="Size" ytitle="Population"
     />
   </main>
 </template>

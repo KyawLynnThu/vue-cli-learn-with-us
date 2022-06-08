@@ -1,15 +1,15 @@
 <template>
   <div class="card text-center shadow p-3 mb-5 bg-white rounded">
     <img
-      src="@/assets/dog.jpg"
+      src="@/assets/man.png"
       class="rounded-circle about-cmt-img m-auto"
       alt=""
     />
     <div class="card-body">
-      <h5 class="card-title">User Name</h5>
+      <h5 class="card-title">Nyein Thu San</h5>
       <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+        "Learn with Us has helped me expand my knowledge through several important
+        courses that are extremely impactful and helpful for my career.”
       </p>
     </div>
   </div>
@@ -17,15 +17,14 @@
 
 <script>
 export default {
-  name: "UserSayCard"
-}
+  name: "UserSayCard",
+};
 </script>
 
 <style scoped>
 .about-cmt-img {
   width: 80px;
   height: 80px;
-  border: 1px solid black;
   border-radius: 50%;
 }
 </style>

@@ -69,18 +69,18 @@
         </button>
       </form>
       <router-link
-        v-if="ishidden == logHide"
+        v-if="!logHide"
         :to="{ name: 'LogIn' }"
         class="btn btn-outline-dark my-2 my-sm-0 mx-3"
         >LOG IN</router-link
       >
       <router-link
-        v-if="ishidden == logHide"
+        v-if="!logHide"
         :to="{ name: 'SignUp' }"
         class="btn btn-secondary my-2 my-sm-0 mr-3"
         >SIGN UP</router-link
       >
-      <div class="nav-item dropdown mx-3" v-if="ishidden != logHide">
+      <div class="nav-item dropdown mx-3" v-if="logHide">
         <a
           class="nav-link dropdown-toggle text-dark"
           href="#"
@@ -112,11 +112,12 @@
 </template>
 
 <script>
-import axios from "axios";
-import { mapGetters } from "vuex";
+import axios from "axios"
+import { mapGetters } from "vuex"
 export default {
   data() {
     return {
+      logHide: false,
       cat: {
         name: "",
       },
@@ -129,13 +130,14 @@ export default {
   created() {
     axios.get("categories").then((res) => {
       this.cat = res.data;
-    })
-    this.logHide = localStorage.getItem("logHide");
+      this.logHide = localStorage.getItem("logHide");
+    });
   },
   methods: {
     logOut() {
       localStorage.clear();
       this.$router.push("/login");
+      this.logHide = false;
     },
     getSearchResults(search) {
       this.$store.dispatch("getSearchResults", search);

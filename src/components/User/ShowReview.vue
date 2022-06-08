@@ -12,7 +12,7 @@
             <div class="row no-gutters p-0">
               <div class="col-2 text-left pt-3 pl-3">
                 <img
-                  src="@/assets/dog.jpg"
+                  src="@/assets/man.png"
                   class="rounded-circle review-cmt-img"
                   alt=""
                 />
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
 export default {
   data() {
     return {
@@ -56,7 +56,6 @@ export default {
 .review-cmt-img {
   width: 50px;
   height: 50px;
-  border: 1px solid black;
   border-radius: 50%;
 }
 </style>
