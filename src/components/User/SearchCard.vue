@@ -11,7 +11,7 @@
             <img
               :src="searchCourse.course_cover_link"
               alt=""
-              class="w-100 h-100"
+              class="w-100"
             />
           </div>
           <div class="col-md-6 px-4 pt-3">
@@ -64,4 +64,7 @@ export default {
 </script>
 
 <style scoped>
+img{
+  max-height:100%;
+}
 </style>
