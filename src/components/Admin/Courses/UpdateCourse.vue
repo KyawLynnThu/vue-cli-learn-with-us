@@ -196,7 +196,6 @@ export default {
       for (var i = 0; i < this.video.length; i++) {
         data.append("video_path[]", this.video[i])
       }
-      console.log(data);
       axios
         .post(
           `http://localhost:8000/api/course/update/${this.$route.params.id}`,
@@ -208,13 +207,11 @@ export default {
           }
         )
         .then((response) => {
-          console.log(response.data);
           let course = response.data;
           store.commit("storeCourse", course);
           this.$router.push({ name: "Courses" });
         })
         .catch((error) => {
-          console.log(error.response);
           this.errors = error.response.data.data;
           let videoPathErr = Object.keys(this.errors);
           let foundVideoPathErr = videoPathErr.filter((e) =>

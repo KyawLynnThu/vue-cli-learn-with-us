@@ -10,7 +10,7 @@
           <img
             :src="courseCards.course_cover_link"
             alt=""
-            class="w-100 h-100"
+            
           />
           <div class="card-body">
             <h5 class="card-title">{{ courseCards.name }}</h5>
@@ -48,5 +48,8 @@ export default {
 <style scoped>
 .cat-card {
   margin-bottom: 2rem;
+}
+img{
+  height: 200px;
 }
 </style>

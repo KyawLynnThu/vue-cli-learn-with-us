@@ -2,17 +2,18 @@
   <div class="row mt-4 pl-md-5">
     <div class="col-md-7">
       <div v-if="purchase == false">
-        <iframe width="100%" height="450" :src="defaultVideolink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="450" :src="defaultVideolink" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div v-if="purchase == true">
         <span class="" v-if="!videoPath">
-        <iframe width="100%" height="450" :src="defaultVideolink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="450" :src="defaultVideolink" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </span>
       <span v-if="videoPath">
-        <iframe width="100%" height="450" :src="videoPath" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="450" :src="videoPath" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </span>
       </div>
-      <h5 class="mt-3 mb-3">{{ courseData.name }}</h5>
+      <h3 class="mt-3 mb-3"><strong>{{ courseData.name }}</strong></h3>
+      <h6 class="mt-5"><strong>Course Outline</strong></h6>
       <p class="">{{ courseData.description }}</p>
 
       <div class="pb-3">

@@ -40,14 +40,14 @@
 </template>
 
 <script>
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import { required } from "vee-validate/dist/rules";
-import axios from "axios";
-import store from "@/store";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate"
+import { required } from "vee-validate/dist/rules"
+import axios from "axios"
+import store from "@/store"
 extend("required", {
   ...required,
   message: (field) => field + ` can't blank`,
-});
+})
 
 export default {
   name: "CreateSub",
@@ -61,8 +61,8 @@ export default {
       submitted: false,
       category: {
         name: "",
-      },
-    };
+      }
+    }
   },
   methods: {
     createCat() {
@@ -74,13 +74,9 @@ export default {
               name: this.category.name,
             })
             .then((response) => {
-              console.log(response.data);
               let category = response.data;
               store.commit("storeCategory", category);
               this.$router.push({ path: "/subCategory" });
-            })
-            .catch((error) => {
-              console.log(error.response);
             })
         }
       })

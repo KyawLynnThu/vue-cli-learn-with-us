@@ -46,10 +46,10 @@ export default {
       setting: {
   "dots": false,
   "infinite": false,
-  "speed": 500,
+  "speed": 600,
   "focusOnSelect": false,
   "slidesToShow": 4,
-  "slidesToScroll": 1,
+  "slidesToScroll": 4,
   "initialSlide": 0,
   "arrows": true,
   "responsive": [
@@ -57,8 +57,8 @@ export default {
       "breakpoint": 1024,
       "settings": {
         "slidesToShow": 3,
-        "slidesToScroll": 1,
-        "infinite": true,
+        "slidesToScroll": 3,
+        "infinite": false,
         "dots": false
       }
     },
@@ -86,7 +86,6 @@ export default {
       .get("course/top")
       .then((res) => {
         this.topCourse = res.data.data;
-        console.log(res)
       });
 }
 }
@@ -104,7 +103,6 @@ export default {
 }
 .card-body h4 {
   text-decoration: none;
-  height: 30px;
 }
 .card-body h6 {
   height: 30px;

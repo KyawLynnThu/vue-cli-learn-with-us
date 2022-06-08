@@ -12,7 +12,7 @@
         <img
           :src="relateCourses.course_cover_link"
           alt=""
-          class="w-100 h-100"
+          class="w-100"
         />
         <div class="card-body">
           <h5 class="card-title">{{ relateCourses.name }}</h5>
@@ -51,11 +51,15 @@ export default {
       .then((res) => {
         this.relateCourse = res.data.data;
       })
-      .catch((error) => {
-        console.log(error);
-      })
+      // .catch((error) => {
+      //   console.log(error);
+      // })
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.shadow img {
+  height: 250px;
+}
+</style>

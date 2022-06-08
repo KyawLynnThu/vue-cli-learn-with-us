@@ -38,6 +38,7 @@
               v-model="course.category_id"
               id="chooseSubcategory"
             >
+              <option value="" selected disabled>--- Select one ---</option>
               <option
                 v-for="category in getCategories"
                 :key="category.id"
@@ -170,12 +171,10 @@ export default {
     ...mapActions(["getCat"]),
 
     uploadCover(event) {
-      console.log(event);
       this.cover = event.target.files[0];
     },
 
     uploadVideo(event) {
-      console.log(event);
       this.video = event.target.files;
     },
 
@@ -211,7 +210,6 @@ export default {
             e.startsWith("video_path")
           );
           this.videoErrs = foundVideoPathErr;
-          console.log(this.errors);
         })
       this.submitted = true;
     }
