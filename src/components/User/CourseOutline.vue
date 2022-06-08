@@ -30,11 +30,12 @@
           "
           >Free</span
         >
-        <p v-if="courseData.price > 0" class="vd-price mx-1">
-          $ {{ courseData.price }}
+        <p v-if="courseData.price > 0" class="vd-price mb-0">
+          ${{ courseData.price }}
         </p>
       </div>
-      <button
+     <div v-if="purchase==false">
+        <button
         type="button"
         class="btn btn-dark"
         data-toggle="modal"
@@ -42,7 +43,11 @@
       >
         Buy This Course
       </button>
-
+     </div>
+     <div v-if="purchase==true" class="d-inline-block bg-secondary p-2 rounded">
+       <p class="mb-0 text-white" style="font-size: 20px">Purchased</p>
+     </div>
+      
 
     <div  class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div   class="modal-dialog modal-dialog-centered" role="document">
@@ -148,7 +153,6 @@ export default {
       await axios
         .post(`http://127.0.0.1:8000/api/course/buy`, this.buyCourseId)
         .then(() => {
-
           this.loading = false;
           this.$router.push({ path: '/usercourse'});
           location.reload();

@@ -16,7 +16,7 @@
                 class="form-control-file"
               />
               <p v-if="error" class="text-danger">{{error.file[0]}}</p>
-              <p v-for="err in errs" class="text-danger" :key="err.index">{{err.errors[0]}}</p>
+              <p v-for="err in errs" class="text-danger" :key="err.index">{{err.errors}}</p>
             </div>
            
             <div class="text-center mt-4">
