@@ -32,14 +32,14 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
 export default {
   data() {
     return {
       file: "",
       error:"",
       errs:[],
-    };
+    }
   },
 
   methods: {

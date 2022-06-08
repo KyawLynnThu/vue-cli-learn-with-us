@@ -10,7 +10,6 @@ import SignUpView from '@/views/user/SignUpView'
 import UserDashboard from '@/views/user/UserDashboard'
 import PasswordSetting from '@/views/user/PasswordSetting'
 import UserCourse from '@/views/user/UserCourse'
-import ConfirmSignupView from '@/views/user/ConfirmSignupView'
 import AdminDashboard from '@/views/admin/AdminDashboard'
 import SubCategory from '@/views/admin/SubCategory'
 import CoursesView from '@/views/admin/CoursesView'
@@ -20,7 +19,6 @@ import CreateCategoryView from '@/views/admin/CreateCategoryView'
 import UpdateCategoryView from '@/views/admin/UpdateCategoryView'
 import CreateCourseView from '@/views/admin/CreateCourseView'
 import UpdateCourseView from '@/views/admin/UpdateCourseView'
-import ConfirmCourseView from '@/views/admin/ConfirmCourseView'
 import UserUpload from '@/views/admin/UserUpload'
 import AdminPasswordSetting from '@/views/admin/AdminPasswordSetting'
 import NotFound from '@/views/NotFound'
@@ -124,16 +122,6 @@ const routes = [
     component: UpdateCourseView
   },
   {
-    path: "/confirmcourse",
-    name: "confirmCourse",
-    component: ConfirmCourseView
-  },
-  {
-    path: "/confirmsignup",
-    name: "confirmSignup",
-    component: ConfirmSignupView
-  },
-  {
     path: "/userupload",
     name: "userUpload",
     component: UserUpload
@@ -174,7 +162,7 @@ router.beforeEach((to, from, next) => {
     if (userType==1) {
       next()
     }
-    else {next({ name: 'LogIn' })}
+    else {next({ name: 'Home' })}
   }
   else {
     next();

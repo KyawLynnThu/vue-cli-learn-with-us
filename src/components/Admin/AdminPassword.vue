@@ -86,25 +86,25 @@
 </template>
 
 <script>
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import { required, min, confirmed, regex } from "vee-validate/dist/rules";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate"
+import { required, min, confirmed, regex } from "vee-validate/dist/rules"
 extend("required", {
   ...required,
-  message: (field) => field + ` can't blank`,
-});
+  message: (field) => field + ` can't blank`
+})
 
 extend("min", {
   ...min,
-  message: "Password min length is 8 character",
+  message: "Password min length is 8 character"
 });
 extend("regex", {
   ...regex,
-  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character`,
-});
+  message: `Your password should contain at-least 1 Uppercase,1 Lowercase,1 Numeric,1 Special Character`
+})
 extend("confirmed", {
   ...confirmed,
-  message: "Password does't match",
-});
+  message: "Password does't match"
+})
 import axios from "axios";
 export default {
   name: "AdminPwSetting",
