@@ -11,7 +11,7 @@
             <img
               :src="searchCourse.course_cover_link"
               alt=""
-              class="w-100"
+              class="w-100 h-100"
             />
           </div>
           <div class="col-md-6 px-4 pt-3">
@@ -22,7 +22,7 @@
               >
                 {{ searchCourse.name }}
               </h5>
-              <p class="card-text" style="font-size: 20px">
+              <p class="card-text" style="font-size: 17px">
                 {{ searchCourse.short_descrip }}
               </p>
               <p class="card-text mb-4" style="font-size: 15px">

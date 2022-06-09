@@ -22,6 +22,7 @@
                 />
                 <div v-if="submitted" class="invalid-feedback">
                   <span class="text-danger">{{ errors[0] }}</span>
+                  <span v-if="oldPwInvalid" class="text-danger">{{ oldPwInvalid }}</span>
                 </div>
               </div>
             </ValidationProvider>
@@ -122,6 +123,7 @@ export default {
         id: localStorage.getItem("id"),
       },
       submitted: false,
+      oldPwInvalid:""
     }
   },
   methods: {
@@ -131,10 +133,12 @@ export default {
         if (success) {
           axios
             .post("user/change/password", this.userChangePwData)
-            .then((res) => {
-              console.log(res.data);
+            .then(() => {
               localStorage.clear();
-              this.$router.push({ path: "/" });
+              this.$router.push({ path: "/login" });
+            })
+            .catch(err => {
+              this.oldPwInvalid = err.response.data.message
             })
         }
       })
